@@ -16,7 +16,14 @@ abstract class AnimateEntity extends Entity
     // Attributes
     private int moveSpeed;
 
-    // Default constructor (must pass X/Y coordinates and speed)
+    // Default constructor (must pass X/Y coordinates and sets moveSpeed to default)
+    public AnimateEntity(int setX, int setY)
+    {
+        super(setX, setY);
+        this.moveSpeed = 5;
+    }
+
+    // Parameterized constructor (must pass X/Y coordinates and custom moveSpeed)
     public AnimateEntity(int setX, int setY, int setSpeed)
     {
         super(setX, setY);
