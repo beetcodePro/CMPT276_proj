@@ -13,19 +13,19 @@ public class KeyBoard implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code= e.getKeyCode();
-        if (code==KeyEvent.VK_UP)
+        if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W)
         {
             PressedUp= true;
         }
-        if (code==KeyEvent.VK_DOWN)
+        if (code==KeyEvent.VK_DOWN || code==KeyEvent.VK_S)
         {
             PressedDown= true;
         }
-        if (code==KeyEvent.VK_LEFT)
+        if (code==KeyEvent.VK_LEFT || code==KeyEvent.VK_A)
         {
             PressedLF= true;
         }
-        if (code==KeyEvent.VK_RIGHT)
+        if (code==KeyEvent.VK_RIGHT || code==KeyEvent.VK_D)
         {
             PressedRT= true;
         }
@@ -35,19 +35,19 @@ public class KeyBoard implements KeyListener {
     public void keyReleased(KeyEvent e) {
         int code= e.getKeyCode();
 
-        if (code==KeyEvent.VK_UP)
+        if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W)
         {
             PressedUp= false;
         }
-        if (code==KeyEvent.VK_DOWN)
+        if (code==KeyEvent.VK_DOWN || code==KeyEvent.VK_S)
         {
             PressedDown= false;
         }
-        if (code==KeyEvent.VK_LEFT)
+        if (code==KeyEvent.VK_LEFT || code==KeyEvent.VK_A)
         {
             PressedLF= false;
         }
-        if (code==KeyEvent.VK_RIGHT)
+        if (code==KeyEvent.VK_RIGHT || code==KeyEvent.VK_D)
         {
             PressedRT= false;
         }
