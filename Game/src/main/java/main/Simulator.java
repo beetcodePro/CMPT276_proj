@@ -2,24 +2,29 @@ package main;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import main.entities.Player;
 
-public class Simulator extends JPanel implements Runnable{
-    //Screen Settings
-
-    final int originalTileSize= 16; //16x16 size for tile
-    final int scale= 3;  //3*16 =48 to scale the resolution
-    final int tileSize= originalTileSize * scale; //48x48 tile
+public class Simulator extends JPanel implements Runnable
+{
+    // Screen Settings
+    final int originalTileSize = 16; //16x16 size for tile
+    final int scale = 3;  //3*16 =48 to scale the resolution
+    final int tileSize = originalTileSize * scale; //48x48 tile
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
-    final int ScreenWidth= tileSize*maxScreenCol; //768 pixels
-    final int ScreenHeight= tileSize*maxScreenRow; //576 pixels
+    final int ScreenWidth = tileSize*maxScreenCol; //768 pixels
+    final int ScreenHeight = tileSize*maxScreenRow; //576 pixels
+    
+    // Simulator attributes
     Thread gameThread;
-    KeyBoard Key= new KeyBoard();
-    int PlayerPositionX= 100;
-    int PlayerPositionY= 100;
-    int PlayerV=5;
-    int FPS=60;
-    //constructor
+    KeyBoard Key = new KeyBoard();
+    int DefaultPlayerPositionX = 100;
+    int DefaultPlayerPositionY = 100;
+    int DefaultPlayerV = 5;
+    int FPS = 60;
+    Player player = new Player(this, Key, DefaultPlayerPositionX, DefaultPlayerPositionY, DefaultPlayerV);
+
+    // Constructor
     public Simulator()
     {
         this.setSize(new Dimension(ScreenWidth,ScreenHeight ));
@@ -29,12 +34,15 @@ public class Simulator extends JPanel implements Runnable{
         this.setFocusable(true);
 
     }
+
+    // Get simulator tileSize
+    public int get_tileSize() { return this.tileSize; }
+
     public void startGameThread()
     {
         gameThread= new Thread(this);
         gameThread.start();
     }
-
 
     //game loop
     public void run()
@@ -67,32 +75,18 @@ public class Simulator extends JPanel implements Runnable{
 
     }
 
+    // Update game
     public void update()
     {
-        if (Key.PressedUp==true)
-        {
-            PlayerPositionY= PlayerPositionY-PlayerV ;
-        }
-        if (Key.PressedDown==true)
-        {
-            PlayerPositionY= PlayerPositionY+PlayerV ;
-        }
-        if (Key.PressedRT==true)
-        {
-            PlayerPositionX= PlayerPositionX+PlayerV;
-        }
-        if (Key.PressedLF==true)
-        {
-            PlayerPositionX= PlayerPositionX-PlayerV;
-        }
+        player.update();
     }
-    //to draw on the screen
+
+    // Draw updates onto UI
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        Graphics2D g2= (Graphics2D) g;
-        g2.setColor(Color.GRAY);
-        g2.fillRect(PlayerPositionX,PlayerPositionY,tileSize, tileSize);
+        Graphics2D g2 = (Graphics2D) g;
+        player.draw(g2);
         g2.dispose();
     }
 }

@@ -11,13 +11,13 @@
 
 package main.entities;
 import java.awt.*;
-import main.GamePanel;
+import main.Simulator;
 import main.KeyBoard;
 
 public class Player extends AnimateEntity
 {
     // Attributes
-    private GamePanel sim;
+    private Simulator sim;
     private KeyBoard keyboard;
     private int score;
     private int lives;
@@ -25,7 +25,7 @@ public class Player extends AnimateEntity
     // private Coordinate endGoal;
 
     // Default constructor (must pass specified parameters, sets moveSpeed to default)
-    public Player(GamePanel setSim, KeyBoard setKey, int setX, int setY)
+    public Player(Simulator setSim, KeyBoard setKey, int setX, int setY)
     {
         super(setX, setY);
         this.sim = setSim;
@@ -35,7 +35,7 @@ public class Player extends AnimateEntity
     }
 
     // Parameterized constructor (must pass specified parameters)
-    public Player(GamePanel setSim, KeyBoard setKey, int setX, int setY, int setSpeed)
+    public Player(Simulator setSim, KeyBoard setKey, int setX, int setY, int setSpeed)
     {
         super(setX, setY, setSpeed);
         this.sim = setSim;
@@ -85,8 +85,7 @@ public class Player extends AnimateEntity
     public void draw(Graphics2D g2)
     {
         g2.setColor(Color.GRAY);
-        // FIXME: change last two parameters to this.sim.get_tileSize() after testing
-        g2.fillRect(this.get_coordinate_X(), this.get_coordinate_Y(), 48, 48);
+        g2.fillRect(this.get_coordinate_X(), this.get_coordinate_Y(), this.sim.get_tileSize(), this.sim.get_tileSize());
     }
 
     // Checks if player has no lives left
