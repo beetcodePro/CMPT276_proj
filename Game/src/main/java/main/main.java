@@ -9,15 +9,15 @@ public class main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("Minions Laboratory Game");
-        GamePanel gamePanel= new GamePanel();
+        Simulator simulator= new Simulator();
 
-        window.add(gamePanel);
+        window.add(simulator);
         window.setResizable(true);
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        gamePanel.startGameThread();
+        simulator.startGameThread();
     }
 
 

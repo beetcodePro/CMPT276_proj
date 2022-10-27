@@ -3,7 +3,7 @@ package main;
 import javax.swing.JPanel;
 import java.awt.*;
 
-public class GamePanel extends JPanel implements Runnable{
+public class Simulator extends JPanel implements Runnable{
     //Screen Settings
 
     final int originalTileSize= 16; //16x16 size for tile
@@ -20,7 +20,7 @@ public class GamePanel extends JPanel implements Runnable{
     int PlayerV=5;
     int FPS=60;
     //constructor
-    public GamePanel()
+    public Simulator()
     {
         this.setSize(new Dimension(ScreenWidth,ScreenHeight ));
         this.setBackground(Color.white);
