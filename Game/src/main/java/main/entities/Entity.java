@@ -3,7 +3,7 @@
  *  
  *  Description: Abstract class, has a coordinate with corresponding get/set methods.
  * 
- *  Author: Lionel
+ *  Author: Lionel (msg me if u have any questions about this class)
  * 
  *  Last changed: Oct 27th, 2022
  *

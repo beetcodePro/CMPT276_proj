@@ -3,7 +3,7 @@
  *  
  *  Description: Abstract class, inherites Entity and has movespeed.
  * 
- *  Author: Lionel
+ *  Author: Lionel (msg me if u have any questions about this class)
  * 
  *  Last changed: Oct 27th, 2022
  *
