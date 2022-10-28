@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.JPanel;
 import java.awt.*;
-import main.entities.Player;
+import entities.Player;
 
 public class Simulator extends JPanel implements Runnable
 {

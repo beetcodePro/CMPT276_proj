@@ -9,7 +9,7 @@
  *
 */
 
-package main.entities;
+package entities;
 
 public class Coordinate 
 {

@@ -9,7 +9,7 @@
  *
 */
 
-package main.entities;
+package entities;
 
 abstract class AnimateEntity extends Entity
 {
