@@ -19,7 +19,7 @@ public class tiles_controller {
     {
         try{
             tile[0]= new Tiles();
-            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/tiles/white_tiles.png"));
+            tile[0].image= ImageIO.read(getClass().getResourceAsStream("/tiles/tile.png"));
         }catch (IOException e)
         {
             e.printStackTrace();
@@ -28,6 +28,24 @@ public class tiles_controller {
     }
     public void draw (Graphics2D g)
     {
-        g.drawImage(tile[0].image,0,0, sim.get_tileSize(),sim.get_tileSize(), null);
+        int column=0;
+        int row=0;
+        int x=0;
+        int y=0;
+        while (column<sim.maxScreenCol && row< sim.maxScreenRow)
+        {
+            g.drawImage(tile[0].image,x,y, sim.get_tileSize(),sim.get_tileSize(), null);
+            column++;
+            x+= sim.get_tileSize()/2;
+            if (column== sim.maxScreenCol)
+            {
+                column=0;
+                x=0;
+                row++;
+                y+= sim.get_tileSize()/2;
+
+            }
+        }
+
     }
 }
