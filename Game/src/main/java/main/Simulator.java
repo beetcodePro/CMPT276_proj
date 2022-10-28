@@ -3,6 +3,7 @@ package main;
 import javax.swing.JPanel;
 import java.awt.*;
 import entities.Player;
+import main.tile.tiles_controller;
 
 public class Simulator extends JPanel implements Runnable
 {
@@ -10,8 +11,8 @@ public class Simulator extends JPanel implements Runnable
     final int originalTileSize = 16; //16x16 size for tile
     final int scale = 3;  //3*16 =48 to scale the resolution
     final int tileSize = originalTileSize * scale; //48x48 tile
-    final int maxScreenCol = 16;
-    final int maxScreenRow = 12;
+    public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12;
     final int ScreenWidth = tileSize*maxScreenCol; //768 pixels
     final int ScreenHeight = tileSize*maxScreenRow; //576 pixels
     
@@ -22,6 +23,7 @@ public class Simulator extends JPanel implements Runnable
     int DefaultPlayerPositionY = 100;
     int DefaultPlayerV = 5;
     int FPS = 60;
+    tiles_controller Tile_c= new tiles_controller(this);
     Player player = new Player(this, Key, DefaultPlayerPositionX, DefaultPlayerPositionY, DefaultPlayerV);
 
     // Constructor
@@ -86,6 +88,7 @@ public class Simulator extends JPanel implements Runnable
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        Tile_c.draw(g2);
         player.draw(g2);
         g2.dispose();
     }
