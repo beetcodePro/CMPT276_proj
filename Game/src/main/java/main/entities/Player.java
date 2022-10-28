@@ -1,7 +1,7 @@
 /*  
  *  Player.java
  *  
- *  Description: Placeholder
+ *  Description: Controls player UI movement and player stats.
  * 
  *  Author: Lionel (msg me if u have any questions about this class)
  * 
@@ -97,10 +97,7 @@ public class Player extends AnimateEntity
             return false;
     }
 
-    // TODO: move entity by keyboard input, calls check_tile()
-    // public void move_entity();
-
-    // TODO: checks if tile has been occupied by another entity
+    // TODO: collision detection
     // public string check_tile();
 
     // TODO: pauses player input if game is paused
