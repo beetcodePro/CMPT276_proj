@@ -36,13 +36,13 @@ public class tiles_controller {
         {
             g.drawImage(tile[0].image,x,y, sim.get_tileSize(),sim.get_tileSize(), null);
             column++;
-            x+= sim.get_tileSize()/2;
+            x+= sim.get_tileSize();
             if (column== sim.maxScreenCol)
             {
                 column=0;
                 x=0;
                 row++;
-                y+= sim.get_tileSize()/2;
+                y+= sim.get_tileSize();
 
             }
         }
