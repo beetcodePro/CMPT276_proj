@@ -9,7 +9,7 @@
  *
 */
 
-package main.entities;
+package entities;
 import java.awt.*;
 import main.Simulator;
 import main.KeyBoard;
