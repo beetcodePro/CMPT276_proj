@@ -4,27 +4,67 @@ import main.Simulator;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class tiles_controller {
     Simulator sim;
-    Tiles[] tile;
+    public Tiles[] tile;
+    public int mapTileNum[][];
     public tiles_controller(Simulator sim)
     {
         this.sim=sim;
-        tile= new Tiles[2]; //number of different tiles
+        tile= new Tiles[10]; //number of different tiles
+        mapTileNum = new int[sim.maxScreenCol][sim.maxScreenRow];
         get_tile_png();
+        mapLoad("/maps/map01.txt");
     }
     public void get_tile_png()
     {
         try{
             tile[0]= new Tiles();
             tile[0].image= ImageIO.read(getClass().getResourceAsStream("/tiles/tile.png"));
+
+            tile[1] = new Tiles();
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/wall/wall.png"));
+            tile[1].collision = true;
         }catch (IOException e)
         {
             e.printStackTrace();
         }
 
+    }
+
+    public void mapLoad(String file){
+        try{
+            InputStream is = getClass().getResourceAsStream(file);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            int col = 0;
+            int row = 0;
+
+            while(col < sim.maxScreenCol && row < sim.maxScreenRow){
+                String line = br.readLine();
+
+                while (col < sim.maxScreenCol){
+                    String num[] = line.split(" ");
+
+                    int number = Integer.parseInt(num[col]);
+
+                    mapTileNum[col][row] = number;
+                    col++;
+                }
+                if (col == sim.maxScreenCol){
+                    col = 0;
+                    row++;
+                }
+            }
+            br.close();
+        }catch(Exception e){
+
+        }
     }
     public void draw (Graphics2D g)
     {
@@ -34,7 +74,9 @@ public class tiles_controller {
         int y=0;
         while (column<sim.maxScreenCol && row< sim.maxScreenRow)
         {
-            g.drawImage(tile[0].image,x,y, sim.get_tileSize(),sim.get_tileSize(), null);
+            int tileNum = mapTileNum[column][row];
+            g.drawImage(tile[tileNum].image,x,y, sim.get_tileSize(),sim.get_tileSize(), null);
+
             column++;
             x+= sim.get_tileSize();
             if (column== sim.maxScreenCol)

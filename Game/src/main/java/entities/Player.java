@@ -36,6 +36,7 @@ public class Player extends AnimateEntity
         this.get_sprite();
         this.score = 0;
         this.lives = 0;
+        solidArea = new Rectangle(0, 0, 48, 48);
     }
 
     // Parameterized constructor (must pass specified parameters)
@@ -64,34 +65,70 @@ public class Player extends AnimateEntity
         {
             if (keyboard.PressedRT == true)
             {
+
                 this.set_direction("right");
-                int x = this.get_coordinate_X();
-                x = x + this.get_moveSpeed();
-                this.set_coordinate_X(x);
+
             }
             if (keyboard.PressedLF == true)
             {
+
                 this.set_direction("left");
-                int x = this.get_coordinate_X();
-                x = x - this.get_moveSpeed();
-                this.set_coordinate_X(x);
             }
             if (keyboard.PressedUp == true)
             {
+
                 this.set_direction("up");
-                int y = this.get_coordinate_Y();
-                y = y - this.get_moveSpeed();
-                this.set_coordinate_Y(y);
+
             }
             if (keyboard.PressedDown == true)
             {
+
                 this.set_direction("down");
-                int y = this.get_coordinate_Y();
-                y = y + this.get_moveSpeed();
-                this.set_coordinate_Y(y);
+
             }
+
+            collisionOn = false;
+            sim.cCheck.checkTile(this);
+
+            // if collision is false, player can move
+
+            if (collisionOn == false){
+                switch(this.get_direction()){
+                    case "right":
+                        int xRight = this.get_coordinate_X();
+                        xRight = xRight + this.get_moveSpeed();
+                        this.set_coordinate_X(xRight);
+                        break;
+                    case "left":
+                        int xLeft = this.get_coordinate_X();
+                        xLeft = xLeft - this.get_moveSpeed();
+                        this.set_coordinate_X(xLeft);
+                        break;
+                    case "up":
+                        int yUp = this.get_coordinate_Y();
+                        yUp = yUp - this.get_moveSpeed();
+                        this.set_coordinate_Y(yUp);
+                        break;
+                    case "down":
+                        int yDown = this.get_coordinate_Y();
+                        yDown = yDown + this.get_moveSpeed();
+                        this.set_coordinate_Y(yDown);
+                        break;
+
+
+                }
+            }
+
+
+
+
             this.increase_spriteCnt();
+
+
+
         }
+
+
     }
 
     // Draw player on user interface

@@ -24,6 +24,7 @@ public class Simulator extends JPanel implements Runnable
     int DefaultPlayerV = 4;
     int FPS = 60;
     tiles_controller Tile_c= new tiles_controller(this);
+    public CheckCollision cCheck = new CheckCollision(this);
     Player player = new Player(this, Key, DefaultPlayerPositionX, DefaultPlayerPositionY, DefaultPlayerV);
 
     // Constructor

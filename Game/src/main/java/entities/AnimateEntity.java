@@ -10,9 +10,10 @@
 */
 
 package entities;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
-abstract class AnimateEntity extends Entity
+public abstract class AnimateEntity extends Entity
 {
     // Attributes
     private int moveSpeed;
@@ -20,6 +21,8 @@ abstract class AnimateEntity extends Entity
     private String direction;
     private int spriteCnt;
     private int spriteNum;
+    public Rectangle solidArea;
+    public boolean collisionOn = false;
 
     // Default constructor (must pass X/Y coordinates and sets moveSpeed to default)
     public AnimateEntity(int setX, int setY)
