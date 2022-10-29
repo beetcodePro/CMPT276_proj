@@ -60,33 +60,37 @@ public class Player extends AnimateEntity
     // Update player movement
     public void update()
     {
-        if (keyboard.PressedRT == true)
+        if(keyboard.PressedRT == true || keyboard.PressedLF == true || keyboard.PressedUp == true || keyboard.PressedDown == true)
         {
-            this.set_direction("right");
-            int x = this.get_coordinate_X();
-            x = x + this.get_moveSpeed();
-            this.set_coordinate_X(x);
-        }
-        if (keyboard.PressedLF == true)
-        {
-            this.set_direction("left");
-            int x = this.get_coordinate_X();
-            x = x - this.get_moveSpeed();
-            this.set_coordinate_X(x);
-        }
-        if (keyboard.PressedUp == true)
-        {
-            this.set_direction("up");
-            int y = this.get_coordinate_Y();
-            y = y - this.get_moveSpeed();
-            this.set_coordinate_Y(y);
-        }
-        if (keyboard.PressedDown == true)
-        {
-            this.set_direction("down");
-            int y = this.get_coordinate_Y();
-            y = y + this.get_moveSpeed();
-            this.set_coordinate_Y(y);
+            if (keyboard.PressedRT == true)
+            {
+                this.set_direction("right");
+                int x = this.get_coordinate_X();
+                x = x + this.get_moveSpeed();
+                this.set_coordinate_X(x);
+            }
+            if (keyboard.PressedLF == true)
+            {
+                this.set_direction("left");
+                int x = this.get_coordinate_X();
+                x = x - this.get_moveSpeed();
+                this.set_coordinate_X(x);
+            }
+            if (keyboard.PressedUp == true)
+            {
+                this.set_direction("up");
+                int y = this.get_coordinate_Y();
+                y = y - this.get_moveSpeed();
+                this.set_coordinate_Y(y);
+            }
+            if (keyboard.PressedDown == true)
+            {
+                this.set_direction("down");
+                int y = this.get_coordinate_Y();
+                y = y + this.get_moveSpeed();
+                this.set_coordinate_Y(y);
+            }
+            this.increase_spriteCnt();
         }
     }
 
@@ -101,16 +105,44 @@ public class Player extends AnimateEntity
         switch(this.get_direction())
         {
             case "down":
-                img = down1;
+                if(this.get_spriteNum() == 1)
+                    img = down1;
+                if(this.get_spriteNum() == 2)
+                    img = down2;
+                if(this.get_spriteNum() == 3)
+                    img = down1;
+                if(this.get_spriteNum() == 4)
+                    img = down3;
                 break;
             case "up":
-                img = up1;
+                if(this.get_spriteNum() == 1)
+                    img = up1;
+                if(this.get_spriteNum() == 2)
+                    img = up2;
+                if(this.get_spriteNum() == 3)
+                    img = up1;
+                if(this.get_spriteNum() == 4)
+                    img = up3;
                 break;
             case "right":
-                img = right1;
+                if(this.get_spriteNum() == 1)
+                    img = right1;
+                if(this.get_spriteNum() == 2)
+                    img = right1;
+                if(this.get_spriteNum() == 3)
+                    img = right2;
+                if(this.get_spriteNum() == 4)
+                    img = right2;
                 break;
             case "left":
-                img = left1;
+                if(this.get_spriteNum() == 1)
+                    img = left1;
+                if(this.get_spriteNum() == 2)
+                    img = left1;
+                if(this.get_spriteNum() == 3)
+                    img = left2;
+                if(this.get_spriteNum() == 4)
+                    img = left2;
                 break;
         }
         g2.drawImage(img, X, Y, tileSize, tileSize, null);
