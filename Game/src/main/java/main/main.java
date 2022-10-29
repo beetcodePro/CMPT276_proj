@@ -9,11 +9,12 @@ public class main {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("Minions Laboratory Game");
-        Simulator simulator= new Simulator();
+        window.pack();
 
+        Simulator simulator= new Simulator();
+        window.setSize(simulator.get_screen_width(), simulator.get_screen_height());
         window.add(simulator);
         window.setResizable(true);
-        window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 

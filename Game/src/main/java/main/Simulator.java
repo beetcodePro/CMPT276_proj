@@ -29,7 +29,6 @@ public class Simulator extends JPanel implements Runnable
     // Constructor
     public Simulator()
     {
-        this.setSize(new Dimension(ScreenWidth,ScreenHeight ));
         this.setBackground(Color.white);
         this.setDoubleBuffered(true);
         this.addKeyListener(Key);
@@ -37,7 +36,9 @@ public class Simulator extends JPanel implements Runnable
 
     }
 
-    // Get simulator tileSize
+    // Getters
+    public int get_screen_width() { return this.ScreenWidth; }
+    public int get_screen_height() { return this.ScreenHeight; }
     public int get_tileSize() { return this.tileSize; }
 
     public void startGameThread()
