@@ -11,16 +11,16 @@ public class Simulator extends JPanel implements Runnable
     final int originalTileSize = 16; //16x16 size for tile
     final int scale = 3;  //3*16 =48 to scale the resolution
     final int tileSize = originalTileSize * scale; //48x48 tile
-    public final int maxScreenCol = 16;
-    public final int maxScreenRow = 12;
-    final int ScreenWidth = tileSize*maxScreenCol; //768 pixels
-    final int ScreenHeight = tileSize*maxScreenRow; //576 pixels
+    public final int maxScreenCol = 25;
+    public final int maxScreenRow = 13;
+    final int ScreenWidth = tileSize*maxScreenCol; //1200 pixels
+    final int ScreenHeight = tileSize*maxScreenRow; //624 pixels
     
     // Simulator attributes
     Thread gameThread;
     KeyBoard Key = new KeyBoard();
-    int DefaultPlayerPositionX = 100;
-    int DefaultPlayerPositionY = 100;
+    int DefaultPlayerPositionX = 1100;
+    int DefaultPlayerPositionY = 525;
     int FPS = 60;
     tiles_controller Tile_c= new tiles_controller(this);
     CheckCollision cCheck = new CheckCollision(this, Key);
