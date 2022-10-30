@@ -16,7 +16,7 @@ public class allObjects {
 
     public void draw(Graphics2D g, Simulator sim)
     {
-
+    //This needs to be fixed to place the bananas randomly
         int column=1;
         int row=10;
         int x=48;
