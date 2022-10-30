@@ -21,11 +21,10 @@ public class Simulator extends JPanel implements Runnable
     KeyBoard Key = new KeyBoard();
     int DefaultPlayerPositionX = 100;
     int DefaultPlayerPositionY = 100;
-    int DefaultPlayerV = 4;
     int FPS = 60;
     tiles_controller Tile_c= new tiles_controller(this);
     CheckCollision cCheck = new CheckCollision(this, Key);
-    Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY, DefaultPlayerV);
+    Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
 
     // Constructor
     public Simulator()

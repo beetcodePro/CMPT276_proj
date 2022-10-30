@@ -19,7 +19,7 @@ public abstract class AnimateEntity extends Entity
     // Default attributes
     private int spriteCnt = 0;
     private int spriteNum = 1;
-    private int moveSpeed = 5;
+    private int moveSpeed = 4;
     private boolean canCollide = false;
 
     // Constructed attributes
@@ -33,15 +33,6 @@ public abstract class AnimateEntity extends Entity
     {
         super(setX, setY);
         this.sim = setSim;
-        this.direction = "down";
-    }
-
-    // Parameterized constructor (must pass X/Y coordinates and custom moveSpeed)
-    public AnimateEntity(int setX, int setY, Simulator setSim, int setSpeed)
-    {
-        super(setX, setY);
-        this.sim = setSim;
-        this.moveSpeed = setSpeed;
         this.direction = "down";
     }
 

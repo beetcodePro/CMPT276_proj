@@ -38,16 +38,6 @@ public class Player extends AnimateEntity
         this.config_hitbox();
     }
 
-    // Parameterized constructor (must pass specified parameters)
-    public Player(Simulator setSim, KeyBoard setKey, CheckCollision setColl, int setX, int setY, int setSpeed)
-    {
-        super(setX, setY, setSim, setSpeed);
-        this.keyboard = setKey;
-        this.colideCheck = setColl;
-        this.get_sprite();
-        this.config_hitbox();
-    }
-
     // Getters
     public int get_score() { return this.score; }
     public int get_lives() { return this.lives; }
