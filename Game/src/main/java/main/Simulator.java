@@ -30,9 +30,14 @@ public class Simulator extends JPanel implements Runnable
     int FPS = 60;
     tiles_controller Tile_c= new tiles_controller(this);
     CheckCollision cCheck = new CheckCollision(this, Key);
-    public objects_controller Obj_C= new objects_controller(this);
-    public Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
-    public allObjects obj[]= new allObjects[num_of_bananas];
+<<<<<<< HEAD
+
+=======
+
+    // FIXME: Entities
+    Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
+
+>>>>>>> a255aaf6059f0c818568bb067a0c87109b4b65f7
     // Constructor
     public Simulator()
     {
@@ -101,13 +106,6 @@ public class Simulator extends JPanel implements Runnable
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         Tile_c.draw(g2);
-        for (int i=0; i< obj.length; i++)
-        {
-            if (obj[i]!= null)
-            {
-                obj[i].draw(g2, this);
-            }
-        }
         player.draw(g2);
         g2.dispose();
     }
