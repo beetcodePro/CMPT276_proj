@@ -4,6 +4,9 @@ import javax.swing.JPanel;
 import java.awt.*;
 import entities.Player;
 import main.tile.tiles_controller;
+import objects.allObjects;
+import main.objects_controller;
+
 
 public class Simulator extends JPanel implements Runnable
 {
@@ -15,7 +18,10 @@ public class Simulator extends JPanel implements Runnable
     public final int maxScreenRow = 13;
     final int ScreenWidth = tileSize*maxScreenCol; //1200 pixels
     final int ScreenHeight = tileSize*maxScreenRow; //624 pixels
-    
+
+    public int num_of_bananas=12;
+
+
     // Simulator attributes
     Thread gameThread;
     KeyBoard Key = new KeyBoard();
@@ -24,8 +30,9 @@ public class Simulator extends JPanel implements Runnable
     int FPS = 60;
     tiles_controller Tile_c= new tiles_controller(this);
     CheckCollision cCheck = new CheckCollision(this, Key);
-    Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
-
+    public objects_controller Obj_C= new objects_controller(this);
+    public Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
+    public allObjects obj[]= new allObjects[num_of_bananas];
     // Constructor
     public Simulator()
     {
@@ -34,6 +41,10 @@ public class Simulator extends JPanel implements Runnable
         this.addKeyListener(Key);
         this.setFocusable(true);
 
+    }
+    public void game_setup()
+    {
+        Obj_C.setObject();
     }
 
     // Getters
@@ -90,6 +101,13 @@ public class Simulator extends JPanel implements Runnable
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         Tile_c.draw(g2);
+        for (int i=0; i< obj.length; i++)
+        {
+            if (obj[i]!= null)
+            {
+                obj[i].draw(g2, this);
+            }
+        }
         player.draw(g2);
         g2.dispose();
     }
