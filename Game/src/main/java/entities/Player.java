@@ -16,38 +16,39 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import main.Simulator;
 import main.KeyBoard;
+import main.CheckCollision;
 
 public class Player extends AnimateEntity
 {
-    // Attributes
+    // Default attributes
+    private int score = 0;
+    private int lives = 0;
+
+    // Constructed attributes
     private Simulator sim;
     private KeyBoard keyboard;
-    private int score;
-    private int lives;
-    // private int rewardsCollected;
-    // private Coordinate endGoal;
+    private CheckCollision colideCheck;
 
     // Default constructor (must pass specified parameters, sets moveSpeed to default)
-    public Player(Simulator setSim, KeyBoard setKey, int setX, int setY)
+    public Player(Simulator setSim, KeyBoard setKey, CheckCollision setColl, int setX, int setY)
     {
         super(setX, setY);
         this.sim = setSim;
         this.keyboard = setKey;
+        this.colideCheck = setColl;
         this.get_sprite();
-        this.score = 0;
-        this.lives = 0;
-        solidArea = new Rectangle(0, 0, 48, 48);
+        this.config_hitbox();
     }
 
     // Parameterized constructor (must pass specified parameters)
-    public Player(Simulator setSim, KeyBoard setKey, int setX, int setY, int setSpeed)
+    public Player(Simulator setSim, KeyBoard setKey, CheckCollision setColl, int setX, int setY, int setSpeed)
     {
         super(setX, setY, setSpeed);
         this.sim = setSim;
         this.keyboard = setKey;
+        this.colideCheck = setColl;
         this.get_sprite();
-        this.score = 0;
-        this.lives = 0;
+        this.config_hitbox();
     }
 
     // Getters
@@ -58,77 +59,99 @@ public class Player extends AnimateEntity
     public void change_score(int change) { this.score = this.score + change; }
     public void change_lives(int change) { this.lives = this.lives + change; }
 
+    // Configure hitbox (called on constructor ONLY)
+    private void config_hitbox()
+    {
+        Rectangle config = new Rectangle();
+        config.x = 6;           // hitbox border width
+        config.y = 9;           // hitbox border height
+        config.width = 36;      // hitbox width
+        config.height = 36;     // hitbox height
+        this.set_hitbox(config);
+    }
+
     // Update player movement
     public void update()
     {
         if(keyboard.PressedRT == true || keyboard.PressedLF == true || keyboard.PressedUp == true || keyboard.PressedDown == true)
         {
+            // Check and set direction based on keyboard inpute
             if (keyboard.PressedRT == true)
-            {
-
                 this.set_direction("right");
-
-            }
             if (keyboard.PressedLF == true)
-            {
-
                 this.set_direction("left");
-            }
             if (keyboard.PressedUp == true)
-            {
-
                 this.set_direction("up");
-
-            }
             if (keyboard.PressedDown == true)
-            {
-
                 this.set_direction("down");
 
-            }
+            // Check tile collision
+            this.set_canCollide(false);
+            this.colideCheck.checkTileForPlayer(this);
 
-            collisionOn = false;
-            sim.cCheck.checkTile(this);
-
-            // if collision is false, player can move
-
-            if (collisionOn == false){
-                switch(this.get_direction()){
-                    case "right":
-                        int xRight = this.get_coordinate_X();
-                        xRight = xRight + this.get_moveSpeed();
-                        this.set_coordinate_X(xRight);
-                        break;
-                    case "left":
-                        int xLeft = this.get_coordinate_X();
-                        xLeft = xLeft - this.get_moveSpeed();
-                        this.set_coordinate_X(xLeft);
-                        break;
-                    case "up":
-                        int yUp = this.get_coordinate_Y();
-                        yUp = yUp - this.get_moveSpeed();
-                        this.set_coordinate_Y(yUp);
-                        break;
-                    case "down":
-                        int yDown = this.get_coordinate_Y();
-                        yDown = yDown + this.get_moveSpeed();
-                        this.set_coordinate_Y(yDown);
-                        break;
-
-
+            // Move player if canCollide is false
+            if(get_canCollide() == false)
+            { 
+                if(keyboard.PressedRT == true)
+                {
+                    int x = this.get_coordinate_X();
+                    x = x + this.get_moveSpeed();
+                    this.set_coordinate_X(x);
                 }
+                if(keyboard.PressedLF == true)
+                {
+                    int x = this.get_coordinate_X();
+                    x = x - this.get_moveSpeed();
+                    this.set_coordinate_X(x);
+                }
+                if(keyboard.PressedUp == true)
+                {
+                    int y = this.get_coordinate_Y();
+                    y = y - this.get_moveSpeed();
+                    this.set_coordinate_Y(y);
+                }
+                if(keyboard.PressedDown == true)
+                {
+                    int y = this.get_coordinate_Y();
+                    y = y + this.get_moveSpeed();
+                    this.set_coordinate_Y(y);
+                }
+                // switch(this.get_direction())
+                // {
+                //     case "right":
+                //     {
+                //         int x = this.get_coordinate_X();
+                //         x = x + this.get_moveSpeed();
+                //         this.set_coordinate_X(x);
+                //         break;
+                //     }
+                //     case "left":
+                //     {
+                //         int x = this.get_coordinate_X();
+                //         x = x - this.get_moveSpeed();
+                //         this.set_coordinate_X(x);
+                //         break;
+                //     }
+                //     case "up":
+                //     {
+                //         int y = this.get_coordinate_Y();
+                //         y = y - this.get_moveSpeed();
+                //         this.set_coordinate_Y(y);
+                //         break;
+                //     }
+                //     case "down":
+                //     {
+                //         int y = this.get_coordinate_Y();
+                //         y = y + this.get_moveSpeed();
+                //         this.set_coordinate_Y(y);
+                //         break;
+                //     }
+                // }
             }
 
-
-
-
+            // Animation change
             this.increase_spriteCnt();
-
-
-
         }
-
-
     }
 
     // Draw player on user interface

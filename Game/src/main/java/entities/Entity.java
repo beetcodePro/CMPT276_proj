@@ -5,13 +5,13 @@
  * 
  *  Author: Lionel (msg me if u have any questions about this class)
  * 
- *  Last changed: Oct 27th, 2022
+ *  Last changed: Oct 29th, 2022
  *
 */
 
 package entities;
 
-abstract class Entity 
+public abstract class Entity 
 {
     // Attributes
     private Coordinate position;
