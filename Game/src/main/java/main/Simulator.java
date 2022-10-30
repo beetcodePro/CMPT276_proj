@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.JPanel;
 import java.awt.*;
-import entities.Player;
+import entities.*;
 import main.tile.tiles_controller;
 
 public class Simulator extends JPanel implements Runnable
@@ -24,7 +24,10 @@ public class Simulator extends JPanel implements Runnable
     int FPS = 60;
     tiles_controller Tile_c= new tiles_controller(this);
     CheckCollision cCheck = new CheckCollision(this, Key);
+
+    // FIXME: Entities
     Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
+    Enemy enemyTmp = new Enemy(this, cCheck, tileSize*10, tileSize*10);
 
     // Constructor
     public Simulator()
@@ -82,6 +85,7 @@ public class Simulator extends JPanel implements Runnable
     public void update()
     {
         player.update();
+        enemyTmp.update();
     }
 
     // Draw updates onto UI
@@ -90,6 +94,7 @@ public class Simulator extends JPanel implements Runnable
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         Tile_c.draw(g2);
+        enemyTmp.draw(g2);
         player.draw(g2);
         g2.dispose();
     }
