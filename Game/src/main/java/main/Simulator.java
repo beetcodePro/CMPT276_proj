@@ -62,11 +62,11 @@ public class Simulator extends JPanel implements Runnable
             repaint();
             try {
                 double TimeLeft= DrawingTime- System.nanoTime();
-                Thread.sleep((long)TimeLeft /1000000);
                 if (TimeLeft < 0)
                 {
                     TimeLeft=0;
                 }
+                Thread.sleep((long)TimeLeft /1000000);
                 DrawingTime= DrawingTime+TimeInterval;
             }
             catch (InterruptedException e)
