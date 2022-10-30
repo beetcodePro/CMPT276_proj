@@ -24,6 +24,8 @@ public class Simulator extends JPanel implements Runnable
     int FPS = 60;
     tiles_controller Tile_c= new tiles_controller(this);
     CheckCollision cCheck = new CheckCollision(this, Key);
+
+    // FIXME: Entities
     Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
 
     // Constructor
