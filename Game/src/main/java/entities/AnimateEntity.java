@@ -13,6 +13,7 @@ package entities;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import main.Simulator;
+import main.CheckCollision;
 
 public abstract class AnimateEntity extends Entity
 {
@@ -24,17 +25,34 @@ public abstract class AnimateEntity extends Entity
 
     // Constructed attributes
     protected Simulator sim;
+    protected CheckCollision collideCheck;
     protected BufferedImage down1, down2, down3, up1, up2, up3, right1, right2, left1, left2;
     private String direction;
     private Rectangle hitbox;
 
     // Default constructor (must pass X/Y coordinates and sets moveSpeed to default)
-    public AnimateEntity(int setX, int setY, Simulator setSim)
+    public AnimateEntity(int setX, int setY, Simulator setSim, CheckCollision setCol)
     {
         super(setX, setY);
         this.sim = setSim;
+        this.collideCheck = setCol;
         this.direction = "down";
+        this.config_hitbox();
     }
+
+    // Default configure hitbox (called on constructor ONLY)
+    private void config_hitbox()
+    {
+        Rectangle config = new Rectangle();
+        config.x = 0;           // hitbox border width
+        config.y = 0;           // hitbox border height
+        config.width = 48;      // hitbox width
+        config.height = 48;     // hitbox height
+        this.set_hitbox(config);
+    }
+
+    // Default update, updates AnimateEntity movement, to be overridden
+    public void update() {}
 
     // Getters
     public int get_moveSpeed() { return this.moveSpeed; }

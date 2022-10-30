@@ -26,14 +26,12 @@ public class Player extends AnimateEntity
 
     // Constructed attributes
     private KeyBoard keyboard;
-    private CheckCollision colideCheck;
 
     // Default constructor (must pass specified parameters, sets moveSpeed to default)
-    public Player(Simulator setSim, KeyBoard setKey, CheckCollision setColl, int setX, int setY)
+    public Player(Simulator setSim, KeyBoard setKey, CheckCollision setCol, int setX, int setY)
     {
-        super(setX, setY, setSim);
+        super(setX, setY, setSim, setCol);
         this.keyboard = setKey;
-        this.colideCheck = setColl;
         this.get_sprite();
         this.config_hitbox();
     }
@@ -74,7 +72,7 @@ public class Player extends AnimateEntity
 
             // Check tile collision
             this.set_canCollide(false);
-            this.colideCheck.checkTileForPlayer(this);
+            this.collideCheck.checkTileForPlayer(this);
 
             // Move player if canCollide is false
             if(get_canCollide() == false)
