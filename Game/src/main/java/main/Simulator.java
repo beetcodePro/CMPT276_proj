@@ -30,8 +30,9 @@ public class Simulator extends JPanel implements Runnable
     int FPS = 60;
     tiles_controller Tile_c= new tiles_controller(this);
     CheckCollision cCheck = new CheckCollision(this, Key);
-
     public objects_controller Obj_C= new objects_controller(this);
+
+    // Entities
     public Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
     public allObjects obj[]= new allObjects[num_of_bananas];
     Enemy enemyTmp = new Enemy(this, cCheck, tileSize*10, tileSize*10);
