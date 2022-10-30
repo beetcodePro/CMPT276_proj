@@ -17,7 +17,8 @@ public class main {
         window.setResizable(true);
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
+        //this is to draw bananas
+        simulator.game_setup();
         simulator.startGameThread();
     }
 
