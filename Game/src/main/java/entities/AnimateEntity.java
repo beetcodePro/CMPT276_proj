@@ -34,6 +34,18 @@ public abstract class AnimateEntity extends Entity
         super(setX, setY);
         this.sim = setSim;
         this.direction = "down";
+        this.config_hitbox();
+    }
+
+    // Default configure hitbox (called on constructor ONLY)
+    private void config_hitbox()
+    {
+        Rectangle config = new Rectangle();
+        config.x = 0;           // hitbox border width
+        config.y = 0;           // hitbox border height
+        config.width = 48;      // hitbox width
+        config.height = 48;     // hitbox height
+        this.set_hitbox(config);
     }
 
     // Getters
