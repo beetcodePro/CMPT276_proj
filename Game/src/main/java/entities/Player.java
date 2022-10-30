@@ -25,15 +25,13 @@ public class Player extends AnimateEntity
     private int lives = 0;
 
     // Constructed attributes
-    private Simulator sim;
     private KeyBoard keyboard;
     private CheckCollision colideCheck;
 
     // Default constructor (must pass specified parameters, sets moveSpeed to default)
     public Player(Simulator setSim, KeyBoard setKey, CheckCollision setColl, int setX, int setY)
     {
-        super(setX, setY);
-        this.sim = setSim;
+        super(setX, setY, setSim);
         this.keyboard = setKey;
         this.colideCheck = setColl;
         this.get_sprite();
@@ -43,8 +41,7 @@ public class Player extends AnimateEntity
     // Parameterized constructor (must pass specified parameters)
     public Player(Simulator setSim, KeyBoard setKey, CheckCollision setColl, int setX, int setY, int setSpeed)
     {
-        super(setX, setY, setSpeed);
-        this.sim = setSim;
+        super(setX, setY, setSim, setSpeed);
         this.keyboard = setKey;
         this.colideCheck = setColl;
         this.get_sprite();

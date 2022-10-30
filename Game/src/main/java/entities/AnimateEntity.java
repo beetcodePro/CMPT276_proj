@@ -12,6 +12,7 @@
 package entities;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import main.Simulator;
 
 public abstract class AnimateEntity extends Entity
 {
@@ -22,21 +23,24 @@ public abstract class AnimateEntity extends Entity
     private boolean canCollide = false;
 
     // Constructed attributes
+    protected Simulator sim;
     protected BufferedImage down1, down2, down3, up1, up2, up3, right1, right2, left1, left2;
     private String direction;
     private Rectangle hitbox;
 
     // Default constructor (must pass X/Y coordinates and sets moveSpeed to default)
-    public AnimateEntity(int setX, int setY)
+    public AnimateEntity(int setX, int setY, Simulator setSim)
     {
         super(setX, setY);
+        this.sim = setSim;
         this.direction = "down";
     }
 
     // Parameterized constructor (must pass X/Y coordinates and custom moveSpeed)
-    public AnimateEntity(int setX, int setY, int setSpeed)
+    public AnimateEntity(int setX, int setY, Simulator setSim, int setSpeed)
     {
         super(setX, setY);
+        this.sim = setSim;
         this.moveSpeed = setSpeed;
         this.direction = "down";
     }
