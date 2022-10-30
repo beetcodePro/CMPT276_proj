@@ -5,7 +5,7 @@
  * 
  *  Author: Lionel (msg me if u have any questions about this class)
  * 
- *  Last changed: Oct 28th, 2022
+ *  Last changed: Oct 29th, 2022
  *
 */
 
@@ -116,39 +116,7 @@ public class Player extends AnimateEntity
                     y = y + this.get_moveSpeed();
                     this.set_coordinate_Y(y);
                 }
-                // switch(this.get_direction())
-                // {
-                //     case "right":
-                //     {
-                //         int x = this.get_coordinate_X();
-                //         x = x + this.get_moveSpeed();
-                //         this.set_coordinate_X(x);
-                //         break;
-                //     }
-                //     case "left":
-                //     {
-                //         int x = this.get_coordinate_X();
-                //         x = x - this.get_moveSpeed();
-                //         this.set_coordinate_X(x);
-                //         break;
-                //     }
-                //     case "up":
-                //     {
-                //         int y = this.get_coordinate_Y();
-                //         y = y - this.get_moveSpeed();
-                //         this.set_coordinate_Y(y);
-                //         break;
-                //     }
-                //     case "down":
-                //     {
-                //         int y = this.get_coordinate_Y();
-                //         y = y + this.get_moveSpeed();
-                //         this.set_coordinate_Y(y);
-                //         break;
-                //     }
-                // }
             }
-
             // Animation change
             this.increase_spriteCnt();
         }
