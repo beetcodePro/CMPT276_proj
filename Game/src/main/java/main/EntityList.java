@@ -29,6 +29,7 @@ public class EntityList
     // Getters
     public List<Enemy> get_enemyList() { return this.enemyList; }
     public int get_enemyList_size() { return this.enemyList.size(); }
+    public Enemy get_enemy_at_index(int val) { return this.enemyList.get(val); }
 
     // EnemyList functions
     public void add_enemy(Enemy toAdd) { this.enemyList.add(toAdd);}
