@@ -5,7 +5,7 @@
  * 
  *  Author: Lionel (msg me if u have any questions about this class)
  * 
- *  Last changed: Oct 29th, 2022
+ *  Last changed: Oct 31st, 2022
  *
 */
 
@@ -68,6 +68,8 @@ public abstract class AnimateEntity extends Entity
     public void set_spriteCnt(int val) { this.spriteCnt = val; }
     public void set_spriteNum(int val) { this.spriteNum = val; }
     public void set_hitbox(Rectangle val) { this.hitbox = val; }
+    public void set_hitbox_x(int val) { this.hitbox.x = val; }
+    public void set_hitbox_y(int val) { this.hitbox.y = val; }
     public void set_canCollide(boolean val) { this.canCollide = val; }
 
     // Increase sprite counter, used for sprite animation
