@@ -74,6 +74,9 @@ public class Player extends AnimateEntity
             this.set_canCollide(false);
             this.collideCheck.checkTileForPlayer(this);
 
+            // Check enemy collision
+            int enemyIndex = this.collideCheck.checkEnemy(this);
+
             // Move player if canCollide is false
             if(get_canCollide() == false)
             { 

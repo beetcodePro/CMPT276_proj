@@ -1,17 +1,18 @@
 package main;
 
-import entities.AnimateEntity;
-import entities.Player;
+import entities.*;
 
 public class CheckCollision 
 {
     Simulator sim;
     KeyBoard keyboard;
+    EntityList entityList;
 
     // Default constructor
-    public CheckCollision(Simulator sim, KeyBoard key){
+    public CheckCollision(Simulator sim, KeyBoard key, EntityList eList){
         this.sim = sim;
         this.keyboard = key;
+        this.entityList = eList;
     }
 
     // Checks tile for PLAYER ONLY
@@ -81,6 +82,14 @@ public class CheckCollision
         int tile1, tile2;
 
         switch(entity.get_direction()){
+            case "down":
+                entityBottomRow = (entityBottomY + entity.get_moveSpeed())/sim.get_tileSize();
+                tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityBottomRow];
+                tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityBottomRow];
+                if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
+                    entity.set_canCollide(true);
+                }
+                break;
             case "up":
                 entityTopRow = (entityTopY - entity.get_moveSpeed())/sim.get_tileSize();
                 tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityTopRow];
@@ -89,9 +98,9 @@ public class CheckCollision
                     entity.set_canCollide(true);
                 }
                 break;
-            case "down":
-                entityBottomRow = (entityBottomY + entity.get_moveSpeed())/sim.get_tileSize();
-                tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityBottomRow];
+            case "right":
+                entityRightCol = (entityRightX + entity.get_moveSpeed())/sim.get_tileSize();
+                tile1 = sim.Tile_c.mapTileNum[entityRightCol][entityTopRow];
                 tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityBottomRow];
                 if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                     entity.set_canCollide(true);
@@ -105,20 +114,78 @@ public class CheckCollision
                     entity.set_canCollide(true);
                 }
                 break;
-            case "right":
-                entityRightCol = (entityRightX + entity.get_moveSpeed())/sim.get_tileSize();
-                tile1 = sim.Tile_c.mapTileNum[entityRightCol][entityTopRow];
-                tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityBottomRow];
-                if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
-                    entity.set_canCollide(true);
-                }
-                break;
         }
     }
 
-    // Checks AnimateEntity to AnimateEntity collisions
-    // public void checkEntity(AnimateEntity entity)
-    // {
+    // Checks AnimateEntity to Enemy collisions
+    public int checkEnemy(AnimateEntity entity)
+    {
+        int index = -1;
 
-    // }
+        for(int i = 0; i < this.entityList.get_enemyList_size(); i++)
+        {
+            if(sim.obj[i] != null)
+            {
+                // Get enemy at index in entityList
+                Enemy enemy = this.entityList.get_enemy_at_index(i);
+
+                // Store entity hitbox original value
+                int entityOriginalX = entity.get_hitbox().x;
+                int entityOriginalY = entity.get_hitbox().y;
+                int enemyOriginalX = enemy.get_hitbox().x;
+                int enemyOriginalY = enemy.get_hitbox().y;
+
+                // Get entity hitbox position
+                entity.set_hitbox_x(entity.get_coordinate_X() - entity.get_hitbox().x);
+                entity.set_hitbox_y(entity.get_coordinate_Y() - entity.get_hitbox().y);
+
+                // Get enemy hitbox position
+                enemy.set_hitbox_x(enemy.get_coordinate_X() - enemy.get_hitbox().x);
+                enemy.set_hitbox_y(enemy.get_coordinate_Y() - enemy.get_hitbox().y);
+
+                // Check for collision based on direction
+                switch(entity.get_direction())
+                {
+                    case "down":
+                        entity.set_hitbox_y(entity.get_hitbox().y + entity.get_moveSpeed());
+                        if(entity.get_hitbox().intersects(enemy.get_hitbox()))
+                        {
+                            entity.set_canCollide(true);
+                            index = i;
+                        }
+                        break;
+                    case "up":
+                        entity.set_hitbox_y(entity.get_hitbox().y - entity.get_moveSpeed());
+                        if(entity.get_hitbox().intersects(enemy.get_hitbox()))
+                        {
+                            entity.set_canCollide(true);
+                            index = i;
+                        }
+                        break;
+                    case "right":
+                        entity.set_hitbox_x(entity.get_hitbox().x + entity.get_moveSpeed());
+                        if(entity.get_hitbox().intersects(enemy.get_hitbox()))
+                        {
+                            entity.set_canCollide(true);
+                            index = i;
+                        }
+                        break;
+                    case "left":
+                        entity.set_hitbox_x(entity.get_hitbox().x - entity.get_moveSpeed());
+                        if(entity.get_hitbox().intersects(enemy.get_hitbox()))
+                        {
+                            entity.set_canCollide(true);
+                            index = i;
+                        }
+                        break;
+                }
+                // Reset entity hitbox position
+                entity.set_hitbox_x(entityOriginalX);
+                entity.set_hitbox_y(entityOriginalY);
+                enemy.set_hitbox_x(enemyOriginalX);
+                enemy.set_hitbox_y(enemyOriginalY);
+            }
+        }
+        return index;
+    }
 }

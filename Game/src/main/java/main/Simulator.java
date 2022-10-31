@@ -28,8 +28,8 @@ public class Simulator extends JPanel implements Runnable
     int DefaultPlayerPositionY = 525;
     int FPS = 60;
     tiles_controller Tile_c = new tiles_controller(this);
-    CheckCollision cCheck = new CheckCollision(this, Key);
     private EntityList entityList = new EntityList();
+    CheckCollision cCheck = new CheckCollision(this, Key, entityList);
     AssetCreator createAssets = new AssetCreator(this, entityList);
 
     // Entities
