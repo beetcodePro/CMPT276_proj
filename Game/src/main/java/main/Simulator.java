@@ -5,7 +5,6 @@ import java.awt.*;
 import entities.*;
 import main.tile.tiles_controller;
 import objects.allObjects;
-import main.objects_controller;
 
 
 public class Simulator extends JPanel implements Runnable
@@ -28,14 +27,14 @@ public class Simulator extends JPanel implements Runnable
     int DefaultPlayerPositionX = 1100;
     int DefaultPlayerPositionY = 525;
     int FPS = 60;
-    tiles_controller Tile_c= new tiles_controller(this);
+    tiles_controller Tile_c = new tiles_controller(this);
     CheckCollision cCheck = new CheckCollision(this, Key);
-    public objects_controller Obj_C= new objects_controller(this);
+    private EntityList entityList = new EntityList();
+    AssetCreator createAssets = new AssetCreator(this, entityList);
 
     // Entities
     public Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
     public allObjects obj[]= new allObjects[num_of_bananas];
-    Enemy enemyTmp = new Enemy(this, cCheck, tileSize*10, tileSize*10);
 
     // Constructor
     public Simulator()
@@ -48,7 +47,8 @@ public class Simulator extends JPanel implements Runnable
     }
     public void game_setup()
     {
-        Obj_C.setObject();
+        this.createAssets.setObject();
+        this.createAssets.setEnemy(cCheck);
     }
 
     // Getters
@@ -97,7 +97,7 @@ public class Simulator extends JPanel implements Runnable
     public void update()
     {
         player.update();
-        enemyTmp.update();
+        this.entityList.update_enemyList();
     }
 
     // Draw updates onto UI
@@ -113,7 +113,7 @@ public class Simulator extends JPanel implements Runnable
                 obj[i].draw(g2, this);
             }
         }
-        enemyTmp.draw(g2);
+        this.entityList.draw_enemyList(g2);
         player.draw(g2);
         g2.dispose();
     }
