@@ -40,7 +40,7 @@ public class Enemy extends AnimateEntity
         config.x = 9;           // hitbox border width
         config.y = 9;           // hitbox border height
         config.width = 33;      // hitbox width
-        config.height = 33;     // hitbox height
+        config.height = 36;     // hitbox height
         this.set_hitbox(config);
     }
 

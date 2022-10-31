@@ -8,6 +8,7 @@ public class CheckCollision
     Simulator sim;
     KeyBoard keyboard;
 
+    // Default constructor
     public CheckCollision(Simulator sim, KeyBoard key){
         this.sim = sim;
         this.keyboard = key;
@@ -114,4 +115,10 @@ public class CheckCollision
                 break;
         }
     }
+
+    // Checks AnimateEntity to AnimateEntity collisions
+    // public void checkEntity(AnimateEntity entity)
+    // {
+
+    // }
 }
