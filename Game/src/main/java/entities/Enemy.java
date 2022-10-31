@@ -22,6 +22,7 @@ import java.awt.Graphics2D;
 public class Enemy extends AnimateEntity 
 {
     // Attributes
+    private int actionInterval = 0;
 
     // Default constructor
     public Enemy(Simulator setSim, CheckCollision setCol, int setX, int setY)
@@ -62,6 +63,12 @@ public class Enemy extends AnimateEntity
             err.printStackTrace();
         }
     }
+
+    // Getters
+    public int get_actionInterval() { return this.actionInterval; }
+
+    // Setters
+    public void set_actionInterval(int val) { this.actionInterval = val; }
 
     // Draw enemy on user interface
     public void draw(Graphics2D g2)
@@ -120,17 +127,24 @@ public class Enemy extends AnimateEntity
     // Set the direction to move in next time update is called
     public void nextMove()
     {
-        Random generate = new Random();
-        int rng = generate.nextInt(100)+1;  // generates int from 0-100
+        this.actionInterval++;
 
-        if(rng <= 25) 
-            set_direction("down");
-        else if(rng <= 50)
-            set_direction("up");
-        else if(rng <= 75)
-            set_direction("right");
-        else
-            set_direction("left");
+        if(this.actionInterval == 90)
+        {
+            Random generate = new Random();
+            int rng = generate.nextInt(100)+1;  // generates int from 0-100
+
+            if(rng <= 25) 
+                set_direction("down");
+            else if(rng <= 50)
+                set_direction("up");
+            else if(rng <= 75)
+                set_direction("right");
+            else
+                set_direction("left");
+
+            this.actionInterval = 0;
+        }
     }
 
     // Update enemy movement
