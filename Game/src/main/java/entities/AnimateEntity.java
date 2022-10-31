@@ -40,20 +40,6 @@ public abstract class AnimateEntity extends Entity
         this.config_hitbox();
     }
 
-    // Default configure hitbox (called on constructor ONLY)
-    private void config_hitbox()
-    {
-        Rectangle config = new Rectangle();
-        config.x = 0;           // hitbox border width
-        config.y = 0;           // hitbox border height
-        config.width = 48;      // hitbox width
-        config.height = 48;     // hitbox height
-        this.set_hitbox(config);
-    }
-
-    // Default update, updates AnimateEntity movement, to be overridden
-    public void update() {}
-
     // Getters
     public int get_moveSpeed() { return this.moveSpeed; }
     public String get_direction() { return this.direction; }
@@ -71,6 +57,66 @@ public abstract class AnimateEntity extends Entity
     public void set_hitbox_x(int val) { this.hitbox.x = val; }
     public void set_hitbox_y(int val) { this.hitbox.y = val; }
     public void set_canCollide(boolean val) { this.canCollide = val; }
+
+    // Default configure hitbox (called on constructor ONLY)
+    private void config_hitbox()
+    {
+        Rectangle config = new Rectangle();
+        config.x = 0;           // hitbox border width
+        config.y = 0;           // hitbox border height
+        config.width = 48;      // hitbox width
+        config.height = 48;     // hitbox height
+        this.set_hitbox(config);
+    }
+
+    // Default update, updates AnimateEntity movement
+    public void update()
+    {
+        nextMove();
+        this.set_canCollide(false);
+        this.collideCheck.checkTile(this);
+        this.collideCheck.checkPlayerForAnimateEntity(this);
+
+        if(this.get_canCollide() == false)
+        {
+            switch(this.get_direction())
+            {
+                case "right":
+                {
+                    int x = this.get_coordinate_X();
+                    x = x + this.get_moveSpeed();
+                    this.set_coordinate_X(x);
+                    break;
+                }
+                case "left":
+                {
+                    int x = this.get_coordinate_X();
+                    x = x - this.get_moveSpeed();
+                    this.set_coordinate_X(x);
+                    break;
+                }
+                case "up":
+                {
+                    int y = this.get_coordinate_Y();
+                    y = y - this.get_moveSpeed();
+                    this.set_coordinate_Y(y);
+                    break;
+                }
+                case "down":
+                {
+                    int y = this.get_coordinate_Y();
+                    y = y + this.get_moveSpeed();
+                    this.set_coordinate_Y(y);
+                    break;
+                }
+            }
+        }
+        // Animation change
+        this.increase_spriteCnt();
+    }
+
+    // TO BE OVERRIDDEN: Set the direction to move in next time update is called
+    public void nextMove() {}
 
     // Increase sprite counter, used for sprite animation
     public void increase_spriteCnt() 

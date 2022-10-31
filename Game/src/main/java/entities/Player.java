@@ -76,6 +76,7 @@ public class Player extends AnimateEntity
 
             // Check enemy collision
             int enemyIndex = this.collideCheck.checkEnemy(this);
+            enemy_onCollision(enemyIndex);
 
             // Move player if canCollide is false
             if(get_canCollide() == false)
@@ -184,6 +185,15 @@ public class Player extends AnimateEntity
         }
     }
 
+    // This function runs when player collides with enemy
+    private void enemy_onCollision(int index)
+    {
+        if(index != -1)
+        {
+            // Do nothing, (to be implemented)
+        }
+    }
+
     // Checks if player has no lives left
     public boolean check_if_no_lives()
     {
@@ -192,17 +202,5 @@ public class Player extends AnimateEntity
         else
             return false;
     }
-
-    // TODO: collision detection
-    // public string check_tile();
-
-    // TODO: pauses player input if game is paused
-    // public boolean is_game_paused();
-
-    // TODO: checks if all rewards are collected on the map
-    // public boolean all_rewards_collected();
-
-    // TODO: checks if player coordinate is equal to endGoal
-    // public boolean goal_reached();
 }
 

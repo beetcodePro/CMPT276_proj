@@ -124,7 +124,7 @@ public class CheckCollision
 
         for(int i = 0; i < this.entityList.get_enemyList_size(); i++)
         {
-            if(sim.obj[i] != null)
+            if(this.entityList.get_enemy_at_index(i) != null)
             {
                 // Get enemy at index in entityList
                 Enemy enemy = this.entityList.get_enemy_at_index(i);
@@ -187,5 +187,63 @@ public class CheckCollision
             }
         }
         return index;
+    }
+
+    // Checks AnimateEntity to Player collisions
+    public void checkPlayerForAnimateEntity(AnimateEntity entity)
+    {
+        Player player = sim.get_player();
+
+        // Store entity hitbox original value
+        int entityOriginalX = entity.get_hitbox().x;
+        int entityOriginalY = entity.get_hitbox().y;
+        int playerOriginalX = player.get_hitbox().x;
+        int playerOriginalY = player.get_hitbox().y;
+
+        // Get entity hitbox position
+        entity.set_hitbox_x(entity.get_coordinate_X() - entity.get_hitbox().x);
+        entity.set_hitbox_y(entity.get_coordinate_Y() - entity.get_hitbox().y);
+
+        // Get enemy hitbox position
+        player.set_hitbox_x(player.get_coordinate_X() - player.get_hitbox().x);
+        player.set_hitbox_y(player.get_coordinate_Y() - player.get_hitbox().y);
+
+        // Check for collision based on direction
+        switch(entity.get_direction())
+        {
+            case "down":
+                entity.set_hitbox_y(entity.get_hitbox().y + entity.get_moveSpeed());
+                if(entity.get_hitbox().intersects(player.get_hitbox()))
+                {
+                    entity.set_canCollide(true);
+                }
+                break;
+            case "up":
+                entity.set_hitbox_y(entity.get_hitbox().y - entity.get_moveSpeed());
+                if(entity.get_hitbox().intersects(player.get_hitbox()))
+                {
+                    entity.set_canCollide(true);
+                }
+                break;
+            case "right":
+                entity.set_hitbox_x(entity.get_hitbox().x + entity.get_moveSpeed());
+                if(entity.get_hitbox().intersects(player.get_hitbox()))
+                {
+                    entity.set_canCollide(true);
+                }
+                break;
+            case "left":
+                entity.set_hitbox_x(entity.get_hitbox().x - entity.get_moveSpeed());
+                if(entity.get_hitbox().intersects(player.get_hitbox()))
+                {
+                    entity.set_canCollide(true);
+                }
+                break;
+        }
+        // Reset entity hitbox position
+        entity.set_hitbox_x(entityOriginalX);
+        entity.set_hitbox_y(entityOriginalY);
+        player.set_hitbox_x(playerOriginalX);
+        player.set_hitbox_y(playerOriginalY);
     }
 }

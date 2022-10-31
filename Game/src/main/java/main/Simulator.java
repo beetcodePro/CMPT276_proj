@@ -55,6 +55,7 @@ public class Simulator extends JPanel implements Runnable
     public int get_screen_width() { return this.ScreenWidth; }
     public int get_screen_height() { return this.ScreenHeight; }
     public int get_tileSize() { return this.tileSize; }
+    public Player get_player() { return this.player; }
 
     public void startGameThread()
     {
