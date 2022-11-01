@@ -1,6 +1,6 @@
 package main;
-import objects.obj_banana;
-import entities.Enemy;
+import entities.*;
+import objects.*;
 
 public class AssetCreator 
 {
@@ -16,13 +16,9 @@ public class AssetCreator
     // Create and set objects
     public void setObject() 
     {
-        sim.obj[0]= new obj_banana();
-        sim.obj[0].world_x= 15*sim.get_tileSize();
-        sim.obj[0].world_x= 12*sim.get_tileSize();
-
-        sim.obj[1]= new obj_banana();
-        sim.obj[1].world_x= 7*sim.get_tileSize();
-        sim.obj[1].world_x= 12*sim.get_tileSize();
+        int tileSize = sim.get_tileSize();
+        this.entityList.add_obj(new obj_banana(tileSize*10, tileSize*5)); // creates banana at (15, 12)
+        this.entityList.add_obj(new obj_banana(tileSize*7, tileSize*11));
     }
 
     // Create and set enemy entities

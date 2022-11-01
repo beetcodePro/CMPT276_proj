@@ -3,7 +3,6 @@ package main;
 import javax.swing.JPanel;
 import java.awt.*;
 import entities.*;
-import objects.allObjects;
 import tile.tiles_controller;
 
 
@@ -18,9 +17,6 @@ public class Simulator extends JPanel implements Runnable
     final int ScreenWidth = tileSize*maxScreenCol; //1200 pixels
     final int ScreenHeight = tileSize*maxScreenRow; //624 pixels
 
-    public int num_of_bananas=12;
-
-
     // Simulator attributes
     Thread gameThread;
     KeyBoard Key = new KeyBoard();
@@ -33,8 +29,7 @@ public class Simulator extends JPanel implements Runnable
     AssetCreator createAssets = new AssetCreator(this, entityList);
 
     // Entities
-    public Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
-    public allObjects obj[]= new allObjects[num_of_bananas];
+    private Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
 
     // Constructor
     public Simulator()
@@ -63,17 +58,17 @@ public class Simulator extends JPanel implements Runnable
         gameThread.start();
     }
 
-    //game loop
+    // Game loop
     public void run()
     {
         double TimeInterval= 1000000000/FPS;
         double DrawingTime= System.nanoTime()+TimeInterval ;
         while (gameThread != null)//repeat the process
         {
-            //update information like:
+            // Updates all entity info
             update();
-            //character positions
-            //draw the screen with the updated information
+
+            // Draw all entities with the updated information
             repaint();
             try {
                 double TimeLeft= DrawingTime- System.nanoTime();
@@ -106,15 +101,17 @@ public class Simulator extends JPanel implements Runnable
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+
+        // Draw all tiles
         Tile_c.draw(g2);
-        for (int i=0; i< obj.length; i++)
-        {
-            if (obj[i]!= null)
-            {
-                obj[i].draw(g2, this);
-            }
-        }
-        this.entityList.draw_enemyList(g2);
+
+        // Draw all objects (inanimateEntities)
+        entityList.draw_objList(g2, this);
+
+        // Draw all enemies
+        entityList.draw_enemyList(g2);
+
+        // Draw the player
         player.draw(g2);
         g2.dispose();
     }

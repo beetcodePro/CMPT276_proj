@@ -19,20 +19,20 @@ public class EntityList
 {
     // List of entity arrays
     private List<Enemy> enemyList;
+    private List<InanimateEntity> objList;
 
     // Default constructor
     public EntityList()
     {
         this.enemyList = new ArrayList<Enemy>();
+        this.objList = new ArrayList<InanimateEntity>();
     }
-
-    // Getters
-    public List<Enemy> get_enemyList() { return this.enemyList; }
-    public int get_enemyList_size() { return this.enemyList.size(); }
-    public Enemy get_enemy_at_index(int val) { return this.enemyList.get(val); }
 
     // EnemyList functions
     public void add_enemy(Enemy toAdd) { this.enemyList.add(toAdd);}
+    public List<Enemy> get_enemyList() { return this.enemyList; }
+    public int get_enemyList_size() { return this.enemyList.size(); }
+    public Enemy get_enemy_at_index(int val) { return this.enemyList.get(val); }
 
     public void update_enemyList()
     {
@@ -44,5 +44,17 @@ public class EntityList
     {
         for(int i = 0; i < enemyList.size(); i++)
             this.enemyList.get(i).draw(g2);
+    }
+
+    // Object functions
+    public void add_obj(InanimateEntity toAdd) { this.objList.add(toAdd);}
+    public List<InanimateEntity> get_objList() { return this.objList; }
+    public int get_objList_size() { return this.objList.size(); }
+    public InanimateEntity get_obj_at_index(int val) { return this.objList.get(val); }
+
+    public void draw_objList(Graphics2D g2, Simulator sim)
+    {
+        for(int i = 0; i < objList.size(); i++)
+            this.objList.get(i).draw(g2, sim);
     }
 }
