@@ -3,8 +3,8 @@ package main;
 import javax.swing.JPanel;
 import java.awt.*;
 import entities.*;
-import main.tile.tiles_controller;
 import objects.allObjects;
+import tile.tiles_controller;
 
 
 public class Simulator extends JPanel implements Runnable
