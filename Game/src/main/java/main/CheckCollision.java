@@ -124,7 +124,7 @@ public class CheckCollision
 
         for(int i = 0; i < this.entityList.get_enemyList_size(); i++)
         {
-            if(this.entityList.get_enemy_at_index(i) != null)
+            if(this.entityList.get_enemy_at_index(i) != null && entity != this.entityList.get_enemy_at_index(i))
             {
                 // Get enemy at index in entityList
                 Enemy enemy = this.entityList.get_enemy_at_index(i);
@@ -190,7 +190,7 @@ public class CheckCollision
     }
 
     // Checks AnimateEntity to Player collisions
-    public void checkPlayerForAnimateEntity(AnimateEntity entity)
+    public void checkPlayer(AnimateEntity entity)
     {
         Player player = sim.get_player();
 

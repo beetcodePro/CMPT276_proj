@@ -75,7 +75,8 @@ public abstract class AnimateEntity extends Entity
         nextMove();
         this.set_canCollide(false);
         this.collideCheck.checkTile(this);
-        this.collideCheck.checkPlayerForAnimateEntity(this);
+        this.collideCheck.checkPlayer(this);
+        this.collideCheck.checkEnemy(this);
 
         if(this.get_canCollide() == false)
         {
