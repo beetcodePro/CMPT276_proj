@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Random;
+
 
 public class tiles_controller {
     Simulator sim;
@@ -19,7 +21,11 @@ public class tiles_controller {
         tile= new Tiles[10]; //number of different tiles
         mapTileNum = new int[sim.maxScreenCol][sim.maxScreenRow];
         get_tile_png();
-        mapLoad("/maps/map01.txt");
+        String maps[]= {"/maps/map01.txt", "/maps/map02.txt", "/maps/map03.txt","/maps/map04.txt","/maps/map05.txt" };
+        Random random = new Random();
+        int x = random.nextInt(4 - 0 + 1);
+
+        mapLoad(maps[x]);
     }
     public void get_tile_png()
     {
