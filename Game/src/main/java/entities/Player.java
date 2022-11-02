@@ -204,6 +204,7 @@ public class Player extends AnimateEntity
             }
             if(objectName == "Apple")
             {
+                sim.PlaySoundEffect(1);
                 lives = lives + 1;
                 System.out.println("Player lives: " + lives);   // testing purposes, delete after
             }
