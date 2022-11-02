@@ -2,6 +2,8 @@ package main;
 import entities.*;
 import objects.*;
 
+import java.util.Random;
+
 public class AssetCreator 
 {
     Simulator sim;
@@ -19,6 +21,15 @@ public class AssetCreator
         int tileSize = sim.get_tileSize();
         this.entityList.add_obj(new obj_banana(tileSize*10, tileSize*5)); // creates banana at (15, 12)
         this.entityList.add_obj(new obj_banana(tileSize*7, tileSize*11));
+        for (int i=0; i<13; i++)
+        {
+            //placing bananas randomly
+            Random random = new Random();
+            int x = random.nextInt(20 )+1;
+            int y = random.nextInt(12 )+1;
+            this.entityList.add_obj(new obj_banana(tileSize*x, tileSize*y));
+            i++;
+        }
     }
 
     // Create and set enemy entities
