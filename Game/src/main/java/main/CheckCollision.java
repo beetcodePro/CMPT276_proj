@@ -15,8 +15,9 @@ public class CheckCollision
         this.entityList = eList;
     }
 
-    // Delete object at index of objList in entityList
-    public void deleteObject(int index) { this.entityList.delete_obj_at_index(index); }
+    // Helper functions
+    public void deleteObject(int index) { entityList.delete_obj_at_index(index); }
+    public String getObjectName(int index) { return entityList.get_obj_at_index(index).get_name(); }
 
     // Checks tile for player only
     public void checkTileForPlayer(Player plr){
