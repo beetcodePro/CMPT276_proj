@@ -214,8 +214,10 @@ public class Player extends AnimateEntity
             if (objectName == "Trap"){
                 sim.PlaySoundEffect(3);
                 score = score - 20;
+                lives = lives - 1;
                 this.set_coordinate(48, 48);
-                System.out.println("Player score: "+score);
+                System.out.println("Player score: " + score);
+                System.out.println("Player lives: " + lives);
             }
 
         }
