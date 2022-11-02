@@ -195,6 +195,7 @@ public class Player extends AnimateEntity
         if(index != -1)
         {
             // String objectName = this.collideCheck.getObjectName(index);
+            sim.PlaySoundEffect(2);
             this.collideCheck.deleteObject(index);
             score = score + 20;
             System.out.println("Player score: " + score);   // testing purposes, delete after
