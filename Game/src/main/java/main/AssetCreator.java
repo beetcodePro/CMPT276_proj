@@ -19,9 +19,10 @@ public class AssetCreator
     public void setObject() 
     {
         int tileSize = sim.get_tileSize();
-        for (int i=0; i<13; i++)
+
+        // placing bananas randomly
+        for (int i=0; i<8; i++)
         {
-            //placing bananas randomly
             Random random = new Random();
             int x = random.nextInt(22)+1;
             int y = random.nextInt(10)+1;
@@ -33,7 +34,22 @@ public class AssetCreator
                 y = random.nextInt(10)+1; 
             }
             this.entityList.add_obj(new obj_banana(tileSize*x, tileSize*y));
-            i++;
+        }
+
+        // placing apples randomly
+        for (int i=0; i<3; i++)
+        {
+            Random random = new Random();
+            int x = random.nextInt(22)+1;
+            int y = random.nextInt(10)+1;
+
+            // Generate a coordinate without a collidable tile
+            while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true)
+            {
+                x = random.nextInt(22)+1;
+                y = random.nextInt(10)+1; 
+            }
+            this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
         }
     }
 

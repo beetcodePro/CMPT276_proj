@@ -194,11 +194,20 @@ public class Player extends AnimateEntity
     {
         if(index != -1)
         {
-            // String objectName = this.collideCheck.getObjectName(index);
-            sim.PlaySoundEffect(2);
+            String objectName = this.collideCheck.getObjectName(index);
+
+            if(objectName == "Banana")
+            {
+                sim.PlaySoundEffect(2);
+                score = score + 20;
+                System.out.println("Player score: " + score);   // testing purposes, delete after
+            }
+            if(objectName == "Apple")
+            {
+                lives = lives + 1;
+                System.out.println("Player lives: " + lives);   // testing purposes, delete after
+            }
             this.collideCheck.deleteObject(index);
-            score = score + 20;
-            System.out.println("Player score: " + score);   // testing purposes, delete after
         }
     }
 
