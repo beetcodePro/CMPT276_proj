@@ -41,8 +41,8 @@ public class Player extends AnimateEntity
     public int get_lives() { return this.lives; }
 
     // Setters
-    public void change_score(int change) { this.score = this.score + change; }
-    public void change_lives(int change) { this.lives = this.lives + change; }
+    public void add_score(int change) { this.score = this.score + change; }
+    public void add_lives(int change) { this.lives = this.lives + change; }
 
     // Configure hitbox (called on constructor ONLY)
     private void config_hitbox()
@@ -195,6 +195,8 @@ public class Player extends AnimateEntity
         if(index != -1)
         {
             this.collideCheck.deleteObject(index);
+            score = score + 20;
+            System.out.println("Player score: " + score);   // testing purposes, delete after
         }
     }
 
