@@ -23,7 +23,7 @@ public class tiles_controller {
         get_tile_png();
         String maps[]= {"/maps/map01.txt", "/maps/map02.txt", "/maps/map03.txt","/maps/map04.txt","/maps/map05.txt" };
         Random random = new Random();
-        int x = random.nextInt(5);
+        int x = random.nextInt(4);
 
         mapLoad(maps[x]);
     }
