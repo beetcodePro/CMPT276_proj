@@ -28,6 +28,8 @@ public class Simulator extends JPanel implements Runnable
     CheckCollision cCheck = new CheckCollision(this, Key, entityList);
     AssetCreator createAssets = new AssetCreator(this, entityList);
 
+    sound Sound= new sound();
+
     // Entities
     private Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
 
@@ -114,5 +116,21 @@ public class Simulator extends JPanel implements Runnable
         // Draw the player
         player.draw(g2);
         g2.dispose();
+    }
+
+    public void PlaySound(int x)
+    {
+        Sound.setFile(x);
+        Sound.play();
+        Sound.loop();
+    }
+    public void StopSound()
+    {
+        Sound.stop();
+    }
+    public void PlaySoundEffect(int x)
+    {
+      Sound.setFile(x);
+      Sound.play();
     }
 }
