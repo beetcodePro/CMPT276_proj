@@ -20,8 +20,8 @@ public class Simulator extends JPanel implements Runnable
     // Simulator attributes
     Thread gameThread;
     KeyBoard Key = new KeyBoard();
-    int DefaultPlayerPositionX = 1100;
-    int DefaultPlayerPositionY = 525;
+    int DefaultPlayerPositionX = 48;
+    int DefaultPlayerPositionY = 48;
     int FPS = 60;
     tiles_controller Tile_c = new tiles_controller(this);
     private EntityList entityList = new EntityList();

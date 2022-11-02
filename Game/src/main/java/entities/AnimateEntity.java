@@ -19,7 +19,7 @@ public abstract class AnimateEntity extends Entity
     // Default attributes
     private int spriteCnt = 0;
     private int spriteNum = 1;
-    private int moveSpeed = 4;
+    private int moveSpeed = 3;
 
     // Constructed attributes
     protected Simulator sim;

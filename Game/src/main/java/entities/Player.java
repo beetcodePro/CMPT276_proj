@@ -22,7 +22,7 @@ public class Player extends AnimateEntity
 {
     // Default attributes
     private int score = 0;
-    private int lives = 0;
+    private int lives = 5;
 
     // Constructed attributes
     private KeyBoard keyboard;
@@ -206,7 +206,9 @@ public class Player extends AnimateEntity
     {
         if(index != -1)
         {
-            // Do nothing, (to be implemented)
+            this.set_coordinate(48, 48);
+            lives = lives - 1;
+            System.out.println("Player lives: " + lives);   // testing purposes, delete after
         }
     }
 
