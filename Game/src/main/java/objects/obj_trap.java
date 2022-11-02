@@ -23,7 +23,7 @@ public class obj_trap extends InanimateEntity
         }
     }
 
-    // Default configure hitbox (called on constructor ONLY)
+    // Overide default configure hitbox (called on constructor ONLY)
     private void config_hitbox()
     {
         Rectangle config = new Rectangle();
