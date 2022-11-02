@@ -51,6 +51,7 @@ public class EntityList
     public List<InanimateEntity> get_objList() { return this.objList; }
     public int get_objList_size() { return this.objList.size(); }
     public InanimateEntity get_obj_at_index(int val) { return this.objList.get(val); }
+    public void delete_obj_at_index(int val) { this.objList.remove(val); }
 
     public void draw_objList(Graphics2D g2, Simulator sim)
     {

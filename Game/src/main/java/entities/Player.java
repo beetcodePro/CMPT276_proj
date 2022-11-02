@@ -74,6 +74,10 @@ public class Player extends AnimateEntity
             this.set_canCollide(false);
             this.collideCheck.checkTileForPlayer(this);
 
+            // Check object collision
+            int objIndex = this.collideCheck.checkObject(this, true);
+            obj_onCollision(objIndex);
+
             // Check enemy collision
             int enemyIndex = this.collideCheck.checkEnemy(this);
             enemy_onCollision(enemyIndex);
@@ -182,6 +186,15 @@ public class Player extends AnimateEntity
         }
         catch (IOException err) {
             err.printStackTrace();
+        }
+    }
+
+    // This function runs when player collides with object
+    private void obj_onCollision(int index)
+    {
+        if(index != -1)
+        {
+            this.collideCheck.deleteObject(index);
         }
     }
 
