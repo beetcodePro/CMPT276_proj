@@ -6,15 +6,22 @@ import java.awt.Graphics2D;
 public class InanimateEntity extends Entity 
 {
     // Attributes
-    public BufferedImage image;
-    public String name;
-    public boolean collision = false;
+    protected BufferedImage image;
+    private String name;
 
     // Default constructor
     public InanimateEntity(int setX, int setY) 
     { 
         super(setX, setY); 
     }
+
+    // Getters
+    public BufferedImage get_image() { return this.image; }
+    public String get_name() { return this.name; }
+
+    // Setters
+    public void set_image(BufferedImage val) { this.image = val; }
+    public void set_name(String val) { this.name = val; }
 
     // Draws object on UI
     public void draw(Graphics2D g2, Simulator sim)

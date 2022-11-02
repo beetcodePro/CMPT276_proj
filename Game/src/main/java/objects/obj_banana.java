@@ -9,7 +9,8 @@ public class obj_banana extends InanimateEntity
     public obj_banana(int setX, int setY)
     {
         super(setX, setY);
-        this.name = "Banana";
+        set_name("Banana");
+        set_canCollide(true);
 
         try {
             this.image = ImageIO.read(getClass().getResourceAsStream("/reward/banana.png"));
