@@ -20,8 +20,8 @@ public class AssetCreator
     {
         for(int j=0; j<entityList.get_objList_size(); j++)
         {
-            int tmpX = entityList.get_obj_at_index(j).get_coordinate_X()/48;
-            int tmpY = entityList.get_obj_at_index(j).get_coordinate_Y()/48;
+            int tmpX = entityList.get_obj_at_index(j).get_coordinate_X()/sim.get_tileSize();
+            int tmpY = entityList.get_obj_at_index(j).get_coordinate_Y()/sim.get_tileSize();
             if(tmpX == x && tmpY == y)
                 return true;
         }
