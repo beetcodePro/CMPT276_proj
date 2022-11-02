@@ -64,7 +64,25 @@ public class AssetCreator
             }
             this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
         }
+
+        //placing traps randomly
+        for (int i=0; i<5; i++)
+        {
+            Random random = new Random();
+            int x = random.nextInt(22)+1;
+            int y = random.nextInt(10)+1;
+
+
+            // Generate a coordinate without a collidable tile
+            while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true || checkObjectAtCoordinate(x, y) == true)
+            {
+                x = random.nextInt(22)+1;
+                y = random.nextInt(10)+1;
+            }
+            this.entityList.add_obj(new obj_trap(tileSize*x, tileSize*y));
+        }
     }
+
 
     // Create and set enemy entities
     public void setEnemy(CheckCollision cCheck) 

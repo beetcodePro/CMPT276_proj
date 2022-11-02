@@ -201,14 +201,23 @@ public class Player extends AnimateEntity
                 sim.PlaySoundEffect(2);
                 score = score + 20;
                 System.out.println("Player score: " + score);   // testing purposes, delete after
+                this.collideCheck.deleteObject(index);
             }
             if(objectName == "Apple")
             {
                 sim.PlaySoundEffect(1);
                 lives = lives + 1;
                 System.out.println("Player lives: " + lives);   // testing purposes, delete after
+                this.collideCheck.deleteObject(index);
             }
-            this.collideCheck.deleteObject(index);
+
+            if (objectName == "Trap"){
+                sim.PlaySoundEffect(3);
+                score = score - 20;
+                this.set_coordinate(48, 48);
+                System.out.println("Player score: "+score);
+            }
+
         }
     }
 

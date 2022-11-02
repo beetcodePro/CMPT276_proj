@@ -13,6 +13,7 @@ public class sound {
         soundURL[0]=getClass().getResource("/sound/Minion_Ahahaha.wav");
         soundURL[1]=getClass().getResource("/sound/Minion_Apple.wav");
         soundURL[2]=getClass().getResource("/sound/Minion_Banana.wav");
+        soundURL[3]=getClass().getResource("/sound/Minion_Scream.wav");
 
     }
     public void setFile(int x)
