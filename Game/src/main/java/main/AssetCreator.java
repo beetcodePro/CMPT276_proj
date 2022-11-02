@@ -15,6 +15,19 @@ public class AssetCreator
         this.entityList = eList;
     }
 
+    // Helper function: Checks if an object exists at specified coordinate
+    private boolean checkObjectAtCoordinate(int x, int y)
+    {
+        for(int j=0; j<entityList.get_objList_size(); j++)
+        {
+            int tmpX = entityList.get_obj_at_index(j).get_coordinate_X()/48;
+            int tmpY = entityList.get_obj_at_index(j).get_coordinate_Y()/48;
+            if(tmpX == x && tmpY == y)
+                return true;
+        }
+        return false;
+    }
+
     // Create and set objects
     public void setObject() 
     {
@@ -28,10 +41,10 @@ public class AssetCreator
             int y = random.nextInt(10)+1;
 
             // Generate a coordinate without a collidable tile
-            while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true)
+            while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true || checkObjectAtCoordinate(x, y) == true)
             {
                 x = random.nextInt(22)+1;
-                y = random.nextInt(10)+1; 
+                y = random.nextInt(10)+1;
             }
             this.entityList.add_obj(new obj_banana(tileSize*x, tileSize*y));
         }
@@ -44,7 +57,7 @@ public class AssetCreator
             int y = random.nextInt(10)+1;
 
             // Generate a coordinate without a collidable tile
-            while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true)
+            while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true || checkObjectAtCoordinate(x, y) == true)
             {
                 x = random.nextInt(22)+1;
                 y = random.nextInt(10)+1; 
