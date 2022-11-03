@@ -88,8 +88,9 @@ public class AssetCreator
     public void setEnemy(CheckCollision cCheck) 
     {
         int tileSize = sim.get_tileSize();
-        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*10, tileSize*10));
-        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*3, tileSize*7));
-        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*15, tileSize*7));
+        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*15, tileSize*4));
+        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*23, tileSize*6));
+        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*12, tileSize*10));
+        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*6, tileSize*10));
     }
 }
