@@ -8,11 +8,15 @@ public class AssetCreator
 {
     Simulator sim;
     EntityList entityList;
+    int mapBoundaryX;
+    int mapBoundaryY;
 
     // Default constructor
     public AssetCreator(Simulator sim, EntityList eList){
         this.sim = sim;
         this.entityList = eList;
+        this.mapBoundaryX = sim.maxScreenCol-2;
+        this.mapBoundaryY = sim.maxScreenRow-2;
     }
 
     // Helper function: Checks if an object exists at specified coordinate
@@ -37,14 +41,14 @@ public class AssetCreator
         for (int i=0; i<8; i++)
         {
             Random random = new Random();
-            int x = random.nextInt(22)+1;
-            int y = random.nextInt(10)+1;
+            int x = random.nextInt(mapBoundaryX)+1;
+            int y = random.nextInt(mapBoundaryY)+1;
 
             // Generate a coordinate without a collidable tile
             while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true || checkObjectAtCoordinate(x, y) == true)
             {
-                x = random.nextInt(22)+1;
-                y = random.nextInt(10)+1;
+                x = random.nextInt(mapBoundaryX)+1;
+                y = random.nextInt(mapBoundaryY)+1;
             }
             this.entityList.add_obj(new obj_banana(tileSize*x, tileSize*y));
         }
@@ -53,14 +57,14 @@ public class AssetCreator
         for (int i=0; i<3; i++)
         {
             Random random = new Random();
-            int x = random.nextInt(22)+1;
-            int y = random.nextInt(10)+1;
+            int x = random.nextInt(mapBoundaryX)+1;
+            int y = random.nextInt(mapBoundaryY)+1;
 
             // Generate a coordinate without a collidable tile
             while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true || checkObjectAtCoordinate(x, y) == true)
             {
-                x = random.nextInt(22)+1;
-                y = random.nextInt(10)+1; 
+                x = random.nextInt(mapBoundaryX)+1;
+                y = random.nextInt(mapBoundaryY)+1; 
             }
             this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
         }
@@ -69,16 +73,16 @@ public class AssetCreator
         for (int i=0; i<5; i++)
         {
             Random random = new Random();
-            int x = random.nextInt(22)+1;
-            int y = random.nextInt(10)+1;
+            int x = random.nextInt(mapBoundaryX)+1;
+            int y = random.nextInt(mapBoundaryY)+1;
 
 
             // Generate a coordinate without a collidable tile
             while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true || checkObjectAtCoordinate(x, y) == true || 
                 sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].isBridge == true)
             {
-                x = random.nextInt(22)+1;
-                y = random.nextInt(10)+1;
+                x = random.nextInt(mapBoundaryX)+1;
+                y = random.nextInt(mapBoundaryY)+1;
             }
             this.entityList.add_obj(new obj_trap(tileSize*x, tileSize*y));
         }
