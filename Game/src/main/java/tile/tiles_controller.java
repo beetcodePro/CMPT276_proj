@@ -18,7 +18,7 @@ public class tiles_controller {
     public tiles_controller(Simulator sim)
     {
         this.sim=sim;
-        tile= new Tiles[26]; //number of different tiles
+        tile= new Tiles[28]; //number of different tiles
         mapTileNum = new int[sim.maxScreenCol][sim.maxScreenRow];
         get_tile_png();
         String maps[]= {"/maps/map01.txt" };
@@ -119,6 +119,14 @@ public class tiles_controller {
             tile[25]= new Tiles();
             tile[25].image= ImageIO.read(getClass().getResourceAsStream("/tiles/walls/wall_door.png"));
             tile[25].collision = true;
+
+            tile[26]= new Tiles();
+            tile[26].image= ImageIO.read(getClass().getResourceAsStream("/tiles/blank_alt_1.png"));
+            tile[26].collision = true;
+
+            tile[27]= new Tiles();
+            tile[27].image= ImageIO.read(getClass().getResourceAsStream("/tiles/blank_alt_2.png"));
+            tile[27].collision = true;
         }
         catch (IOException e)
         {
