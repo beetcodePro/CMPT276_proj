@@ -274,9 +274,10 @@ public class CheckCollision
     }
 
     // Checks AnimateEntity to Player collisions
-    public void checkPlayer(AnimateEntity entity)
+    public boolean checkPlayer(AnimateEntity entity)
     {
         Player player = sim.get_player();
+        boolean ret = false;
 
         // Store entity hitbox original value
         int entityOriginalX = entity.get_hitbox().x;
@@ -298,22 +299,34 @@ public class CheckCollision
             case "down":
                 entity.set_hitbox_y(entity.get_hitbox().y + entity.get_moveSpeed());
                 if(entity.get_hitbox().intersects(player.get_hitbox()))
+                {
                     entity.set_canCollide(true);
+                    ret = true;
+                }
                 break;
             case "up":
                 entity.set_hitbox_y(entity.get_hitbox().y - entity.get_moveSpeed());
                 if(entity.get_hitbox().intersects(player.get_hitbox()))
+                {
                     entity.set_canCollide(true);
+                    ret = true;
+                }
                 break;
             case "right":
                 entity.set_hitbox_x(entity.get_hitbox().x + entity.get_moveSpeed());
                 if(entity.get_hitbox().intersects(player.get_hitbox()))
+                {
                     entity.set_canCollide(true);
+                    ret = true;
+                }
                 break;
             case "left":
                 entity.set_hitbox_x(entity.get_hitbox().x - entity.get_moveSpeed());
                 if(entity.get_hitbox().intersects(player.get_hitbox()))
+                {
                     entity.set_canCollide(true);
+                    ret = true;
+                }
                 break;
         }
         // Reset entity hitbox position
@@ -321,5 +334,6 @@ public class CheckCollision
         entity.set_hitbox_y(entityOriginalY);
         player.set_hitbox_x(playerOriginalX);
         player.set_hitbox_y(playerOriginalY);
+        return ret;
     }
 }

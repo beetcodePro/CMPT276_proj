@@ -53,6 +53,8 @@ public class Simulator extends JPanel implements Runnable
     public int get_screen_height() { return this.ScreenHeight; }
     public int get_tileSize() { return this.tileSize; }
     public Player get_player() { return this.player; }
+    public int get_player_default_x() { return DefaultPlayerPositionX; }
+    public int get_player_default_y() { return DefaultPlayerPositionY; }
 
     public void startGameThread()
     {
@@ -133,4 +135,8 @@ public class Simulator extends JPanel implements Runnable
       Sound.setFile(x);
       Sound.play();
     }
+
+    // Player function wrappers
+    public void reset_player_position() { this.player.set_coordinate(DefaultPlayerPositionX, DefaultPlayerPositionY); }
+    public void add_player_lives(int val) { this.player.add_lives(val); }
 }
