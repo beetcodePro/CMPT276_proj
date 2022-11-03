@@ -12,7 +12,7 @@ public class main {
         window.pack();
 
         Simulator simulator= new Simulator();
-        window.setSize(simulator.get_screen_width(), simulator.get_screen_height());
+        window.setSize(simulator.get_screen_width()+16, simulator.get_screen_height()+38);
         window.add(simulator);
         window.setResizable(true);
         window.setLocationRelativeTo(null);
