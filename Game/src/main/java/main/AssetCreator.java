@@ -74,7 +74,8 @@ public class AssetCreator
 
 
             // Generate a coordinate without a collidable tile
-            while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true || checkObjectAtCoordinate(x, y) == true)
+            while(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true || checkObjectAtCoordinate(x, y) == true || 
+                sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].isBridge == true)
             {
                 x = random.nextInt(22)+1;
                 y = random.nextInt(10)+1;
