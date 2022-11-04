@@ -68,19 +68,38 @@ public class UI {
     }
     public void drawGameOverScreen()
     {
+        String text= "GAME OVER";
         g2.setColor(new Color(0,0,0,150));
         g2.fillRect(0,0 , sim.ScreenWidth, sim.ScreenHeight);
-        g2.setColor(Color.black);
-        String text= "GAME OVER";
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
         int x= getXforCenteredText(text);
         int y=sim.get_tileSize()*4;
+        g2.setColor(Color.black);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
+
         g2.drawString(text, x,y);
         g2.setColor(Color.white);
         g2.drawString(text, x-4, y-4);
 
+        //retry
+        g2.setFont(g2.getFont().deriveFont(50f));
+        text= "Retry";
+        x=getXforCenteredText2(text);
+        y+=sim.get_tileSize()*4;
+        g2.drawString(text, x, y);
+
+        text= "Quit";
+        x=getXforCenteredText2(text);
+        y+= 55;
+        g2.drawString(text, x, y);
+
     }
     public int getXforCenteredText(String text)
+    {
+        int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x=sim.get_screen_width()/3- length/2;
+        return x;
+    }
+    public int getXforCenteredText2(String text)
     {
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x=sim.get_screen_width()/2- length/2;
