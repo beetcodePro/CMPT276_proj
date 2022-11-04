@@ -22,7 +22,7 @@ public class Player extends AnimateEntity
 {
     // Default attributes
     private int score = 0;
-    private int lives = 5;
+    public int lives = 5;
 
     // Constructed attributes
     private KeyBoard keyboard;
@@ -202,6 +202,7 @@ public class Player extends AnimateEntity
                 score = score + 20;
                 System.out.println("Player score: " + score);   // testing purposes, delete after
                 this.collideCheck.deleteObject(index);
+                sim.ui.showMessage("BANANA!");
             }
             if(objectName == "Apple")
             {
@@ -209,6 +210,7 @@ public class Player extends AnimateEntity
                 lives = lives + 1;
                 System.out.println("Player lives: " + lives);   // testing purposes, delete after
                 this.collideCheck.deleteObject(index);
+                sim.ui.showMessage("BAPPLE!");
             }
 
             if (objectName == "Trap"){
@@ -218,6 +220,7 @@ public class Player extends AnimateEntity
                 this.set_coordinate(sim.get_player_default_x(), sim.get_player_default_y());
                 System.out.println("Player score: " + score);
                 System.out.println("Player lives: " + lives);
+                sim.ui.showMessage("-1 Life");
             }
 
         }
@@ -231,6 +234,8 @@ public class Player extends AnimateEntity
             this.set_coordinate(sim.get_player_default_x(), sim.get_player_default_y());
             lives = lives - 1;
             System.out.println("Player lives: " + lives);   // testing purposes, delete after
+            sim.ui.showMessage("-1 Life");
+
         }
     }
 
