@@ -26,6 +26,9 @@ public abstract class Entity
         this.config_hitbox();
     }
 
+    protected Entity() {
+    }
+
     // Getters
     public Coordinate get_coordinate() { return this.position; }
     public int get_coordinate_X() { return this.position.get_X(); }
