@@ -206,7 +206,7 @@ public class Player extends AnimateEntity
                 score = score + 20;
                 System.out.println("Player score: " + score);   // testing purposes, delete after
                 this.collideCheck.deleteObject(index);
-                sim.ui.showMessage("BANANA!");
+                sim.ui.showMessage("+20 Score");
             }
             if(objectName == "Apple")
             {
@@ -214,7 +214,7 @@ public class Player extends AnimateEntity
                 lives = lives + 1;
                 System.out.println("Player lives: " + lives);   // testing purposes, delete after
                 this.collideCheck.deleteObject(index);
-                sim.ui.showMessage("BAPPLE!");
+                sim.ui.showMessage("+1 Life");
             }
 
             if (objectName == "Trap"){
