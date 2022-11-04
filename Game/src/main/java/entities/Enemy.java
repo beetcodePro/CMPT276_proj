@@ -42,6 +42,7 @@ public class Enemy extends AnimateEntity
         config.width = 33;      // hitbox width
         config.height = 36;     // hitbox height
         this.set_hitbox(config);
+        generate_direction();
     }
 
     // Load enemy sprites
@@ -129,22 +130,26 @@ public class Enemy extends AnimateEntity
     {
         this.actionInterval++;
 
-        if(this.actionInterval == 90)
-        {
-            Random generate = new Random();
-            int rng = generate.nextInt(100)+1;  // generates int from 0-100
+        // Switch direction after 90 frames
+        if(this.actionInterval == 90) { generate_direction(); }
+    }
 
-            if(rng <= 25) 
-                set_direction("down");
-            else if(rng <= 50)
-                set_direction("up");
-            else if(rng <= 75)
-                set_direction("right");
-            else
-                set_direction("left");
+    // Sets enemy to move in random direction
+    private void generate_direction()
+    {
+        Random generate = new Random();
+        int rng = generate.nextInt(100)+1;  // generates int from 0-100
 
-            this.actionInterval = 0;
-        }
+        if(rng <= 25) 
+            set_direction("down");
+        else if(rng <= 50)
+            set_direction("up");
+        else if(rng <= 75)
+            set_direction("right");
+        else
+            set_direction("left");
+
+        this.actionInterval = 0;
     }
 
     // Overrides default update, updates AnimateEntity movement
