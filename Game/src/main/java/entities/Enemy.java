@@ -131,7 +131,7 @@ public class Enemy extends AnimateEntity
         this.actionInterval++;
 
         // Switch direction after 90 frames
-        if(this.actionInterval == 90) { generate_direction(); }
+        if(this.actionInterval == 75) { generate_direction(); }
     }
 
     // Sets enemy to move in random direction

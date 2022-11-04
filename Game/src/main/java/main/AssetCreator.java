@@ -28,6 +28,8 @@ public class AssetCreator
             int tmpY = entityList.get_obj_at_index(j).get_coordinate_Y()/sim.get_tileSize();
             if(tmpX == x && tmpY == y)
                 return true;
+            if(tmpX == 2 && tmpY == 3)
+                return true;
         }
         return false;
     }
