@@ -80,7 +80,7 @@ public class tiles_controller {
 
             tile[15]= new Tiles();
             tile[15].image= ImageIO.read(getClass().getResourceAsStream("/tiles/floors/floor_vertical.png"));
-            tile[14].isBridge = true;
+            tile[15].isBridge = true;
 
             tile[16]= new Tiles();
             tile[16].image= ImageIO.read(getClass().getResourceAsStream("/tiles/walls/wall.png"));
