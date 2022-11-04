@@ -36,8 +36,8 @@ public class UI {
     public void draw(Graphics2D g2){
         g2.setFont(arial_40);
         g2.setColor(Color.white);
-        g2.drawImage(heartImage,sim.tileSize/5, sim.tileSize/5, sim.tileSize, sim.tileSize, null);
-        g2.drawString("x" + sim.player.lives, 60 ,40);
+        g2.drawImage(heartImage,40, 6, sim.tileSize-5, sim.tileSize-5, null);
+        g2.drawString("x" + sim.player.lives, 90 ,40);
 
         //Timer
          playTime +=(double)1/60;
