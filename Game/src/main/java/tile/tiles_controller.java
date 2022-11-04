@@ -18,7 +18,7 @@ public class tiles_controller {
     public tiles_controller(Simulator sim)
     {
         this.sim=sim;
-        tile= new Tiles[28]; //number of different tiles
+        tile= new Tiles[34]; //number of different tiles
         mapTileNum = new int[sim.maxScreenCol][sim.maxScreenRow];
         get_tile_png();
         String maps[]= {"/maps/map01.txt" };
@@ -129,6 +129,30 @@ public class tiles_controller {
             tile[27]= new Tiles();
             tile[27].image= ImageIO.read(getClass().getResourceAsStream("/tiles/blank_alt_2.png"));
             tile[27].collision = true;
+
+            tile[28]= new Tiles();
+            tile[28].image= ImageIO.read(getClass().getResourceAsStream("/tiles/borders/border_horizontal.png"));
+            tile[28].collision = true;
+
+            tile[29]= new Tiles();
+            tile[29].image= ImageIO.read(getClass().getResourceAsStream("/tiles/borders/border_vertical.png"));
+            tile[29].collision = true;
+
+            tile[30]= new Tiles();
+            tile[30].image= ImageIO.read(getClass().getResourceAsStream("/tiles/borders/border_corner_1.png"));
+            tile[30].collision = true;
+
+            tile[31]= new Tiles();
+            tile[31].image= ImageIO.read(getClass().getResourceAsStream("/tiles/borders/border_corner_2.png"));
+            tile[31].collision = true;
+
+            tile[32]= new Tiles();
+            tile[32].image= ImageIO.read(getClass().getResourceAsStream("/tiles/borders/border_corner_3.png"));
+            tile[32].collision = true;
+
+            tile[33]= new Tiles();
+            tile[33].image= ImageIO.read(getClass().getResourceAsStream("/tiles/borders/border_corner_4.png"));
+            tile[33].collision = true;
         }
         catch (IOException e)
         {
