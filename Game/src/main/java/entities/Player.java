@@ -22,7 +22,7 @@ public class Player extends AnimateEntity
 {
     // Default attributes
     private int score = 0;
-    public int lives = 5;
+    public int lives = 3;
 
     // Constructed attributes
     private KeyBoard keyboard;
@@ -218,6 +218,7 @@ public class Player extends AnimateEntity
                 score = score - 20;
                 lives = lives - 1;
                 this.set_coordinate(sim.get_player_default_x(), sim.get_player_default_y());
+                this.collideCheck.deleteObject(index);
                 System.out.println("Player score: " + score);
                 System.out.println("Player lives: " + lives);
                 sim.ui.showMessage("-1 Life");

@@ -54,7 +54,7 @@ public class AssetCreator
         }
 
         // placing apples randomly
-        for (int i=0; i<3; i++)
+        for (int i=0; i<2; i++)
         {
             Random random = new Random();
             int x = random.nextInt(mapBoundaryX)+1;
@@ -70,7 +70,7 @@ public class AssetCreator
         }
 
         //placing traps randomly
-        for (int i=0; i<5; i++)
+        for (int i=0; i<7; i++)
         {
             Random random = new Random();
             int x = random.nextInt(mapBoundaryX)+1;
