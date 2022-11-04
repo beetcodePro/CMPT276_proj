@@ -137,6 +137,8 @@ public class Simulator extends JPanel implements Runnable
     {
         Sound.stop();
     }
+
+    //Plays sound effect of chosen file
     public void PlaySoundEffect(int x)
     {
       Sound.setFile(x);

@@ -43,6 +43,9 @@ public class UI {
          playTime +=(double)1/60;
          g2.drawString("Time:"+ dFormat.format(playTime), sim.tileSize*11,40);
 
+         //Score
+         g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
+
         //message function
         if(messageOn == true) {
             g2.setFont(g2.getFont().deriveFont(30F));
