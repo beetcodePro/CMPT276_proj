@@ -6,13 +6,16 @@ import java.awt.Graphics2D;
 public class InanimateEntity extends Entity 
 {
     // Attributes
-    protected BufferedImage image;
+    public BufferedImage image;
     private String name;
 
     // Default constructor
     public InanimateEntity(int setX, int setY) 
     { 
         super(setX, setY); 
+    }
+
+    public InanimateEntity() {
     }
 
     // Getters
