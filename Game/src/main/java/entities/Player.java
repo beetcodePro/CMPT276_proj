@@ -112,6 +112,10 @@ public class Player extends AnimateEntity
             }
             // Animation change
             this.increase_spriteCnt();
+            if (check_if_no_lives() || (score<0))
+            {
+                sim.gameState=sim.gameOverSate;
+            }
         }
     }
 
@@ -244,7 +248,7 @@ public class Player extends AnimateEntity
     // Checks if player has no lives left
     public boolean check_if_no_lives()
     {
-        if(this.lives <= 0)
+        if(this.lives < 0)
             return true;
         else
             return false;
