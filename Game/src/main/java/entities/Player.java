@@ -232,6 +232,7 @@ public class Player extends AnimateEntity
     {
         if(index != -1)
         {
+            sim.PlaySoundEffect(3);
             this.set_coordinate(sim.get_player_default_x(), sim.get_player_default_y());
             lives = lives - 1;
             System.out.println("Player lives: " + lives);   // testing purposes, delete after

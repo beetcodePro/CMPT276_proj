@@ -203,6 +203,7 @@ public class Enemy extends AnimateEntity
     // This function runs when enemy collides into player
     private void player_onCollision()
     {
+        sim.PlaySoundEffect(3);
         sim.reset_player_position();
         sim.add_player_lives(-1);
         System.out.println("Player lives: " + sim.get_player().get_lives());
