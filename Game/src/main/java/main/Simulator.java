@@ -17,6 +17,10 @@ public class Simulator extends JPanel implements Runnable
     final int ScreenWidth = tileSize*(maxScreenCol); //1200 pixels
     final int ScreenHeight = tileSize*(maxScreenRow); //624 pixels
 
+
+    public int gameState=0;
+    public final int gameOverSate=1;
+
     // Simulator attributes
     Thread gameThread;
     KeyBoard Key = new KeyBoard();

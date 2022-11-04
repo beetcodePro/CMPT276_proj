@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
 public class UI {
+    Graphics2D g2;
     Simulator sim;
     Font arial_40;
     BufferedImage heartImage;
@@ -34,6 +35,7 @@ public class UI {
 
     }
     public void draw(Graphics2D g2){
+        this.g2=g2;
         g2.setFont(arial_40);
         g2.setColor(Color.white);
         g2.drawImage(heartImage,40, 6, sim.tileSize-5, sim.tileSize-5, null);
@@ -59,6 +61,30 @@ public class UI {
                 messageOn = false;
             }
         }
+        if(sim.gameState==sim.gameOverSate)
+        {
+            drawGameOverScreen();
+        }
+    }
+    public void drawGameOverScreen()
+    {
+        g2.setColor(new Color(0,0,0,150));
+        g2.fillRect(0,0 , sim.ScreenWidth, sim.ScreenHeight);
+        g2.setColor(Color.black);
+        String text= "GAME OVER";
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
+        int x= getXforCenteredText(text);
+        int y=sim.get_tileSize()*4;
+        g2.drawString(text, x,y);
+        g2.setColor(Color.white);
+        g2.drawString(text, x-4, y-4);
+
+    }
+    public int getXforCenteredText(String text)
+    {
+        int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x=sim.get_screen_width()/2- length/2;
+        return x;
     }
 
 }
