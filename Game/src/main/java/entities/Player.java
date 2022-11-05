@@ -219,11 +219,8 @@ public class Player extends AnimateEntity
 
             if (objectName == "Trap"){
                 sim.PlaySoundEffect(3);
-                score = score - 20;
                 lives = lives - 1;
                 this.set_coordinate(sim.get_player_default_x(), sim.get_player_default_y());
-                this.collideCheck.deleteObject(index);
-                System.out.println("Player score: " + score);
                 System.out.println("Player lives: " + lives);
                 sim.ui.showMessage("-1 Life");
             }
