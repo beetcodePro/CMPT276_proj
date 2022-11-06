@@ -24,7 +24,7 @@ public abstract class AnimateEntity extends Entity
     // Constructed attributes
     protected Simulator sim;
     protected CheckCollision collideCheck;
-    protected BufferedImage down1, down2, down3, up1, up2, up3, right1, right2, left1, left2;
+    public BufferedImage down1, down2, down3, up1, up2, up3, right1, right2, left1, left2;
     private String direction;
 
     // Default constructor (must pass X/Y coordinates and sets moveSpeed to default)
