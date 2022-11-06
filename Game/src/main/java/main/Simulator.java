@@ -23,6 +23,7 @@ public class Simulator extends JPanel implements Runnable
     public final int pauseState =2;
     public final int gameOverSate=3;
     public final int gameWinSate =4;
+    public final int titleState =5;
 
     // Simulator attributes
     Thread gameThread;
@@ -56,7 +57,7 @@ public class Simulator extends JPanel implements Runnable
     {
         this.createAssets.setObject();
         this.createAssets.setEnemy(cCheck);
-        gameState = playGameState;
+        gameState = titleState;
     }
 
     // Getters
@@ -122,23 +123,29 @@ public class Simulator extends JPanel implements Runnable
     {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        //title state
+        if(gameState == titleState) {
+            ui.draw(g2);
+        }
 
-        // Draw all tiles
-        Tile_c.draw(g2);
+        else {
+            // Draw all tiles
+            Tile_c.draw(g2);
 
-        // Draw all objects (inanimateEntities)
-        entityList.draw_objList(g2, this);
+            // Draw all objects (inanimateEntities)
+            entityList.draw_objList(g2, this);
 
-        // Draw all enemies
-        entityList.draw_enemyList(g2);
+            // Draw all enemies
+            entityList.draw_enemyList(g2);
 
-        // Draw the player
-        player.draw(g2);
+            // Draw the player
+            player.draw(g2);
 
-        //UI
-        ui.draw(g2);
+            //UI
+            ui.draw(g2);
 
-        g2.dispose();
+            g2.dispose();
+        }
     }
 
     public void PlaySound(int x)
