@@ -17,6 +17,30 @@ public class KeyBoard implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int code= e.getKeyCode();
+
+        //Title state
+        if(sim.gameState == sim.titleState) {
+            if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W) {
+                sim.ui.commandNum--;
+                if(sim.ui.commandNum < 0) {
+                    sim.ui.commandNum = 1;
+                }
+            }
+            if (code==KeyEvent.VK_DOWN || code==KeyEvent.VK_S) {
+                sim.ui.commandNum++;
+                if(sim.ui.commandNum > 1) {
+                    sim.ui.commandNum = 0;
+                }
+            }
+            if(code == KeyEvent.VK_ENTER) {
+                if(sim.ui.commandNum == 0) {
+                    sim.gameState = sim.playGameState;
+                }
+                if(sim.ui.commandNum == 1) {
+                    System.exit(0);
+                }
+            }
+        }
         if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W)
         {
             PressedUp= true;
