@@ -57,10 +57,6 @@ public class UI {
         {
             drawGameOverScreen();
         }
-        if(sim.gameState==sim.gameWinSate)
-        {
-            drawGameWinScreen();
-        }
 
 
         //message function
@@ -118,25 +114,6 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(80f));
         x-=96;
         y-= 160;
-        g2.drawString("Score:"+ sim.player.get_score(),x,y);
-
-
-    }
-    public void drawGameWinScreen()
-    {
-        String text= "YOU WON";
-        g2.setColor(new Color(0,100,0,150));
-        g2.fillRect(0,0 , sim.ScreenWidth, sim.ScreenHeight);
-        int x= getXforCenteredText(text);
-        int y=sim.get_tileSize()*4;
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
-        g2.setColor(Color.white);
-        g2.drawString(text, x+48, y-4);
-
-
-        g2.setFont(g2.getFont().deriveFont(80f));
-        x+=96;
-        y+= 160;
         g2.drawString("Score:"+ sim.player.get_score(),x,y);
 
 

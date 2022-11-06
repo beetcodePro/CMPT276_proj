@@ -116,16 +116,6 @@ public class Player extends AnimateEntity
             {
                 sim.gameState=sim.gameOverSate;
             }
-            if (lives >=0  || (score > 0))
-            {
-                //System.out.println(this.get_coordinate_X());
-                //System.out.println(this.get_coordinate_Y());
-                if(this.get_coordinate_X()==90 && this.get_coordinate_Y()==474)
-                {
-                    sim.gameState=sim.gameWinSate;
-                }
-
-            }
         }
     }
 

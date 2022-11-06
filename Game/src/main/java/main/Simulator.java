@@ -22,7 +22,7 @@ public class Simulator extends JPanel implements Runnable
     public final int playGameState=1;
     public final int pauseState =2;
     public final int gameOverSate=3;
-    public final int gameWinSate =4;
+    public final int titleState = 4;
 
     // Simulator attributes
     Thread gameThread;
