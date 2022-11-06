@@ -14,35 +14,64 @@ public class KeyBoard implements KeyListener {
     public void keyTyped(KeyEvent e) {
         //not used
     }
+
     @Override
     public void keyPressed(KeyEvent e) {
         int code= e.getKeyCode();
-        if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W)
-        {
-            PressedUp= true;
-        }
-        if (code==KeyEvent.VK_DOWN || code==KeyEvent.VK_S)
-        {
-            PressedDown= true;
-        }
-        if (code==KeyEvent.VK_LEFT || code==KeyEvent.VK_A)
-        {
-            PressedLF= true;
-        }
-        if (code==KeyEvent.VK_RIGHT || code==KeyEvent.VK_D)
-        {
-            PressedRT= true;
-        }
-        //Pause Game Shortcut
-        if (code==KeyEvent.VK_P)
-        {
-            if(sim.gameState == sim.playGameState){
-                sim.gameState = sim.pauseState;
+        //Title State
+        if(sim.gameState == sim.titleState) {
+            if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W) {
+                sim.ui.commandNum--;
+                if(sim.ui.commandNum < 0) {
+                    sim.ui.commandNum =1;
+                }
             }
-            else if(sim.gameState == sim.pauseState){
-                sim.gameState = sim.playGameState;
+            if (code==KeyEvent.VK_DOWN || code==KeyEvent.VK_S) {
+                sim.ui.commandNum++;
+                if(sim.ui.commandNum > 1) {
+                    sim.ui.commandNum =0;
+                }
+            }
+            if(code == KeyEvent.VK_ENTER) {
+                if(sim.ui.commandNum == 0) {
+                    sim.gameState = sim.playGameState;
+                }
+                if(sim.ui.commandNum ==1){
+                    System.exit(0);
+                }
             }
         }
+
+        //Play State
+        if(sim.gameState == sim.playGameState) {
+            if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W)
+            {
+                PressedUp= true;
+            }
+            if (code==KeyEvent.VK_DOWN || code==KeyEvent.VK_S)
+            {
+                PressedDown= true;
+            }
+            if (code==KeyEvent.VK_LEFT || code==KeyEvent.VK_A)
+            {
+                PressedLF= true;
+            }
+            if (code==KeyEvent.VK_RIGHT || code==KeyEvent.VK_D)
+            {
+                PressedRT= true;
+            }
+            //Pause Game Shortcut
+            if (code==KeyEvent.VK_P)
+            {
+                if(sim.gameState == sim.playGameState){
+                    sim.gameState = sim.pauseState;
+                }
+                else if(sim.gameState == sim.pauseState){
+                    sim.gameState = sim.playGameState;
+                }
+            }
+        }
+
     }
 
     @Override

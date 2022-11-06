@@ -2,6 +2,7 @@ package main;
 
 import objects.obj_heart;
 
+import javax.imageio.ImageIO;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -18,6 +19,7 @@ public class UI {
     int messageCounter = 0;
     double playTime = 0;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
+    public int commandNum = 0;
 
 
     public UI(Simulator sim) {
@@ -33,19 +35,27 @@ public class UI {
     }
     public void draw(Graphics2D g2){
         this.g2=g2;
-        g2.setFont(arial_40);
-        g2.setColor(Color.white);
-        g2.drawImage(heartImage,40, 6, sim.tileSize-5, sim.tileSize-5, null);
-        g2.drawString("x" + sim.player.lives, 90 ,40);
 
+        //Title state
+        if(sim.gameState == sim.titleState) {
+            drawTitle();
+        }
         //Add play state things in here
         if(sim.gameState == sim.playGameState){
             // Timer
             playTime +=(double)1/60;
+            g2.setFont(arial_40);
+            g2.setColor(Color.white);
             //Draw time
             g2.drawString("Time:"+ dFormat.format(playTime), sim.tileSize*11,40);
             //Score
             g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
+            //Lives
+            g2.setFont(arial_40);
+            g2.setColor(Color.white);
+            g2.drawImage(heartImage,40, 6, sim.tileSize-5, sim.tileSize-5, null);
+            g2.drawString("x" + sim.player.lives, 90 ,40);
+
         }
         //Pause state
         if(sim.gameState == sim.pauseState){
@@ -72,6 +82,45 @@ public class UI {
             }
         }
     }
+    public void drawTitle() {
+        //background colour
+        g2.setColor(new Color(178,102,255));
+        g2.fillRect(0,0,sim.ScreenWidth,sim.ScreenHeight);
+        //Title name
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "Minions Laboratory";
+        int x = getXforCenteredText(text)+192;
+        int y = sim.tileSize*3;
+        //shadow
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+        g2.setColor(Color.white);
+        g2.drawString(text,x,y);
+
+        //Display title image
+        x = sim.ScreenWidth/2;
+        y += sim.tileSize*2;
+        g2.drawImage(sim.player.down1,x-96,y,sim.tileSize*2,sim.tileSize*2,null);
+
+        //Menu
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,48f));
+
+        text = "START GAME";
+        x = getXforCenteredText(text)+192 ;
+        y += sim.tileSize*3.5;
+        g2.drawString(text,x,y);
+        if(commandNum == 0) {
+            g2.drawString(">",x-sim.tileSize,y);
+        }
+
+        text = "QUIT";
+        x = getXforCenteredText(text)+192;
+        y += sim.tileSize;
+        g2.drawString(text,x,y);
+        if(commandNum == 1) {
+            g2.drawString(">",x-sim.tileSize,y);
+        }
+    }
     public void drawPauseScreen() {
         //Paused Message
 
@@ -87,6 +136,9 @@ public class UI {
         g2.setFont(arial_40);
         g2.drawString("Time:"+ dFormat.format(playTime),555,408);
         g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
+        g2.drawImage(heartImage,40, 6, sim.tileSize-5, sim.tileSize-5, null);
+        g2.drawString("x" + sim.player.lives, 90 ,40);
+
     }
     public void drawGameOverScreen()
     {
