@@ -10,7 +10,6 @@ public class main {
         window.setResizable(false);
         window.setTitle("Minions Laboratory Game");
         window.pack();
-
         Simulator simulator= new Simulator();
         window.setSize(simulator.get_screen_width()+16, simulator.get_screen_height()+38);
         window.add(simulator);

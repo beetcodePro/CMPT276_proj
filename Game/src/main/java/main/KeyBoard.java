@@ -4,12 +4,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyBoard implements KeyListener {
+    Simulator sim;
     public boolean PressedUp, PressedDown, PressedRT, PressedLF= false;
+
+    public KeyBoard(Simulator sim) {
+        this.sim = sim;
+    }
     @Override
     public void keyTyped(KeyEvent e) {
         //not used
     }
-
     @Override
     public void keyPressed(KeyEvent e) {
         int code= e.getKeyCode();
@@ -28,6 +32,16 @@ public class KeyBoard implements KeyListener {
         if (code==KeyEvent.VK_RIGHT || code==KeyEvent.VK_D)
         {
             PressedRT= true;
+        }
+        //Pause Game Shortcut
+        if (code==KeyEvent.VK_P)
+        {
+            if(sim.gameState == sim.playGameState){
+                sim.gameState = sim.pauseState;
+            }
+            else if(sim.gameState == sim.pauseState){
+                sim.gameState = sim.playGameState;
+            }
         }
     }
 

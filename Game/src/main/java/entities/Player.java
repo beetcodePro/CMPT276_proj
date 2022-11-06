@@ -207,6 +207,7 @@ public class Player extends AnimateEntity
                 System.out.println("Player score: " + score);   // testing purposes, delete after
                 this.collideCheck.deleteObject(index);
                 sim.ui.showMessage("+20 Score");
+
             }
             if(objectName == "Apple")
             {

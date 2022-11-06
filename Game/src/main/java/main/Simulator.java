@@ -17,14 +17,15 @@ public class Simulator extends JPanel implements Runnable
     final int ScreenWidth = tileSize*(maxScreenCol); //1200 pixels
     final int ScreenHeight = tileSize*(maxScreenRow); //624 pixels
 
-
+    //Game States
     public int gameState=0;
     public final int playGameState=1;
-    public final int gameOverSate=2;
+    public final int pauseState =2;
+    public final int gameOverSate=3;
 
     // Simulator attributes
     Thread gameThread;
-    KeyBoard Key = new KeyBoard();
+    KeyBoard Key = new KeyBoard(this);
     int DefaultPlayerPositionX = tileSize*2;
     int DefaultPlayerPositionY = tileSize*3;
     int FPS = 60;
@@ -54,6 +55,7 @@ public class Simulator extends JPanel implements Runnable
     {
         this.createAssets.setObject();
         this.createAssets.setEnemy(cCheck);
+        gameState = playGameState;
     }
 
     // Getters
@@ -104,8 +106,14 @@ public class Simulator extends JPanel implements Runnable
     // Update game
     public void update()
     {
-        player.update();
-        this.entityList.update_enemyList();
+        if(gameState == playGameState) {
+            player.update();
+            this.entityList.update_enemyList();
+        }
+        if(gameState == pauseState) {
+            //nothing when paused
+        }
+
     }
 
     // Draw updates onto UI

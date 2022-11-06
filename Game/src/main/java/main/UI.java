@@ -16,23 +16,20 @@ public class UI {
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
-
-    double playTime;
+    double playTime = 0;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
 
 
-    public UI(Simulator gp) {
-        this.sim = gp;
+    public UI(Simulator sim) {
+        this.sim = sim;
 
         arial_40 = new Font("Arial", Font.PLAIN, 40);
         obj_heart heart = new obj_heart();
         heartImage = heart.image;
-
     }
     public void showMessage(String text) {
         message = text;
         messageOn = true;
-
     }
     public void draw(Graphics2D g2){
         this.g2=g2;
@@ -41,19 +38,32 @@ public class UI {
         g2.drawImage(heartImage,40, 6, sim.tileSize-5, sim.tileSize-5, null);
         g2.drawString("x" + sim.player.lives, 90 ,40);
 
-        //Timer
-         playTime +=(double)1/60;
-         g2.drawString("Time:"+ dFormat.format(playTime), sim.tileSize*11,40);
+        //Add play state things in here
+        if(sim.gameState == sim.playGameState){
+            // Timer
+            playTime +=(double)1/60;
+            //Draw time
+            g2.drawString("Time:"+ dFormat.format(playTime), sim.tileSize*11,40);
+            //Score
+            g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
+        }
+        //Pause state
+        if(sim.gameState == sim.pauseState){
+            drawPauseScreen();
+            g2.setFont(arial_40);
+        }
+        //Game Over state
+        if(sim.gameState==sim.gameOverSate)
+        {
+            drawGameOverScreen();
+        }
 
-         //Score
-         g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
 
         //message function
         if(messageOn == true) {
             g2.setFont(g2.getFont().deriveFont(30F));
             g2.drawString(message, sim.tileSize/2,sim.tileSize*5);
-
-
+            //timer for message time
             messageCounter++;
 
             if(messageCounter > 120){
@@ -61,10 +71,22 @@ public class UI {
                 messageOn = false;
             }
         }
-        if(sim.gameState==sim.gameOverSate)
-        {
-            drawGameOverScreen();
-        }
+    }
+    public void drawPauseScreen() {
+        //Paused Message
+
+        String text = "PAUSED";
+        int x= getXforCenteredText2(text);
+        int y=sim.ScreenHeight/2;
+        g2.setColor(new Color(50,50,50,150));
+        g2.fillRect(x-100,y-80,368, 140);
+
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,80F));
+        g2.drawString(text, x-80, y);
+        g2.setFont(arial_40);
+        g2.drawString("Time:"+ dFormat.format(playTime),555,408);
+        g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
     }
     public void drawGameOverScreen()
     {
@@ -73,12 +95,9 @@ public class UI {
         g2.fillRect(0,0 , sim.ScreenWidth, sim.ScreenHeight);
         int x= getXforCenteredText(text);
         int y=sim.get_tileSize()*4;
-        g2.setColor(Color.black);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
-
-        g2.drawString(text, x,y);
         g2.setColor(Color.white);
-        g2.drawString(text, x-4, y-4);
+        g2.drawString(text, x+48, y-4);
 
         //retry
         g2.setFont(g2.getFont().deriveFont(50f));
@@ -91,6 +110,12 @@ public class UI {
         x=getXforCenteredText2(text);
         y+= 55;
         g2.drawString(text, x, y);
+
+        g2.setFont(g2.getFont().deriveFont(80f));
+        x-=96;
+        y-= 160;
+        g2.drawString("Score:"+ sim.player.get_score(),x,y);
+
 
     }
     public int getXforCenteredText(String text)
