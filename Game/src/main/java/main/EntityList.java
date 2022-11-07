@@ -34,6 +34,13 @@ public class EntityList
     public int get_enemyList_size() { return this.enemyList.size(); }
     public Enemy get_enemy_at_index(int val) { return this.enemyList.get(val); }
 
+    //clear all entities
+    public void clear_enemyList() {
+        this.enemyList.clear();
+    }
+    public void clear_objList() {
+        this.objList.clear();
+    }
     public void update_enemyList()
     {
         for(int i = 0; i < enemyList.size(); i++)
