@@ -168,7 +168,7 @@ public class UI {
         }
 
         g2.setFont(g2.getFont().deriveFont(80f));
-        x-=96;
+        x-=69;
         y-= 160;
         g2.drawString("Score:"+ sim.player.get_score(),x,y);
 
@@ -198,7 +198,7 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(50f));
         text= "Retry";
         x=getXforCenteredText2(text);
-        y+=sim.get_tileSize()*6;
+        y+=sim.get_tileSize()*4;
         g2.drawString(text, x, y);
         if(commandNum == 0){
             g2.drawString(">",x-sim.tileSize,y);
