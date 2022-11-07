@@ -21,7 +21,7 @@ import main.CheckCollision;
 public class Player extends AnimateEntity
 {
     // Default attributes
-    private int score = 0;
+    public int score = 0;
     public int lives = 3;
 
     // Constructed attributes
@@ -43,6 +43,13 @@ public class Player extends AnimateEntity
     // Setters
     public void add_score(int change) { this.score = this.score + change; }
     public void add_lives(int change) { this.lives = this.lives + change; }
+
+    //reset player position function
+    public void setDefaultPosition()
+    {
+        sim.reset_player_position();
+
+    }
 
     // Configure hitbox (called on constructor ONLY)
     private void config_hitbox()
