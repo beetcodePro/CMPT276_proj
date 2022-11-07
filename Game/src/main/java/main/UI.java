@@ -188,9 +188,15 @@ public class UI {
         g2.setColor(Color.white);
         g2.drawString(text, x+53, y+1);
 
+        g2.setFont(g2.getFont().deriveFont(60f));
+        text="Score: ";
+        x=getXforCenteredText2(text)-20 ;
+        y+= sim.tileSize*2;;
+        g2.drawString(text+sim.player.get_score(),x,y);
+
         //End Image
         x = sim.ScreenWidth/2 - 60;
-        y += sim.tileSize*3;
+        y += sim.tileSize;
         g2.drawImage(sim.player.down1,x,y,sim.tileSize*2,sim.tileSize*2,null);
 
         //Time
@@ -215,12 +221,6 @@ public class UI {
         if(commandNum == 1){
             g2.drawString(">",x-sim.tileSize,y);
         }
-
-
-        g2.setFont(g2.getFont().deriveFont(80f));
-        x-= 96;
-        y+= 100;
-        g2.drawString("Score:"+ sim.player.get_score(),x,y);
 
 
     }
