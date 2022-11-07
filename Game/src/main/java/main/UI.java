@@ -155,11 +155,17 @@ public class UI {
         x=getXforCenteredText2(text);
         y+=sim.get_tileSize()*4;
         g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">",x-sim.tileSize,y);
+        }
 
-        text= "Quit";
+        text= "Menu";
         x=getXforCenteredText2(text);
         y+= 55;
         g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">",x-sim.tileSize,y);
+        }
 
         g2.setFont(g2.getFont().deriveFont(80f));
         x-=96;
@@ -170,19 +176,46 @@ public class UI {
     }
     public void drawGameWinScreen()
     {
-        String text= "YOU WON";
+        String text= "YOU WON!";
         g2.setColor(new Color(0,100,0,150));
         g2.fillRect(0,0 , sim.ScreenWidth, sim.ScreenHeight);
         int x= getXforCenteredText(text);
         int y=sim.get_tileSize()*4;
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
-        g2.setColor(Color.white);
+        g2.setColor(Color.pink);
         g2.drawString(text, x+48, y-4);
+        //shadow
+        g2.setColor(Color.white);
+        g2.drawString(text, x+53, y+1);
+
+        //End Image
+        x = sim.ScreenWidth/2 - 60;
+        y += sim.tileSize*2;
+        g2.drawImage(sim.player.down1,x,y,sim.tileSize*2,sim.tileSize*2,null);
+
+
+        //Options
+        g2.setFont(g2.getFont().deriveFont(50f));
+        text= "Retry";
+        x=getXforCenteredText2(text);
+        y+=sim.get_tileSize()*6;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">",x-sim.tileSize,y);
+        }
+
+        text= "Quit";
+        x=getXforCenteredText2(text);
+        y+= 55;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">",x-sim.tileSize,y);
+        }
 
 
         g2.setFont(g2.getFont().deriveFont(80f));
-        x+=96;
-        y+= 160;
+        x-= 96;
+        y+= 112;
         g2.drawString("Score:"+ sim.player.get_score(),x,y);
 
 
