@@ -59,7 +59,21 @@ public class Simulator extends JPanel implements Runnable
         this.createAssets.setEnemy(cCheck);
         gameState = titleState;
     }
+    //reset game stats
+    public void reset(){
+        ui.playTime = 0;
+        player.score = 0;
+        player.lives = 3;
 
+    }
+    //restart objects
+    public void restart() {
+        entityList.clear_objList();
+        entityList.clear_enemyList();
+        createAssets.setObject();
+        createAssets.setEnemy(cCheck);
+        player.setDefaultPosition();
+    }
     // Getters
     public int get_screen_width() { return this.ScreenWidth; }
     public int get_screen_height() { return this.ScreenHeight; }
