@@ -19,7 +19,7 @@ public class KeyBoard implements KeyListener {
         int code= e.getKeyCode();
 
         //Title state
-        if(sim.gameState == sim.titleState) {
+        if(sim.gameState == sim.titleState || sim.gameState == sim.gameOverSate || sim.gameState == sim.gameWinSate) {
             if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W) {
                 sim.ui.commandNum--;
                 if(sim.ui.commandNum < 0) {
@@ -32,13 +32,36 @@ public class KeyBoard implements KeyListener {
                     sim.ui.commandNum = 0;
                 }
             }
+            //Game Title Options
             if(code == KeyEvent.VK_ENTER) {
-                if(sim.ui.commandNum == 0) {
+                if(sim.ui.commandNum == 0 && sim.gameState == sim.titleState) {
                     sim.gameState = sim.playGameState;
                 }
-                if(sim.ui.commandNum == 1) {
+                if(sim.ui.commandNum == 1 && sim.gameState == sim.titleState) {
                     System.exit(0);
                 }
+                //Game Over options
+                if(sim.ui.commandNum == 0 && sim.gameState == sim.gameOverSate) {
+                    sim.gameState = sim.playGameState;
+                    sim.reset();
+                    sim.restart();
+
+                }
+                if(sim.ui.commandNum ==1 && sim.gameState == sim.gameOverSate) {
+                    sim.gameState = sim.titleState;
+                    sim.reset();
+                    sim.restart();
+                }
+                //Game Win Screen Options
+                if(sim.ui.commandNum == 0 && sim.gameState ==sim.gameWinSate) {
+                    sim.gameState = sim.playGameState;
+                    sim.reset();
+                    sim.restart();
+                }
+                if(sim.ui.commandNum == 1 && sim.gameState == sim.gameWinSate) {
+                    System.exit(0);
+                }
+
             }
         }
         if (code==KeyEvent.VK_UP || code==KeyEvent.VK_W)
