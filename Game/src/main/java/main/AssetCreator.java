@@ -40,9 +40,13 @@ public class AssetCreator
         if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true)
             return true;
 
-        // Checks if a bridge is nearby (for traps only)
+        // Checks if a bridge is nearby and (for traps only) if near the exit door
         if(isTrap == true)
         {
+            //  (*NEEDS CLEAN UP, HARD-CODED VALUES*)
+            // These values represent the floor in the room that has the door
+            if (((x >= 3 && x <= 7) && (y >=9 && y <= 11)))
+                return true;
             if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x+1][y]].isBridge == true)
                 return true;
             if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x-1][y]].isBridge == true)
@@ -51,7 +55,9 @@ public class AssetCreator
                 return true;
             if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y-1]].isBridge == true)
                 return true;
+
         }
+
         return false;
     }
 
@@ -60,7 +66,7 @@ public class AssetCreator
     {
         int tileSize = sim.get_tileSize();
 
-        // placing bananas randomly
+        // placing bananas randomly (8 bananas per map)
         for (int i=0; i<8; i++)
         {
             Random random = new Random();
@@ -76,7 +82,7 @@ public class AssetCreator
             this.entityList.add_obj(new obj_banana(tileSize*x, tileSize*y));
         }
 
-        // placing apples randomly
+        // placing apples randomly (2 apples per map)
         for (int i=0; i<2; i++)
         {
             Random random = new Random();
@@ -87,12 +93,12 @@ public class AssetCreator
 
             do {
                 x = random.nextInt(mapBoundaryX)+1;
-                y = random.nextInt(mapBoundaryY)+1; 
+                y = random.nextInt(mapBoundaryY)+1;
             }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y) == true);
             this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
         }
 
-        //placing traps randomly
+        //placing traps randomly (7 traps per map)
         for (int i=0; i<7; i++)
         {
             Random random = new Random();
@@ -105,7 +111,6 @@ public class AssetCreator
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
             }while(checkTileAtCoordinate(x, y, true) == true || checkObjectAtCoordinate(x, y) == true);
-
             this.entityList.add_obj(new obj_trap(tileSize*x, tileSize*y));
         }
     }
