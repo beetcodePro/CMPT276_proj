@@ -55,10 +55,10 @@ public class Player extends AnimateEntity
     private void config_hitbox()
     {
         Rectangle config = new Rectangle();
-        config.x = 6;           // hitbox border width
+        config.x = 5;           // hitbox border width
         config.y = 12;           // hitbox border height
-        config.width = 36;      // hitbox width
-        config.height = 33;     // hitbox height
+        config.width = 34;      // hitbox width
+        config.height = 30;     // hitbox height
         this.set_hitbox(config);
     }
 
