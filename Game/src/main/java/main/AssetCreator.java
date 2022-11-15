@@ -64,15 +64,15 @@ public class AssetCreator
         for (int i=0; i<8; i++)
         {
             Random random = new Random();
-            int x = random.nextInt(mapBoundaryX)+1;
-            int y = random.nextInt(mapBoundaryY)+1;
+            int x, y;
+
 
             // Generate a coordinate without a collidable tile
-            while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y) == true)
-            {
+
+            do{
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
-            }
+            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y) == true);
             this.entityList.add_obj(new obj_banana(tileSize*x, tileSize*y));
         }
 
@@ -80,15 +80,15 @@ public class AssetCreator
         for (int i=0; i<2; i++)
         {
             Random random = new Random();
-            int x = random.nextInt(mapBoundaryX)+1;
-            int y = random.nextInt(mapBoundaryY)+1;
+            int x,y;
+
 
             // Generate a coordinate without a collidable tile
-            while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y) == true)
-            {
+
+            do {
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1; 
-            }
+            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y) == true);
             this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
         }
 
@@ -96,16 +96,16 @@ public class AssetCreator
         for (int i=0; i<7; i++)
         {
             Random random = new Random();
-            int x = random.nextInt(mapBoundaryX)+1;
-            int y = random.nextInt(mapBoundaryY)+1;
+            int x, y;
 
 
             // Generate a coordinate without a collidable tile
-            while(checkTileAtCoordinate(x, y, true) == true || checkObjectAtCoordinate(x, y) == true)
-            {
+
+            do{
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
-            }
+            }while(checkTileAtCoordinate(x, y, true) == true || checkObjectAtCoordinate(x, y) == true);
+
             this.entityList.add_obj(new obj_trap(tileSize*x, tileSize*y));
         }
     }
