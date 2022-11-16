@@ -97,4 +97,34 @@ public class PlayerTest extends AppTest
         Simulator tmp = new Simulator();
         assertEquals(player.get_coordinate(), new Coordinate(tmp.get_player_default_x(), tmp.get_player_default_y()));
     }
+
+    /**
+     * @Test object collision with banana
+    */
+    public void bananaCollision()
+    {
+        int score = player.get_score();
+        player.object_collision("Banana");
+        assertEquals(score+20, player.get_score());
+    }
+
+    /**
+     * @Test object collision with apple
+    */
+    public void appleCollision()
+    {
+        int lives = player.get_lives();
+        player.object_collision("Apple");
+        assertEquals(lives+1, player.get_lives());
+    }
+
+    /**
+     * @Test object collision with trap
+    */
+    public void trapCollision()
+    {
+        int lives = player.get_lives();
+        player.object_collision("Trap");
+        assertEquals(lives-1, player.get_lives());
+    }
 }
