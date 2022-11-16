@@ -5,7 +5,7 @@
  * 
  *  Author: Lionel
  * 
- *  Last changed: Oct 27th, 2022
+ *  Last changed: Nov 15th, 2022
  *
 */
 
@@ -31,4 +31,12 @@ public class Coordinate
     // Setters
     public void set_X(int val) { this.X = val; }
     public void set_Y(int val) { this.Y = val; }
+
+    // Checks if this coordinate is equal to another coordinate
+    public boolean equals(Coordinate other)
+    {
+        if(this.X == other.get_X() && this.Y == other.get_Y())
+            return true;
+        return false;
+    }
 }

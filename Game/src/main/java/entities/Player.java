@@ -47,13 +47,6 @@ public class Player extends AnimateEntity
     public void add_score(int change) { this.score = this.score + change; }
     public void add_lives(int change) { this.lives = this.lives + change; }
 
-    //reset player position function
-    public void setDefaultPosition()
-    {
-        sim.reset_player_position();
-
-    }
-
     // Configure hitbox (called on constructor ONLY)
     private void config_hitbox()
     {
@@ -64,6 +57,9 @@ public class Player extends AnimateEntity
         config.height = 30;     // hitbox height
         this.set_hitbox(config);
     }
+
+    // Reset player position function
+    public void setDefaultPosition() { sim.reset_player_position(); }
 
     // Update player movement
     public void update()
@@ -220,32 +216,39 @@ public class Player extends AnimateEntity
         {
             String objectName = this.collideCheck.getObjectName(index);
 
+            object_collision(objectName);
+
             if(objectName == "Banana")
-            {
-                sim.PlaySoundEffect(2);
-                score = score + 20;
-                System.out.println("Player score: " + score);   // testing purposes, delete after
                 this.collideCheck.deleteObject(index);
-                sim.ui.showMessage("+20 Score");
 
-            }
             if(objectName == "Apple")
-            {
-                sim.PlaySoundEffect(1);
-                lives = lives + 1;
-                System.out.println("Player lives: " + lives);   // testing purposes, delete after
                 this.collideCheck.deleteObject(index);
-                sim.ui.showMessage("+1 Life");
-            }
 
-            if (objectName == "Trap"){
-                sim.PlaySoundEffect(3);
-                lives = lives - 1;
-                this.set_coordinate(sim.get_player_default_x(), sim.get_player_default_y());
-                System.out.println("Player lives: " + lives);
-                sim.ui.showMessage("-1 Life");
-            }
+            if (objectName == "Trap")
+                sim.reset_player_position();
+        }
+    }
 
+    // Object collision instructions
+    public void object_collision(String objName)
+    {
+        if(objName == "Banana")
+        {
+            sim.PlaySoundEffect(2);
+            score = score + 20;
+            sim.ui.showMessage("+20 Score");
+        }
+        if(objName == "Apple")
+        {
+            sim.PlaySoundEffect(1);
+            lives = lives + 1;
+            sim.ui.showMessage("+1 Life");
+        }
+        if(objName == "Trap")
+        {
+            sim.PlaySoundEffect(3);
+            lives = lives - 1;
+            sim.ui.showMessage("-1 Life");
         }
     }
 
@@ -257,7 +260,6 @@ public class Player extends AnimateEntity
             sim.PlaySoundEffect(3);
             this.set_coordinate(sim.get_player_default_x(), sim.get_player_default_y());
             lives = lives - 1;
-            System.out.println("Player lives: " + lives);   // testing purposes, delete after
             sim.ui.showMessage("-1 Life");
 
         }

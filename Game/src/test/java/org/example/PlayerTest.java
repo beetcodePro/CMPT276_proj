@@ -12,6 +12,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import main.*;
 import entities.Player;
+import entities.Coordinate;
 
 public class PlayerTest extends AppTest 
 {
@@ -85,5 +86,15 @@ public class PlayerTest extends AppTest
         player.update();
         player.get_keyboard().PressedLF = false;
         assertEquals(player.get_coordinate_X(), -3);
+    }
+
+    /**
+     * @Test player reset to start position
+    */
+    public void resetPosition()
+    {
+        player.setDefaultPosition();
+        Simulator tmp = new Simulator();
+        assertEquals(player.get_coordinate(), new Coordinate(tmp.get_player_default_x(), tmp.get_player_default_y()));
     }
 }
