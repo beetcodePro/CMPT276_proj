@@ -47,6 +47,7 @@ public class PlayerTest extends AppTest
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedUp = true;
+        player.set_canCollide(false);
         player.update();
         player.get_keyboard().PressedUp = false;
         assertEquals(player.get_coordinate_Y(), 3);
@@ -59,6 +60,7 @@ public class PlayerTest extends AppTest
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedDown = true;
+        player.set_canCollide(false);
         player.update();
         player.get_keyboard().PressedDown = false;
         assertEquals(player.get_coordinate_Y(), -3);
@@ -71,6 +73,7 @@ public class PlayerTest extends AppTest
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedRT = true;
+        player.set_canCollide(false);
         player.update();
         player.get_keyboard().PressedRT = false;
         assertEquals(player.get_coordinate_X(), 3);
@@ -83,9 +86,23 @@ public class PlayerTest extends AppTest
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedLF = true;
+        player.set_canCollide(false);
         player.update();
         player.get_keyboard().PressedLF = false;
         assertEquals(player.get_coordinate_X(), -3);
+    }
+
+    /**
+     * @Test movement when canCOllide is true
+    */
+    public void moveWhenCollision()
+    {
+        player.set_coordinate(0, 0);
+        player.get_keyboard().PressedUp = true;
+        player.set_canCollide(true);
+        player.update();
+        player.get_keyboard().PressedUp = false;
+        assertEquals(player.get_coordinate_Y(), 3);
     }
 
     /**
@@ -126,5 +143,41 @@ public class PlayerTest extends AppTest
         int lives = player.get_lives();
         player.object_collision("Trap");
         assertEquals(lives-1, player.get_lives());
+    }
+
+    /**
+     * @Test collision with invalid object
+    */
+    public void invalidCollision()
+    {
+        int lives = player.get_lives();
+        int score = player.get_score();
+        player.object_collision("");
+        assertEquals(lives, player.get_lives());
+        assertEquals(score, player.get_score());
+    }
+
+    /**
+     * @Test collision with enemy resets player position and deducts a life
+    */
+    public void enemyCollision()
+    {
+        int lives = player.get_lives();
+        player.set_coordinate(0, 0);
+        player.enemy_onCollision(0);
+        assertEquals(lives-1, player.get_lives());
+        assertEquals(player.get_coordinate(), new Coordinate(tmp.get_player_default_x(), tmp.get_player_default_y()));
+    }
+
+    /**
+     * @Test collision with enemy that does not exist
+    */
+    public void nullEnemyCollision()
+    {
+        int lives = player.get_lives();
+        player.set_coordinate(0, 0);
+        player.enemy_onCollision(-1);
+        assertEquals(lives, player.get_lives());
+        assertEquals(player.get_coordinate(), new Coordinate(0, 0));
     }
 }

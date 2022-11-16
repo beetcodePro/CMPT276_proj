@@ -253,7 +253,7 @@ public class Player extends AnimateEntity
     }
 
     // This function runs when player collides with enemy
-    private void enemy_onCollision(int index)
+    public void enemy_onCollision(int index)
     {
         if(index != -1)
         {
@@ -261,7 +261,6 @@ public class Player extends AnimateEntity
             this.set_coordinate(sim.get_player_default_x(), sim.get_player_default_y());
             lives = lives - 1;
             sim.ui.showMessage("-1 Life");
-
         }
     }
 
