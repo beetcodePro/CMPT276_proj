@@ -37,7 +37,7 @@ public class UI {
         g2.setFont(arial_40);
         g2.setColor(Color.white);
         g2.drawImage(heartImage,40, 6, sim.tileSize-5, sim.tileSize-5, null);
-        g2.drawString("x" + sim.player.lives, 90 ,40);
+        g2.drawString("x" + sim.player.get_lives(), 90 ,40);
 
         //title state
         if(sim.gameState == sim.titleState) {

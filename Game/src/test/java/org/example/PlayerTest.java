@@ -1,11 +1,9 @@
 /*  
  *  PlayerTest.java
  *  
- *  Description: Stores X and Y coordinates.
+ *  Description: Tests methods of Player class.
  * 
- *  Author: Lionel
- * 
- *  Last changed: Oct 27th, 2022
+ *  Last changed: Nov 15th, 2022
  *
 */
 
@@ -22,7 +20,7 @@ public class PlayerTest extends AppTest
     private KeyBoard key;
 
     /**
-     * Create the test case
+     * Create the test case.
      * @param testName name of the test case
      */
     public PlayerTest(String testName)
@@ -34,12 +32,58 @@ public class PlayerTest extends AppTest
     }
 
     /**
-     * @Test 
+     * @return the suite of tests being tested
+     */
+    public static Test suite()
+    {
+        return new TestSuite(PlayerTest.class);
+    }
+
+    /**
+     * @Test moving character position up by movespeed
     */
     public void moveUp()
     {
-        this.key.setKeyEvent('w');
-        this.player.update();
+        player.set_coordinate(0, 0);
+        player.get_keyboard().PressedUp = true;
+        player.update();
+        player.get_keyboard().PressedUp = false;
         assertEquals(player.get_coordinate_Y(), 3);
+    }
+
+    /**
+     * @Test moving character position down by movespeed
+    */
+    public void moveDown()
+    {
+        player.set_coordinate(0, 0);
+        player.get_keyboard().PressedDown = true;
+        player.update();
+        player.get_keyboard().PressedDown = false;
+        assertEquals(player.get_coordinate_Y(), -3);
+    }
+
+    /**
+     * @Test moving character position right by movespeed
+    */
+    public void moveRight()
+    {
+        player.set_coordinate(0, 0);
+        player.get_keyboard().PressedRT = true;
+        player.update();
+        player.get_keyboard().PressedRT = false;
+        assertEquals(player.get_coordinate_X(), 3);
+    }
+
+    /**
+     * @Test moving character position right by movespeed
+    */
+    public void moveLeft()
+    {
+        player.set_coordinate(0, 0);
+        player.get_keyboard().PressedLF = true;
+        player.update();
+        player.get_keyboard().PressedLF = false;
+        assertEquals(player.get_coordinate_X(), -3);
     }
 }

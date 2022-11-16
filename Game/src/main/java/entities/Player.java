@@ -21,8 +21,8 @@ import main.CheckCollision;
 public class Player extends AnimateEntity
 {
     // Default attributes
-    public int score = 0;
-    public int lives = 3;
+    private int score = 0;
+    private int lives = 3;
 
     // Constructed attributes
     private KeyBoard keyboard;
@@ -42,6 +42,8 @@ public class Player extends AnimateEntity
     public KeyBoard get_keyboard() { return this.keyboard; }
 
     // Setters
+    public void set_score(int val) { this.score = val; }
+    public void set_lives(int val) { this.lives = val; }
     public void add_score(int change) { this.score = this.score + change; }
     public void add_lives(int change) { this.lives = this.lives + change; }
 

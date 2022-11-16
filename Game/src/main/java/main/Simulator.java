@@ -62,9 +62,8 @@ public class Simulator extends JPanel implements Runnable
     //reset game stats
     public void reset(){
         ui.playTime = 0;
-        player.score = 0;
-        player.lives = 3;
-
+        player.set_score(0);
+        player.set_lives(3);
     }
     //restart objects
     public void restart() {
