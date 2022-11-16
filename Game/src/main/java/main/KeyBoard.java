@@ -5,18 +5,26 @@ import java.awt.event.KeyListener;
 
 public class KeyBoard implements KeyListener {
     Simulator sim;
-    public boolean PressedUp, PressedDown, PressedRT, PressedLF= false;
+    public boolean PressedUp, PressedDown, PressedRT, PressedLF = false;
+    private KeyEvent pressed;
 
     public KeyBoard(Simulator sim) {
         this.sim = sim;
     }
+
+    // Getters and setters
+    public char getKeyEvent() { return this.pressed.getKeyChar(); }
+    public void setKeyEvent(char val) { this.pressed.setKeyChar(val); }
+
+    // Methods
     @Override
     public void keyTyped(KeyEvent e) {
         //not used
     }
     @Override
     public void keyPressed(KeyEvent e) {
-        int code= e.getKeyCode();
+        int code = e.getKeyCode();
+        this.pressed = e;
 
         //Title state
         if(sim.gameState == sim.titleState || sim.gameState == sim.gameOverSate || sim.gameState == sim.gameWinSate) {
