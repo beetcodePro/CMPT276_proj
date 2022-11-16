@@ -5,7 +5,7 @@
  * 
  *  Author: Lionel (msg me if u have any questions about this class)
  * 
- *  Last changed: Nov 1st, 2022
+ *  Last changed: Nov 15th, 2022
  *
 */
 
@@ -39,6 +39,7 @@ public class Player extends AnimateEntity
     // Getters
     public int get_score() { return this.score; }
     public int get_lives() { return this.lives; }
+    public KeyBoard get_keyboard() { return this.keyboard; }
 
     // Setters
     public void add_score(int change) { this.score = this.score + change; }
