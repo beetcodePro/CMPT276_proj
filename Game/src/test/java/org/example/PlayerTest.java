@@ -60,10 +60,9 @@ public class PlayerTest extends AppTest
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedUp = true;
-        player.set_canCollide(false);
-        player.update();
+        player.move_player();
         player.get_keyboard().PressedUp = false;
-        assertEquals(3, player.get_coordinate_Y());
+        assertEquals(-3, player.get_coordinate_Y());
     }
 
     /**
@@ -73,10 +72,9 @@ public class PlayerTest extends AppTest
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedDown = true;
-        player.set_canCollide(false);
-        player.update();
+        player.move_player();
         player.get_keyboard().PressedDown = false;
-        assertEquals(-3, player.get_coordinate_Y());
+        assertEquals(3, player.get_coordinate_Y());
     }
 
     /**
@@ -86,8 +84,7 @@ public class PlayerTest extends AppTest
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedRT = true;
-        player.set_canCollide(false);
-        player.update();
+        player.move_player();
         player.get_keyboard().PressedRT = false;
         assertEquals(3, player.get_coordinate_X());
     }
@@ -99,14 +96,13 @@ public class PlayerTest extends AppTest
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedLF = true;
-        player.set_canCollide(false);
-        player.update();
+        player.move_player();
         player.get_keyboard().PressedLF = false;
         assertEquals(-3, player.get_coordinate_X());
     }
 
     /**
-     * @Test movement when canCOllide is true
+     * @Test movement when canCollide is true
     */
     public void moveWhenCollision()
     {
@@ -115,7 +111,7 @@ public class PlayerTest extends AppTest
         player.set_canCollide(true);
         player.update();
         player.get_keyboard().PressedUp = false;
-        assertEquals(3, player.get_coordinate_Y());
+        assertEquals(0, player.get_coordinate_Y());
     }
 
     /**

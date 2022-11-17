@@ -59,7 +59,7 @@ public class Player extends AnimateEntity
     }
 
     // Reset player position function
-    public void setDefaultPosition() { sim.reset_player_position(); }
+    public void setDefaultPosition() { set_coordinate(sim.get_player_default_x(), sim.get_player_default_y()); }
 
     // Update player movement
     public void update()
@@ -91,30 +91,7 @@ public class Player extends AnimateEntity
             // Move player if canCollide is false
             if(get_canCollide() == false)
             { 
-                if(keyboard.PressedRT == true)
-                {
-                    int x = this.get_coordinate_X();
-                    x = x + this.get_moveSpeed();
-                    this.set_coordinate_X(x);
-                }
-                if(keyboard.PressedLF == true)
-                {
-                    int x = this.get_coordinate_X();
-                    x = x - this.get_moveSpeed();
-                    this.set_coordinate_X(x);
-                }
-                if(keyboard.PressedUp == true)
-                {
-                    int y = this.get_coordinate_Y();
-                    y = y - this.get_moveSpeed();
-                    this.set_coordinate_Y(y);
-                }
-                if(keyboard.PressedDown == true)
-                {
-                    int y = this.get_coordinate_Y();
-                    y = y + this.get_moveSpeed();
-                    this.set_coordinate_Y(y);
-                }
+                this.move_player();
             }
             // Animation change
             this.increase_spriteCnt();
@@ -132,6 +109,35 @@ public class Player extends AnimateEntity
                 }
 
             }
+        }
+    }
+
+    // Checks keyboard and moves player
+    public void move_player()
+    {
+        if(keyboard.PressedRT == true)
+        {
+            int x = this.get_coordinate_X();
+            x = x + this.get_moveSpeed();
+            this.set_coordinate_X(x);
+        }
+        if(keyboard.PressedLF == true)
+        {
+            int x = this.get_coordinate_X();
+            x = x - this.get_moveSpeed();
+            this.set_coordinate_X(x);
+        }
+        if(keyboard.PressedUp == true)
+        {
+            int y = this.get_coordinate_Y();
+            y = y - this.get_moveSpeed();
+            this.set_coordinate_Y(y);
+        }
+        if(keyboard.PressedDown == true)
+        {
+            int y = this.get_coordinate_Y();
+            y = y + this.get_moveSpeed();
+            this.set_coordinate_Y(y);
         }
     }
 
