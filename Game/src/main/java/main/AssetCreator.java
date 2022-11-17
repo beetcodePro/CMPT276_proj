@@ -20,7 +20,7 @@ public class AssetCreator
     }
 
     // Helper function: Checks if an object exists at specified coordinate
-    private boolean checkObjectAtCoordinate(int x, int y)
+    private boolean checkObjectAtCoordinate(int x, int y, boolean isTrap)
     {
         for(int j=0; j<entityList.get_objList_size(); j++)
         {
@@ -30,6 +30,27 @@ public class AssetCreator
                 return true;
             if(tmpX == 2 && tmpY == 3)
                 return true;
+
+            // Prevent traps from spawning in adjacent tiles to other traps
+            if(isTrap == true)
+            {
+                if(tmpX+1 == x && tmpY == y)
+                    return true;
+                if(tmpX-1 == x && tmpY == y)
+                    return true;
+                if(tmpX == x && tmpY+1 == y)
+                    return true;
+                if(tmpX == x && tmpY-1 == y)
+                    return true;
+                if(tmpX+1 == x && tmpY+1 == y)
+                    return true;
+                if(tmpX-1 == x && tmpY+1 == y)
+                    return true;
+                if(tmpX-1 == x && tmpY-1 == y)
+                    return true;
+                if(tmpX+1 == x && tmpY-1 == y)
+                    return true;
+            }
         }
         return false;
     }
@@ -55,7 +76,6 @@ public class AssetCreator
                 return true;
             if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y-1]].isBridge == true)
                 return true;
-
         }
 
         return false;
@@ -78,7 +98,7 @@ public class AssetCreator
             do{
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
-            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y) == true);
+            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
             this.entityList.add_obj(new obj_banana(tileSize*x, tileSize*y));
         }
 
@@ -94,7 +114,7 @@ public class AssetCreator
             do {
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
-            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y) == true);
+            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
             this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
         }
 
@@ -110,7 +130,7 @@ public class AssetCreator
             do{
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
-            }while(checkTileAtCoordinate(x, y, true) == true || checkObjectAtCoordinate(x, y) == true);
+            }while(checkTileAtCoordinate(x, y, true) == true || checkObjectAtCoordinate(x, y, true) == true);
             this.entityList.add_obj(new obj_trap(tileSize*x, tileSize*y));
         }
     }
