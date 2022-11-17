@@ -9,12 +9,13 @@
 
 package org.example;
 import junit.framework.Test;
+import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import main.*;
 import entities.Player;
 import entities.Coordinate;
 
-public class PlayerTest extends AppTest
+public class PlayerTest extends TestCase
 {
     // Attributes
     private Player player;
@@ -43,13 +44,15 @@ public class PlayerTest extends AppTest
         suite.addTest(new PlayerTest("moveRight"));
         suite.addTest(new PlayerTest("moveLeft"));
         suite.addTest(new PlayerTest("moveWhenCollision"));
-        suite.addTest(new PlayerTest("resetPosition"));
+        suite.addTest(new PlayerTest("testResetPosition"));
         suite.addTest(new PlayerTest("bananaCollision"));
         suite.addTest(new PlayerTest("appleCollision"));
         suite.addTest(new PlayerTest("trapCollision"));
         suite.addTest(new PlayerTest("invalidCollision"));
         suite.addTest(new PlayerTest("enemyCollision"));
         suite.addTest(new PlayerTest("nullEnemyCollision"));
+        suite.addTest(new PlayerTest("checkNoLives"));
+        suite.addTest(new PlayerTest("checkHasLives"));
         return suite;
     }
 
@@ -62,7 +65,7 @@ public class PlayerTest extends AppTest
         player.get_keyboard().PressedUp = true;
         player.move_player();
         player.get_keyboard().PressedUp = false;
-        assertEquals(-3, player.get_coordinate_Y());
+        assertEquals(player.get_moveSpeed()*-1, player.get_coordinate_Y());
     }
 
     /**
@@ -74,7 +77,7 @@ public class PlayerTest extends AppTest
         player.get_keyboard().PressedDown = true;
         player.move_player();
         player.get_keyboard().PressedDown = false;
-        assertEquals(3, player.get_coordinate_Y());
+        assertEquals(player.get_moveSpeed(), player.get_coordinate_Y());
     }
 
     /**
@@ -86,7 +89,7 @@ public class PlayerTest extends AppTest
         player.get_keyboard().PressedRT = true;
         player.move_player();
         player.get_keyboard().PressedRT = false;
-        assertEquals(3, player.get_coordinate_X());
+        assertEquals(player.get_moveSpeed(), player.get_coordinate_X());
     }
 
     /**
@@ -98,7 +101,7 @@ public class PlayerTest extends AppTest
         player.get_keyboard().PressedLF = true;
         player.move_player();
         player.get_keyboard().PressedLF = false;
-        assertEquals(-3, player.get_coordinate_X());
+        assertEquals(player.get_moveSpeed()*-1, player.get_coordinate_X());
     }
 
     /**
@@ -117,7 +120,7 @@ public class PlayerTest extends AppTest
     /**
      * @Test player reset to start position
     */
-    public void resetPosition()
+    public void testResetPosition()
     {
         player.setDefaultPosition();
         Simulator tmp = new Simulator();
@@ -189,5 +192,23 @@ public class PlayerTest extends AppTest
         player.enemy_onCollision(-1);
         assertEquals(lives, player.get_lives());
         assertTrue(player.get_coordinate().equals(new Coordinate(0, 0)));
+    }
+
+    /**
+     * @Test if player has no lives through method in Player
+    */
+    public void checkNoLives()
+    {
+        player.set_lives(0);
+        assertTrue(player.check_if_no_lives());
+    }
+
+    /**
+     * @Test if player has no lives through method in Player
+    */
+    public void checkHasLives()
+    {
+        player.set_lives(1);
+        assertFalse(player.check_if_no_lives());
     }
 }

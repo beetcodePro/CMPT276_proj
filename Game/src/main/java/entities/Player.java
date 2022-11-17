@@ -273,7 +273,7 @@ public class Player extends AnimateEntity
     // Checks if player has no lives left
     public boolean check_if_no_lives()
     {
-        if(this.lives < 0)
+        if(this.lives < 1)
             return true;
         else
             return false;
