@@ -133,7 +133,6 @@ public class Simulator extends JPanel implements Runnable
 
             if (count== 450)
             {
-                System.out.println("timer");
                 //delete the apples
                 for (int i=0 ; i< entityList.get_objList_size(); i++)
 
