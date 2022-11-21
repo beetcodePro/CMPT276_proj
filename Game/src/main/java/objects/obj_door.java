@@ -26,9 +26,9 @@ public class obj_door extends InanimateEntity
     private void config_hitbox()
     {
         Rectangle config = new Rectangle();
-        config.x = 3;           // hitbox border width
-        config.y = 3;           // hitbox border height
-        config.width = 42;      // hitbox width
+        config.x = 6;           // hitbox border width
+        config.y = 6;           // hitbox border height
+        config.width = 36;      // hitbox width
         config.height = 20;     // hitbox height
         this.set_hitbox(config);
     }
