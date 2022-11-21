@@ -86,19 +86,20 @@ public class AssetCreator
     {
         int tileSize = sim.get_tileSize();
 
+        // place door at fixed location (1 per map)
+        this.entityList.add_obj(new obj_door(tileSize*3, tileSize*10));
+
         // placing bananas randomly (8 bananas per map)
         for (int i=0; i<8; i++)
         {
             Random random = new Random();
             int x, y;
 
-
             // Generate a coordinate without a collidable tile
-
-            do{
+            do {
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
-            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
+            } while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
             this.entityList.add_obj(new obj_banana(tileSize*x, tileSize*y));
         }
 
@@ -108,30 +109,26 @@ public class AssetCreator
             Random random = new Random();
             int x,y;
 
+            // Generate a coordinate without a collidable tile
+            do {
+                x = random.nextInt(mapBoundaryX)+1;
+                y = random.nextInt(mapBoundaryY)+1;
+            } while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
+            this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
+        }
+
+        //placing traps randomly (7 traps per map)
+        for (int i=0; i<7; i++)
+        {
+            Random random = new Random();
+            int x, y;
 
             // Generate a coordinate without a collidable tile
 
             do {
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
-            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
-            this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
-        }
-
-        //placing traps randomly (7 traps per map)
-
-        for (int i=0; i<7; i++)
-        {
-            Random random = new Random();
-            int x, y;
-
-
-            // Generate a coordinate without a collidable tile
-
-            do{
-                x = random.nextInt(mapBoundaryX)+1;
-                y = random.nextInt(mapBoundaryY)+1;
-            }while(checkTileAtCoordinate(x, y, true) == true || checkObjectAtCoordinate(x, y, true) == true);
+            } while(checkTileAtCoordinate(x, y, true) == true || checkObjectAtCoordinate(x, y, true) == true);
             this.entityList.add_obj(new obj_trap(tileSize*x, tileSize*y));
         }
     }

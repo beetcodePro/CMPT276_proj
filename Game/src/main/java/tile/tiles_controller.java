@@ -153,10 +153,6 @@ public class tiles_controller {
             tile[33]= new Tiles();
             tile[33].image= ImageIO.read(getClass().getResourceAsStream("/tiles/borders/border_corner_4.png"));
             tile[33].collision = true;
-
-            tile[34]= new Tiles();
-            tile[34].image= ImageIO.read(getClass().getResourceAsStream("/endMark/Door.png"));
-            tile[34].collision = false;
         }
         catch (IOException e)
         {

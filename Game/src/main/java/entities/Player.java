@@ -95,19 +95,11 @@ public class Player extends AnimateEntity
             }
             // Animation change
             this.increase_spriteCnt();
+
+            // End game conditions
             if (check_if_no_lives() || (score<0))
             {
                 sim.gameState=sim.gameOverSate;
-            }
-            if (lives >=0  || (score > 0))
-            {
-                //System.out.println(this.get_coordinate_X());
-                //System.out.println(this.get_coordinate_Y());
-                if(this.get_coordinate_X()==90 && this.get_coordinate_Y()==474)
-                {
-                    sim.gameState=sim.gameWinSate;
-                }
-
             }
         }
     }
@@ -232,6 +224,10 @@ public class Player extends AnimateEntity
 
             if (objectName == "Trap")
                 sim.reset_player_position();
+
+            if (objectName == "Door")
+                if ((lives > 0) || (score > 0))
+                    sim.gameState=sim.gameWinSate;
         }
     }
 
