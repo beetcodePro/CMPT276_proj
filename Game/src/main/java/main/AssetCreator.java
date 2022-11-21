@@ -119,6 +119,7 @@ public class AssetCreator
         }
 
         //placing traps randomly (7 traps per map)
+
         for (int i=0; i<7; i++)
         {
             Random random = new Random();
@@ -135,7 +136,24 @@ public class AssetCreator
         }
     }
 
+public void addApple()
+{
+    int tileSize = sim.get_tileSize();
+    for (int i=0; i<1; i++)
+    {
+        Random random = new Random();
+        int x,y;
 
+
+        // Generate a coordinate without a collidable tile
+
+        do {
+            x = random.nextInt(mapBoundaryX)+1;
+            y = random.nextInt(mapBoundaryY)+1;
+        }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
+        this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
+    }
+}
     // Create and set enemy entities
     public void setEnemy(CheckCollision cCheck) 
     {
