@@ -164,40 +164,46 @@ public class Enemy extends AnimateEntity
 
         if(this.get_canCollide() == false)
         {
-            switch(this.get_direction())
-            {
-                case "right":
-                {
-                    int x = this.get_coordinate_X();
-                    x = x + this.get_moveSpeed();
-                    this.set_coordinate_X(x);
-                    break;
-                }
-                case "left":
-                {
-                    int x = this.get_coordinate_X();
-                    x = x - this.get_moveSpeed();
-                    this.set_coordinate_X(x);
-                    break;
-                }
-                case "up":
-                {
-                    int y = this.get_coordinate_Y();
-                    y = y - this.get_moveSpeed();
-                    this.set_coordinate_Y(y);
-                    break;
-                }
-                case "down":
-                {
-                    int y = this.get_coordinate_Y();
-                    y = y + this.get_moveSpeed();
-                    this.set_coordinate_Y(y);
-                    break;
-                }
-            }
+            move_enemy();
         }
         // Animation change
         this.increase_spriteCnt();
+    }
+
+    // Checks direction and moves enemy
+    public void move_enemy()
+    {
+        switch(this.get_direction())
+        {
+            case "right":
+            {
+                int x = this.get_coordinate_X();
+                x = x + this.get_moveSpeed();
+                this.set_coordinate_X(x);
+                break;
+            }
+            case "left":
+            {
+                int x = this.get_coordinate_X();
+                x = x - this.get_moveSpeed();
+                this.set_coordinate_X(x);
+                break;
+            }
+            case "up":
+            {
+                int y = this.get_coordinate_Y();
+                y = y - this.get_moveSpeed();
+                this.set_coordinate_Y(y);
+                break;
+            }
+            case "down":
+            {
+                int y = this.get_coordinate_Y();
+                y = y + this.get_moveSpeed();
+                this.set_coordinate_Y(y);
+                break;
+            }
+        }
     }
 
     // This function runs when enemy collides into player

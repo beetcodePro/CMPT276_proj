@@ -1,7 +1,7 @@
 /* 
  *  EnemyTest.java
  * 
- *  Description: 
+ *  Description: Tests methods of Enemy class.
  * 
  *  Last changed: Nov 20th, 2022
  *
@@ -42,6 +42,12 @@ public class EnemyTest extends TestCase
         suite.addTest(new EnemyTest("testDirectionGeneration"));
         suite.addTest(new EnemyTest("onPlayerCollisionLives"));
         suite.addTest(new EnemyTest("onPlayerCollisionPosition"));
+        suite.addTest(new EnemyTest("hitboxExists"));
+        suite.addTest(new EnemyTest("moveUp"));
+        suite.addTest(new EnemyTest("moveDown"));
+        suite.addTest(new EnemyTest("moveRight"));
+        suite.addTest(new EnemyTest("moveLeft"));
+        suite.addTest(new EnemyTest("moveWhenCollision"));
         return suite;
     }
  
@@ -73,5 +79,69 @@ public class EnemyTest extends TestCase
         Coordinate position = sim.get_player().get_coordinate();
         enemy.player_onCollision();
         assertTrue(position.equals(sim.get_player().get_coordinate()));
+    }
+
+    /**
+     * @Test check if hitbox of enemy is not null on initialization
+     */
+    public void hitboxExists()
+    {
+        assertTrue(enemy.get_hitbox() != null);
+    }
+
+    /**
+     * @Test moving enemy position up by movespeed
+     */
+    public void moveUp()
+    {
+        enemy.set_coordinate(0, 0);
+        enemy.set_direction("up");
+        enemy.move_enemy();
+        assertEquals(enemy.get_moveSpeed()*-1, enemy.get_coordinate_Y());
+    }
+
+    /**
+     * @Test moving enemy position down by movespeed
+     */
+    public void moveDown()
+    {
+        enemy.set_coordinate(0, 0);
+        enemy.set_direction("down");
+        enemy.move_enemy();
+        assertEquals(enemy.get_moveSpeed(), enemy.get_coordinate_Y());
+    }
+
+    /**
+     * @Test moving enemy position right by movespeed
+     */
+    public void moveRight()
+    {
+        enemy.set_coordinate(0, 0);
+        enemy.set_direction("right");
+        enemy.move_enemy();
+        assertEquals(enemy.get_moveSpeed(), enemy.get_coordinate_X());
+    }
+
+    /**
+     * @Test moving enemy position left by movespeed
+     */
+    public void moveLeft()
+    {
+        enemy.set_coordinate(0, 0);
+        enemy.set_direction("left");
+        enemy.move_enemy();
+        assertEquals(enemy.get_moveSpeed()*-1, enemy.get_coordinate_X());
+    }
+
+    /**
+     * @Test enemy movement when canCollide is true (colliding with wall)
+    */
+    public void moveWhenCollision()
+    {
+        enemy.set_coordinate(0, 0);
+        enemy.set_direction("left");
+        enemy.set_canCollide(true);
+        enemy.update();
+        assertEquals(0, enemy.get_coordinate_Y());
     }
 }

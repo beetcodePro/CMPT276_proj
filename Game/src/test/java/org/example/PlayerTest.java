@@ -105,7 +105,7 @@ public class PlayerTest extends TestCase
     }
 
     /**
-     * @Test movement when canCollide is true
+     * @Test movement when canCollide is true (colliding with wall)
     */
     public void moveWhenCollision()
     {
@@ -210,5 +210,13 @@ public class PlayerTest extends TestCase
     {
         player.set_lives(1);
         assertFalse(player.check_if_no_lives());
+    }
+
+    /**
+     * @Test check if hitbox of player is not null on initialization
+     */
+    public void hitboxExists()
+    {
+        assertTrue(player.get_hitbox() != null);
     }
 }
