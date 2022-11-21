@@ -3,7 +3,10 @@ package main;
 import javax.swing.JPanel;
 import java.awt.*;
 import entities.*;
+import objects.obj_apple;
 import tile.tiles_controller;
+
+
 
 
 public class Simulator extends JPanel implements Runnable
@@ -24,7 +27,7 @@ public class Simulator extends JPanel implements Runnable
     public final int gameOverSate=3;
     public final int gameWinSate =4;
     public final int titleState =5;
-
+    int count=1;
     // Simulator attributes
     Thread gameThread;
     KeyBoard Key = new KeyBoard(this);
@@ -43,6 +46,8 @@ public class Simulator extends JPanel implements Runnable
 
     // Entities
     public Player player = new Player(this, Key, cCheck, DefaultPlayerPositionX, DefaultPlayerPositionY);
+
+
 
     // Constructor
     public Simulator()
@@ -124,6 +129,25 @@ public class Simulator extends JPanel implements Runnable
         if(gameState == playGameState) {
             player.update();
             this.entityList.update_enemyList();
+            count++;
+
+            if (count== 450)
+            {
+                System.out.println("timer");
+                //delete the apples
+                for (int i=0 ; i< entityList.get_objList_size(); i++)
+
+               if (entityList.get_obj_at_index(i).get_name() == "Apple")
+               {
+                   entityList.delete_obj_at_index(i);
+               }
+
+            }
+            if (count ==900)
+            {
+                createAssets.addApple();
+                count =0;
+            }
         }
         if(gameState == pauseState) {
             //nothing when paused
