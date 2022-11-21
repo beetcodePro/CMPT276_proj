@@ -6,7 +6,6 @@ public class main {
     public static void main(String [] args)
     {
         Simulator simulator= new Simulator();
-        //this is to draw bananas
         simulator.game_setup();
         simulator.startGameThread();
         JFrame window = new JFrame();
@@ -18,8 +17,5 @@ public class main {
         window.add(simulator);
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-
     }
-
-
 }
