@@ -33,14 +33,9 @@ public class EntityList
     public List<Enemy> get_enemyList() { return this.enemyList; }
     public int get_enemyList_size() { return this.enemyList.size(); }
     public Enemy get_enemy_at_index(int val) { return this.enemyList.get(val); }
+    public void delete_enemy_at_index(int val) { this.enemyList.remove(val); }
+    public void clear_enemyList() { this.enemyList.clear(); }
 
-    //clear all entities
-    public void clear_enemyList() {
-        this.enemyList.clear();
-    }
-    public void clear_objList() {
-        this.objList.clear();
-    }
     public void update_enemyList()
     {
         for(int i = 0; i < enemyList.size(); i++)
@@ -53,12 +48,13 @@ public class EntityList
             this.enemyList.get(i).draw(g2);
     }
 
-    // Object functions
+    // ObjectList functions
     public void add_obj(InanimateEntity toAdd) { this.objList.add(toAdd);}
     public List<InanimateEntity> get_objList() { return this.objList; }
     public int get_objList_size() { return this.objList.size(); }
     public InanimateEntity get_obj_at_index(int val) { return this.objList.get(val); }
     public void delete_obj_at_index(int val) { this.objList.remove(val); }
+    public void clear_objList() { this.objList.clear(); }
 
     public void draw_objList(Graphics2D g2, Simulator sim)
     {
