@@ -236,5 +236,6 @@ public class UI {
         int x=sim.get_screen_width()/2- length/2;
         return x;
     }
+    public double getPlayTime(){return this.playTime;}
 
 }

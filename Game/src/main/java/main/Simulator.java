@@ -24,7 +24,7 @@ public class Simulator extends JPanel implements Runnable
     public final int gameOverSate=3;
     public final int gameWinSate =4;
     public final int titleState =5;
-    int count=1;
+    public int count=1;
     // Simulator attributes
     public Thread gameThread;
     KeyBoard Key = new KeyBoard(this);
@@ -82,6 +82,7 @@ public class Simulator extends JPanel implements Runnable
     public Player get_player() { return this.player; }
     public int get_player_default_x() { return DefaultPlayerPositionX; }
     public int get_player_default_y() { return DefaultPlayerPositionY; }
+    public EntityList get_entitylist(){ return entityList;}
 
     public void startGameThread()
     {
