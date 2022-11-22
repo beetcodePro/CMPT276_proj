@@ -141,6 +141,7 @@ public class SimulatorTest extends TestCase {
         assertEquals(sim.PlaySoundEffect(0), 0);
 
     }
+
     /**
      * @test resets the player position
      */
