@@ -14,7 +14,7 @@ import junit.framework.TestSuite;
 import main.*;
 import entities.Player;
 import entities.Coordinate;
-
+import java.awt.Rectangle;
 public class PlayerTest extends TestCase
 {
     // Attributes
@@ -53,6 +53,7 @@ public class PlayerTest extends TestCase
         suite.addTest(new PlayerTest("nullEnemyCollision"));
         suite.addTest(new PlayerTest("checkNoLives"));
         suite.addTest(new PlayerTest("checkHasLives"));
+        suite.addTest(new PlayerTest("setHitbox"));
         return suite;
     }
 
@@ -218,5 +219,15 @@ public class PlayerTest extends TestCase
     public void hitboxExists()
     {
         assertTrue(player.get_hitbox() != null);
+    }
+
+    /**
+     * @Test changing player hitbox to new value
+     */
+    public void setHitbox()
+    {
+        Rectangle testHitbox = new Rectangle(10, 10, 20, 20);
+        player.set_hitbox(testHitbox);
+        assertEquals(testHitbox, player.get_hitbox());
     }
 }
