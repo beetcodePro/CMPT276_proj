@@ -104,7 +104,7 @@ public class SimulatorTest extends TestCase {
         assertEquals(sim.gameThread, tempThread);
     }
     /**
-     * @test if running
+     * @test run works
      */
 
 
