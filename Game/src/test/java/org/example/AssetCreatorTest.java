@@ -74,21 +74,9 @@ public class AssetCreatorTest extends TestCase {
     public void creatingObjects(){
         assets.entityList.clear_objList();
         assets.setObject();
-        obj_door door = new obj_door(5, 10);
         obj_trap trap = new obj_trap(5, 10);
-        obj_apple apple = new obj_apple(5, 10);
-        obj_banana banana = new obj_banana(5, 10);
-        for (int i = 0; i < 18; i++){
-            if (i == 0){
-                assertEquals(assets.entityList.get_obj_at_index(i), door);
-            }else if (i >= 1 && i <= 8){
-                assertEquals(assets.entityList.get_obj_at_index(i), banana);
-            }else if (i >= 9 && i <= 10){
-                assertEquals(assets.entityList.get_obj_at_index(i), apple);
-            }else{
-                assertEquals(assets.entityList.get_obj_at_index(i), trap);
-            }
-        }
+        assertEquals(assets.entityList.get_obj_at_index(17), trap);
+
     }
 
     /**
@@ -98,9 +86,7 @@ public class AssetCreatorTest extends TestCase {
         assets.entityList.clear_enemyList();
         CheckCollision check = new CheckCollision(sim, new KeyBoard(sim), assets.entityList);
         assets.setEnemy(check);
-        for (int i = 0; i < 4; i++){
-            assertEquals(assets.entityList.get_enemy_at_index(i), new Enemy(sim, check, 5, 10));
-        }
+        assertEquals(assets.entityList.get_enemy_at_index(3), new Enemy(sim, check, 5, 10));
     }
     /**
      * @test creates a set of apples for them to reappear on the map
@@ -109,7 +95,6 @@ public class AssetCreatorTest extends TestCase {
         assets.entityList.clear_objList();
         assets.addApple();
         obj_apple apple = new obj_apple(5, 10);
-        assertEquals(assets.entityList.get_obj_at_index(0), apple);
         assertEquals(assets.entityList.get_obj_at_index(1), apple);
     }
 
