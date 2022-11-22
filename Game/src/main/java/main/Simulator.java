@@ -26,7 +26,7 @@ public class Simulator extends JPanel implements Runnable
     public final int titleState =5;
     int count=1;
     // Simulator attributes
-    Thread gameThread;
+    public Thread gameThread;
     KeyBoard Key = new KeyBoard(this);
     int DefaultPlayerPositionX = tileSize*2;
     int DefaultPlayerPositionY = tileSize*3;

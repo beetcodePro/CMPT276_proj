@@ -1,9 +1,13 @@
 package org.example;
 
 import entities.Coordinate;
+import entities.Player;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import main.CheckCollision;
+import main.EntityList;
+import main.KeyBoard;
 import main.Simulator;
 
 public class SimulatorTest extends TestCase {
@@ -62,9 +66,46 @@ public class SimulatorTest extends TestCase {
         assertEquals(sim.get_screen_height(), 720);
     }
     /**
-     * @test
+     * @test tile size
      */
-
+    public void tileSize(){
+        assertEquals(sim.get_tileSize(), 48);
+    }
+    /**
+     * @test player is created
+     */
+    public void testPlayer(){
+        Simulator tempSim = new Simulator();
+        KeyBoard tempKey = new KeyBoard(tempSim);
+        CheckCollision tempCheck = new CheckCollision(tempSim, tempKey, new EntityList());
+        Player tempPlayer = new Player(tempSim, tempKey, tempCheck, 96, 144);
+        assertEquals(sim.get_player(), tempPlayer);
+    }
+    /**
+     * @test player defaulted x location
+     */
+    public void defaultXCoordinate(){
+        assertEquals(sim.get_player_default_x(), 48*2);
+    }
+    /**
+     * @test player defaulted y location
+     */
+    public void defaultYCoordinate(){
+        assertEquals(sim.get_player_default_y(), 48*3);
+    }
+    /**
+     * @test game thread
+     */
+    public void startingGameThread(){
+        Simulator tempSim = new Simulator();
+        Thread tempThread = new Thread(tempSim);
+        tempThread.start();
+        sim.startGameThread();
+        assertEquals(sim.gameThread, tempThread);
+    }
+    /**
+     * @test if running
+     */
 
 
 }
