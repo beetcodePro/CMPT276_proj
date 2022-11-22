@@ -9,6 +9,9 @@ import main.CheckCollision;
 import main.EntityList;
 import main.KeyBoard;
 import main.Simulator;
+import objects.obj_apple;
+
+import java.awt.*;
 
 public class SimulatorTest extends TestCase {
     //Attributes
@@ -94,6 +97,14 @@ public class SimulatorTest extends TestCase {
         assertEquals(sim.get_player_default_y(), 48*3);
     }
     /**
+     * @test gets the current list of entities
+     */
+    public void testEntityList(){
+        sim.get_entitylist().clear_objList();
+        sim.get_entitylist().clear_enemyList();
+        assertEquals(sim.get_entitylist(), new EntityList());
+    }
+    /**
      * @test game thread
      */
     public void startingGameThread(){
@@ -104,8 +115,49 @@ public class SimulatorTest extends TestCase {
         assertEquals(sim.gameThread, tempThread);
     }
     /**
-     * @test run works
+     * @test updates game
      */
+    public void updateGame(){
+        sim.gameState = sim.playGameState;
+        sim.count = 450;
+        sim.get_entitylist().clear_enemyList();
+        sim.get_entitylist().clear_objList();
+        sim.get_entitylist().add_obj(new obj_apple(5, 10));
+        sim.update();
+        assertEquals(sim.get_entitylist().get_objList_size(), 0);
+    }
+    /**
+     * @test draws the updates onto the UI
+     */
+    public void testDrawUpdate(){
+        sim.gameState = sim.playGameState;
+        sim.paintComponent(sim.getGraphics());
+        assertEquals(sim.ui.getPlayTime(), 1/60);
+    }
+    /**
+     * @test sound effect
+     */
+    public void testSoundEffect(){
+        assertEquals(sim.PlaySoundEffect(0), 0);
+
+    }
+
+    /**
+     * @test resets the player position
+     */
+    public void resetPlayerPosition(){
+        sim.reset_player_position();
+        assertEquals(sim.player.get_coordinate_X(), 2*48);
+    }
+    /**
+     * @test adding the player lives
+     */
+    public void addPlayerLives(){
+        int tempLives = 1;
+        sim.add_player_lives(tempLives);
+        assertEquals(sim.player.get_lives(), 4);
+    }
+
 
 
 }
