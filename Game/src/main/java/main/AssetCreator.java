@@ -7,7 +7,7 @@ import java.util.Random;
 public class AssetCreator 
 {
     Simulator sim;
-    EntityList entityList;
+    public EntityList entityList;
     int mapBoundaryX;
     int mapBoundaryY;
 
@@ -20,7 +20,7 @@ public class AssetCreator
     }
 
     // Helper function: Checks if an object exists at specified coordinate
-    private boolean checkObjectAtCoordinate(int x, int y, boolean isTrap)
+    public boolean checkObjectAtCoordinate(int x, int y, boolean isTrap)
     {
         for(int j=0; j<entityList.get_objList_size(); j++)
         {
