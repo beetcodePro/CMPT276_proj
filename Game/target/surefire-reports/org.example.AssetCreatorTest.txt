@@ -1,11 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: org.example.AssetCreatorTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec <<< FAILURE!
-warning(junit.framework.TestSuite$1)  Time elapsed: 0.001 sec  <<< FAILURE!
-junit.framework.AssertionFailedError: No tests found in org.example.AssetCreatorTest
+Tests run: 7, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.933 sec <<< FAILURE!
+checkIfObjectExists(org.example.AssetCreatorTest)  Time elapsed: 0.004 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: Method "checkIfObjectExists" not found
 	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.TestSuite$1.runTest(TestSuite.java:263)
+	at junit.framework.TestCase.runTest(TestCase.java:147)
 	at junit.framework.TestCase.runBare(TestCase.java:127)
 	at junit.framework.TestResult$1.protect(TestResult.java:106)
 	at junit.framework.TestResult.runProtected(TestResult.java:124)
@@ -25,4 +25,28 @@ junit.framework.AssertionFailedError: No tests found in org.example.AssetCreator
 	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+
+creatingObjects(org.example.AssetCreatorTest)  Time elapsed: 0.041 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: expected:<objects.obj_trap@8909f18> but was:<objects.obj_trap@79ca92b9>
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.failNotEquals(Assert.java:282)
+	at junit.framework.Assert.assertEquals(Assert.java:64)
+	at junit.framework.Assert.assertEquals(Assert.java:71)
+	at org.example.AssetCreatorTest.creatingObjects(AssetCreatorTest.java:78)
+
+creatingEnemies(org.example.AssetCreatorTest)  Time elapsed: 0.096 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: expected:<entities.Enemy@45b9a632> but was:<entities.Enemy@25d250c6>
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.failNotEquals(Assert.java:282)
+	at junit.framework.Assert.assertEquals(Assert.java:64)
+	at junit.framework.Assert.assertEquals(Assert.java:71)
+	at org.example.AssetCreatorTest.creatingEnemies(AssetCreatorTest.java:89)
+
+addingApple(org.example.AssetCreatorTest)  Time elapsed: 0.004 sec  <<< FAILURE!
+junit.framework.AssertionFailedError: expected:<objects.obj_apple@6dbb137d> but was:<objects.obj_apple@3c9d0b9d>
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.failNotEquals(Assert.java:282)
+	at junit.framework.Assert.assertEquals(Assert.java:64)
+	at junit.framework.Assert.assertEquals(Assert.java:71)
+	at org.example.AssetCreatorTest.addingApple(AssetCreatorTest.java:98)
 

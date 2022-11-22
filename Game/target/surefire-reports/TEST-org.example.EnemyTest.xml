@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="org.example.EnemyTest" time="0.497" errors="0" skipped="0">
+<testsuite tests="10" failures="0" name="org.example.EnemyTest" time="0.73" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="19+36-2238"/>
@@ -63,12 +63,12 @@
   </properties>
   <testcase classname="org.example.EnemyTest" name="testDirectionGeneration" time="0"/>
   <testcase classname="org.example.EnemyTest" name="testDirectionGeneration" time="0"/>
-  <testcase classname="org.example.EnemyTest" name="onPlayerCollisionLives" time="0.08"/>
-  <testcase classname="org.example.EnemyTest" name="onPlayerCollisionPosition" time="0.414"/>
+  <testcase classname="org.example.EnemyTest" name="onPlayerCollisionLives" time="0.064"/>
+  <testcase classname="org.example.EnemyTest" name="onPlayerCollisionPosition" time="0.666"/>
   <testcase classname="org.example.EnemyTest" name="hitboxExists" time="0"/>
-  <testcase classname="org.example.EnemyTest" name="moveUp" time="0.001"/>
-  <testcase classname="org.example.EnemyTest" name="moveDown" time="0.001"/>
+  <testcase classname="org.example.EnemyTest" name="moveUp" time="0"/>
+  <testcase classname="org.example.EnemyTest" name="moveDown" time="0"/>
   <testcase classname="org.example.EnemyTest" name="moveRight" time="0"/>
-  <testcase classname="org.example.EnemyTest" name="moveLeft" time="0.001"/>
+  <testcase classname="org.example.EnemyTest" name="moveLeft" time="0"/>
   <testcase classname="org.example.EnemyTest" name="moveWhenCollision" time="0"/>
 </testsuite>

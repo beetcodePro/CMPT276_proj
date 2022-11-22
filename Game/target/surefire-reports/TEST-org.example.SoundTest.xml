@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="org.example.PlayerTest" time="0.264" errors="0" skipped="0">
+<testsuite tests="1" failures="1" name="org.example.SoundTest" time="0" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="19+36-2238"/>
@@ -61,20 +61,29 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.example.PlayerTest" name="testResetPosition" time="0.097"/>
-  <testcase classname="org.example.PlayerTest" name="moveUp" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="moveDown" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="moveRight" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="moveLeft" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="moveWhenCollision" time="0.001"/>
-  <testcase classname="org.example.PlayerTest" name="testResetPosition" time="0.081"/>
-  <testcase classname="org.example.PlayerTest" name="bananaCollision" time="0.003"/>
-  <testcase classname="org.example.PlayerTest" name="appleCollision" time="0.003"/>
-  <testcase classname="org.example.PlayerTest" name="trapCollision" time="0.002"/>
-  <testcase classname="org.example.PlayerTest" name="invalidCollision" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="enemyCollision" time="0.076"/>
-  <testcase classname="org.example.PlayerTest" name="nullEnemyCollision" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="checkNoLives" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="checkHasLives" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="setHitbox" time="0.001"/>
+  <testcase classname="junit.framework.TestSuite$1" name="warning" time="0">
+    <failure message="No tests found in org.example.SoundTest" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: No tests found in org.example.SoundTest
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.TestSuite$1.runTest(TestSuite.java:263)
+	at junit.framework.TestCase.runBare(TestCase.java:127)
+	at junit.framework.TestResult$1.protect(TestResult.java:106)
+	at junit.framework.TestResult.runProtected(TestResult.java:124)
+	at junit.framework.TestResult.run(TestResult.java:109)
+	at junit.framework.TestCase.run(TestCase.java:118)
+	at junit.framework.TestSuite.runTest(TestSuite.java:208)
+	at junit.framework.TestSuite.run(TestSuite.java:203)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.apache.maven.surefire.junit.JUnitTestSet.execute(JUnitTestSet.java:95)
+	at org.apache.maven.surefire.junit.JUnit3Provider.executeTestSet(JUnit3Provider.java:121)
+	at org.apache.maven.surefire.junit.JUnit3Provider.invoke(JUnit3Provider.java:98)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</failure>
+  </testcase>
 </testsuite>
