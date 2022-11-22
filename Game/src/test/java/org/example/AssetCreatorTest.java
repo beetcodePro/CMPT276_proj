@@ -35,6 +35,7 @@ public class AssetCreatorTest extends TestCase {
         suite.addTest(new AssetCreatorTest("checkIfTileExists"));
         suite.addTest(new AssetCreatorTest("creatingObjects"));
         suite.addTest(new AssetCreatorTest("creatingEnemies"));
+        suite.addTest(new AssetCreatorTest("addingApple"));
         return suite;
     }
 
@@ -100,6 +101,16 @@ public class AssetCreatorTest extends TestCase {
         for (int i = 0; i < 4; i++){
             assertEquals(assets.entityList.get_enemy_at_index(i), new Enemy(sim, check, 5, 10));
         }
+    }
+    /**
+     * @test creates a set of apples for them to reappear on the map
+     */
+    public void addingApple(){
+        assets.entityList.clear_objList();
+        assets.addApple();
+        obj_apple apple = new obj_apple(5, 10);
+        assertEquals(assets.entityList.get_obj_at_index(0), apple);
+        assertEquals(assets.entityList.get_obj_at_index(1), apple);
     }
 
 }
