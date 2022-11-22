@@ -33,7 +33,7 @@ public class KeyboardTest extends TestCase {
     /**
      * @test for W key on the keyboard
      */
-    public void keyPressedUPTest() {
+    public void testKeyPressedUP() {
         Button a = new Button("click");
         KeyEvent e = new KeyEvent(a, 1, 20, 1, 87, 'W');
         assertEquals(KeyEvent.VK_W, e.getKeyCode() );
@@ -77,7 +77,7 @@ public class KeyboardTest extends TestCase {
     public static Test suite()
     {
             TestSuite suite = new TestSuite(KeyboardTest.class);
-            suite.addTest(new KeyboardTest("keyPressedUPTest"));
+            suite.addTest(new KeyboardTest("testKeyPressedUP"));
             suite.addTest(new KeyboardTest("keyPressedDNTest"));
             suite.addTest(new KeyboardTest("keyPressedLFTest"));
             suite.addTest(new KeyboardTest("keyPressedRTTest"));

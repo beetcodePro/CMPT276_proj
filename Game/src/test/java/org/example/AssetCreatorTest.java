@@ -5,10 +5,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import main.*;
-import objects.obj_apple;
-import objects.obj_banana;
-import objects.obj_door;
-import objects.obj_trap;
+import objects.*;
 
 public class AssetCreatorTest extends TestCase {
     //Attributes
@@ -31,7 +28,6 @@ public class AssetCreatorTest extends TestCase {
     public static Test suite()
     {
         TestSuite suite = new TestSuite(EntityListTest.class);
-        suite.addTest(new AssetCreatorTest("checkIfObjectExists"));
         suite.addTest(new AssetCreatorTest("checkIfTileExists"));
         suite.addTest(new AssetCreatorTest("creatingObjects"));
         suite.addTest(new AssetCreatorTest("creatingEnemies"));
