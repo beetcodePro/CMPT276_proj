@@ -41,7 +41,7 @@ public class AssetCreatorTest extends TestCase {
 
 
     /**
-     * @return checking if coordinate isn't occupied by other objects
+     * @test checking if coordinate isn't occupied by other objects
      */
     public void checkIfCoordinatePasses(){
         assets.entityList.clear_objList();
@@ -55,7 +55,7 @@ public class AssetCreatorTest extends TestCase {
 
 
     /**
-     * @return checking if tile exists so object can be placed
+     * @test checking if tile exists so object can be placed
      */
     public void checkIfTileExists(){
         assets.entityList.clear_objList();
