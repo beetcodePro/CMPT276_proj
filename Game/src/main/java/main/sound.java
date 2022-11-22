@@ -40,4 +40,21 @@ public class sound {
     {
         clip.stop();
     }
+
+    public int getSoundIndex(String s)
+    {
+        if (s=="Trap" || s=="Enemy")
+        {
+            return 3;
+        }
+        if (s=="Apple")
+        {
+            return 1;
+        }
+        if (s=="Banana")
+        {
+            return 2;
+        }
+        return 0 ;
+    }
 }

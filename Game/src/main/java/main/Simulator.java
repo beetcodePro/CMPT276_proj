@@ -193,10 +193,11 @@ public class Simulator extends JPanel implements Runnable
     }
 
     //Plays sound effect of chosen file
-    public void PlaySoundEffect(int x)
+    public int PlaySoundEffect(int x)
     {
       Sound.setFile(x);
       Sound.play();
+      return x;
     }
 
     // Player function wrappers

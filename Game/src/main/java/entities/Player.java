@@ -252,6 +252,10 @@ public class Player extends AnimateEntity
             lives = lives - 1;
             sim.ui.showMessage("-1 Life");
         }
+        if (objName == "Door")
+        {
+            sim.PlaySoundEffect(0);
+        }
     }
 
     // This function runs when player collides with enemy
