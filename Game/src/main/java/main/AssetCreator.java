@@ -10,6 +10,7 @@ public class AssetCreator
     public EntityList entityList;
     int mapBoundaryX;
     int mapBoundaryY;
+    private int tileSize;
 
     // Default constructor
     public AssetCreator(Simulator sim, EntityList eList){
@@ -17,6 +18,7 @@ public class AssetCreator
         this.entityList = eList;
         this.mapBoundaryX = sim.maxScreenCol-2;
         this.mapBoundaryY = sim.maxScreenRow-2;
+        this.tileSize = sim.get_tileSize();
     }
 
     // Helper function: Checks if an object exists at specified coordinate
@@ -24,8 +26,8 @@ public class AssetCreator
     {
         for(int j=0; j<entityList.get_objList_size(); j++)
         {
-            int tmpX = entityList.get_obj_at_index(j).get_coordinate_X()/sim.get_tileSize();
-            int tmpY = entityList.get_obj_at_index(j).get_coordinate_Y()/sim.get_tileSize();
+            int tmpX = entityList.get_obj_at_index(j).get_coordinate_X()/tileSize;
+            int tmpY = entityList.get_obj_at_index(j).get_coordinate_Y()/tileSize;
             if(tmpX == x && tmpY == y)
                 return true;
             if(tmpX == 2 && tmpY == 3)
@@ -84,10 +86,10 @@ public class AssetCreator
     // Create and set objects
     public void setObject() 
     {
-        int tileSize = sim.get_tileSize();
+        int mapNum = sim.Tile_c.get_currentMap();
 
         // place door at fixed location (1 per map)
-        this.entityList.add_obj(new obj_door(tileSize*3, tileSize*10));
+        addDoor(mapNum);
 
         // placing bananas randomly (8 bananas per map)
         for (int i=0; i<8; i++)
@@ -133,31 +135,57 @@ public class AssetCreator
         }
     }
 
-public void addApple()
-{
-    int tileSize = sim.get_tileSize();
-    for (int i=0; i<1; i++)
+    public void addDoor(int mapNum)
     {
-        Random random = new Random();
-        int x,y;
-
-
-        // Generate a coordinate without a collidable tile
-
-        do {
-            x = random.nextInt(mapBoundaryX)+1;
-            y = random.nextInt(mapBoundaryY)+1;
-        }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
-        this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
+        switch(mapNum)
+        {
+            case 0:
+                this.entityList.add_obj(new obj_door(tileSize*3, tileSize*10));
+                break;
+            case 1:
+                this.entityList.add_obj(new obj_door(tileSize*25, tileSize*4));
+                break;
+        }
     }
-}
-    // Create and set enemy entities
-    public void setEnemy(CheckCollision cCheck) 
+
+    public void addApple()
     {
-        int tileSize = sim.get_tileSize();
-        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*15, tileSize*4));
-        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*23, tileSize*6));
-        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*12, tileSize*10));
-        this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*6, tileSize*10));
+        for (int i=0; i<1; i++)
+        {
+            Random random = new Random();
+            int x,y;
+
+
+            // Generate a coordinate without a collidable tile
+
+            do {
+                x = random.nextInt(mapBoundaryX)+1;
+                y = random.nextInt(mapBoundaryY)+1;
+            }while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
+            this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
+        }
+    }
+
+    // Create and set enemy entities, returns true if successful
+    public boolean setEnemy(CheckCollision cCheck, int mapNum) 
+    {
+        if(mapNum == 0)
+        {
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*15, tileSize*4));
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*23, tileSize*6));
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*12, tileSize*10));
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*6, tileSize*10));
+            return true;
+        }
+        if(mapNum == 1)
+        {
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*4, tileSize*11));
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*10, tileSize*10));
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*15, tileSize*4));
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*16, tileSize*13));
+            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*23, tileSize*5));
+            return true;
+        }
+        return false;
     }
 }

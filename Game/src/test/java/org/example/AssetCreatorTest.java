@@ -82,7 +82,7 @@ public class AssetCreatorTest extends TestCase {
     public void creatingEnemies(){
         assets.entityList.clear_enemyList();
         CheckCollision check = new CheckCollision(sim, new KeyBoard(sim), assets.entityList);
-        assets.setEnemy(check);
+        assets.setEnemy(check, 0);
         assertEquals(assets.entityList.get_enemy_at_index(3).get_coordinate_X(), 48*6);
     }
     /**

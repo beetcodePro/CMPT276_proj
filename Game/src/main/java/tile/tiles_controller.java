@@ -8,26 +8,33 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-// import java.util.Random;
+import java.util.Random;
 
-
-public class tiles_controller {
+public class tiles_controller 
+{
     Simulator sim;
     public Tiles[] tile;
     public int mapTileNum[][];
+    private int currentMap;
+
     public tiles_controller(Simulator sim)
     {
         this.sim=sim;
         tile= new Tiles[35]; //number of different tiles
         mapTileNum = new int[sim.maxScreenCol][sim.maxScreenRow];
         get_tile_png();
-        String maps[]= {"/maps/map01.txt" };
-        //Random random = new Random();
-        //int x = random.nextInt(1);
 
-        int x = 0;
+        String maps[]= {"/maps/map01.txt", "/maps/map02.txt"};
+        
+        Random random = new Random();
+        int x = random.nextInt(2);
         mapLoad(maps[x]);
+        this.currentMap = x;
+        System.out.println(x);
     }
+
+    public int get_currentMap() { return currentMap; }
+
     public void get_tile_png()
     {
         try {
