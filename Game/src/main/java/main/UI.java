@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
 
 public class UI {
     Graphics2D g2;
-    Simulator sim;
+    public Simulator sim;
     Font arial_40;
     BufferedImage heartImage;
     public boolean messageOn = false;
@@ -19,6 +19,7 @@ public class UI {
     double playTime = 0;
     DecimalFormat dFormat = new DecimalFormat("#0.00");
     public int commandNum = 0;
+    public int tester;
 
 
     public UI(Simulator sim) {
@@ -81,6 +82,7 @@ public class UI {
                 messageOn = false;
             }
         }
+        this.tester = 1;
     }
     public void drawTitle() {
         g2.setColor(new Color(178,102,255));
@@ -119,7 +121,7 @@ public class UI {
         if(commandNum == 1){
             g2.drawString(">",x-sim.tileSize,y);
         }
-
+        this.tester = 2;
 
     }
     public void drawPauseScreen() {
@@ -137,6 +139,7 @@ public class UI {
         g2.setFont(arial_40);
         g2.drawString("Time:"+ dFormat.format(playTime),555,408);
         g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
+        this.tester = 3;
     }
     public void drawGameOverScreen()
     {
@@ -171,7 +174,7 @@ public class UI {
         x-=69;
         y-= 160;
         g2.drawString("Score:"+ sim.player.get_score(),x,y);
-
+        this.tester = 4;
 
     }
     public void drawGameWinScreen()
@@ -221,6 +224,7 @@ public class UI {
         if(commandNum == 1){
             g2.drawString(">",x-sim.tileSize,y);
         }
+        this.tester = 5;
 
 
     }
@@ -237,5 +241,5 @@ public class UI {
         return x;
     }
     public double getPlayTime(){return this.playTime;}
-
+    public void setPlayTime(double temp){this.playTime = temp;}
 }
