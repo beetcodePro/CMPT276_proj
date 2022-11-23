@@ -69,6 +69,7 @@ public class Simulator extends JPanel implements Runnable
     }
     //restart objects
     public void restart() {
+        Tile_c.newMap();
         entityList.clear_objList();
         entityList.clear_enemyList();
         createAssets.setObject();

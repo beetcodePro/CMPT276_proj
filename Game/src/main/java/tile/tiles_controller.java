@@ -30,7 +30,6 @@ public class tiles_controller
         int x = random.nextInt(2);
         mapLoad(maps[x]);
         this.currentMap = x;
-        System.out.println(x);
     }
 
     public int get_currentMap() { return currentMap; }
@@ -197,6 +196,7 @@ public class tiles_controller
 
         }
     }
+
     public void draw (Graphics2D g)
     {
         int column=0;
@@ -219,6 +219,14 @@ public class tiles_controller
 
             }
         }
+    }
 
+    public void newMap()
+    {
+        String maps[]= {"/maps/map01.txt", "/maps/map02.txt"};
+        Random random = new Random();
+        int x = random.nextInt(2);
+        mapLoad(maps[x]);
+        this.currentMap = x;
     }
 }
