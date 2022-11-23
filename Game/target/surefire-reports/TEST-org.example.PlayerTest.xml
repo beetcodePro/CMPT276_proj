@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="org.example.PlayerTest" time="0.264" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="org.example.PlayerTest" time="0.263" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="19+36-2238"/>
@@ -61,20 +61,20 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.example.PlayerTest" name="testResetPosition" time="0.097"/>
+  <testcase classname="org.example.PlayerTest" name="testResetPosition" time="0.073"/>
   <testcase classname="org.example.PlayerTest" name="moveUp" time="0"/>
   <testcase classname="org.example.PlayerTest" name="moveDown" time="0"/>
   <testcase classname="org.example.PlayerTest" name="moveRight" time="0"/>
   <testcase classname="org.example.PlayerTest" name="moveLeft" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="moveWhenCollision" time="0.001"/>
-  <testcase classname="org.example.PlayerTest" name="testResetPosition" time="0.081"/>
+  <testcase classname="org.example.PlayerTest" name="moveWhenCollision" time="0"/>
+  <testcase classname="org.example.PlayerTest" name="testResetPosition" time="0.076"/>
   <testcase classname="org.example.PlayerTest" name="bananaCollision" time="0.003"/>
-  <testcase classname="org.example.PlayerTest" name="appleCollision" time="0.003"/>
-  <testcase classname="org.example.PlayerTest" name="trapCollision" time="0.002"/>
+  <testcase classname="org.example.PlayerTest" name="appleCollision" time="0.004"/>
+  <testcase classname="org.example.PlayerTest" name="trapCollision" time="0.004"/>
   <testcase classname="org.example.PlayerTest" name="invalidCollision" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="enemyCollision" time="0.076"/>
+  <testcase classname="org.example.PlayerTest" name="enemyCollision" time="0.103"/>
   <testcase classname="org.example.PlayerTest" name="nullEnemyCollision" time="0"/>
   <testcase classname="org.example.PlayerTest" name="checkNoLives" time="0"/>
   <testcase classname="org.example.PlayerTest" name="checkHasLives" time="0"/>
-  <testcase classname="org.example.PlayerTest" name="setHitbox" time="0.001"/>
+  <testcase classname="org.example.PlayerTest" name="setHitbox" time="0"/>
 </testsuite>

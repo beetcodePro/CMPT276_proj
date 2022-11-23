@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="1" name="org.example.SoundTest" time="0" errors="0" skipped="0">
+<testsuite tests="1" failures="1" name="org.example.SoundTest" time="0.005" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="19+36-2238"/>
@@ -61,7 +61,7 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="junit.framework.TestSuite$1" name="warning" time="0">
+  <testcase classname="junit.framework.TestSuite$1" name="warning" time="0.005">
     <failure message="No tests found in org.example.SoundTest" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: No tests found in org.example.SoundTest
 	at junit.framework.Assert.fail(Assert.java:47)
 	at junit.framework.TestSuite$1.runTest(TestSuite.java:263)
