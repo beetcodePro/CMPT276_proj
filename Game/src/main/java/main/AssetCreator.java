@@ -167,23 +167,23 @@ public class AssetCreator
     }
 
     // Create and set enemy entities, returns true if successful
-    public boolean setEnemy(CheckCollision cCheck, int mapNum) 
+    public boolean setEnemy(int mapNum) 
     {
         if(mapNum == 0)
         {
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*15, tileSize*4));
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*23, tileSize*6));
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*12, tileSize*10));
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*6, tileSize*10));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*15, tileSize*4));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*23, tileSize*6));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*12, tileSize*10));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*6, tileSize*10));
             return true;
         }
         if(mapNum == 1)
         {
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*4, tileSize*11));
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*10, tileSize*10));
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*15, tileSize*4));
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*16, tileSize*13));
-            this.entityList.add_enemy(new Enemy(this.sim, cCheck, tileSize*23, tileSize*5));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*4, tileSize*11));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*9, tileSize*8));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*15, tileSize*4));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*16, tileSize*13));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*23, tileSize*5));
             return true;
         }
         return false;

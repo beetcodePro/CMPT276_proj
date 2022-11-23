@@ -24,12 +24,8 @@ public class tiles_controller
         mapTileNum = new int[sim.maxScreenCol][sim.maxScreenRow];
         get_tile_png();
 
-        String maps[]= {"/maps/map01.txt", "/maps/map02.txt"};
-        
-        Random random = new Random();
-        int x = random.nextInt(2);
-        mapLoad(maps[x]);
-        this.currentMap = x;
+        // Gets and draws new map
+        newMap();
     }
 
     public int get_currentMap() { return currentMap; }
@@ -221,6 +217,7 @@ public class tiles_controller
         }
     }
 
+    // Gets and draws new map
     public void newMap()
     {
         String maps[]= {"/maps/map01.txt", "/maps/map02.txt"};

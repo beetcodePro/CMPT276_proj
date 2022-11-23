@@ -58,7 +58,7 @@ public class Simulator extends JPanel implements Runnable
     public void game_setup()
     {
         this.createAssets.setObject();
-        this.createAssets.setEnemy(cCheck, Tile_c.get_currentMap());
+        this.createAssets.setEnemy(Tile_c.get_currentMap());
         gameState = titleState;
     }
     //reset game stats
@@ -73,7 +73,7 @@ public class Simulator extends JPanel implements Runnable
         entityList.clear_objList();
         entityList.clear_enemyList();
         createAssets.setObject();
-        createAssets.setEnemy(cCheck, Tile_c.get_currentMap());
+        createAssets.setEnemy(Tile_c.get_currentMap());
         player.setDefaultPosition();
     }
     // Getters
@@ -84,6 +84,7 @@ public class Simulator extends JPanel implements Runnable
     public int get_player_default_x() { return DefaultPlayerPositionX; }
     public int get_player_default_y() { return DefaultPlayerPositionY; }
     public EntityList get_entitylist(){ return entityList;}
+    public CheckCollision get_collisionChecker() { return cCheck; }
 
     public void startGameThread()
     {

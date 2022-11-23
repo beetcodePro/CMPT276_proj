@@ -25,6 +25,15 @@ public class Enemy extends AnimateEntity
     private int actionInterval = 0;
 
     // Default constructor
+    public Enemy(Simulator setSim, int setX, int setY)
+    {
+        super(setX, setY, setSim, setSim.get_collisionChecker());
+        this.set_moveSpeed(2);
+        this.get_sprite();
+        this.config_hitbox();
+    }
+
+    // Parametrized constructor
     public Enemy(Simulator setSim, CheckCollision setCol, int setX, int setY)
     {
         super(setX, setY, setSim, setCol);
