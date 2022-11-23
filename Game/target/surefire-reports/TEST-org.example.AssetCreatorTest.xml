@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="4" name="org.example.AssetCreatorTest" time="0.177" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="org.example.AssetCreatorTest" time="0.172" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="19+36-2238"/>
@@ -61,59 +61,11 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.example.EntityListTest" name="testClearEnemy" time="0.028"/>
+  <testcase classname="org.example.EntityListTest" name="testClearEnemy" time="0.031"/>
   <testcase classname="org.example.EntityListTest" name="testClearObject" time="0.002"/>
-  <testcase classname="org.example.AssetCreatorTest" name="checkIfObjectExists" time="0.004">
-    <failure message="Method &quot;checkIfObjectExists&quot; not found" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Method &quot;checkIfObjectExists&quot; not found
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.TestCase.runTest(TestCase.java:147)
-	at junit.framework.TestCase.runBare(TestCase.java:127)
-	at junit.framework.TestResult$1.protect(TestResult.java:106)
-	at junit.framework.TestResult.runProtected(TestResult.java:124)
-	at junit.framework.TestResult.run(TestResult.java:109)
-	at junit.framework.TestCase.run(TestCase.java:118)
-	at junit.framework.TestSuite.runTest(TestSuite.java:208)
-	at junit.framework.TestSuite.run(TestSuite.java:203)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.apache.maven.surefire.junit.JUnitTestSet.execute(JUnitTestSet.java:95)
-	at org.apache.maven.surefire.junit.JUnit3Provider.executeTestSet(JUnit3Provider.java:121)
-	at org.apache.maven.surefire.junit.JUnit3Provider.invoke(JUnit3Provider.java:98)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</failure>
-  </testcase>
+  <testcase classname="org.example.AssetCreatorTest" name="checkIfCoordinatePasses" time="0.004"/>
   <testcase classname="org.example.AssetCreatorTest" name="checkIfTileExists" time="0.002"/>
-  <testcase classname="org.example.AssetCreatorTest" name="creatingObjects" time="0.041">
-    <failure message="expected:&lt;objects.obj_trap@8909f18&gt; but was:&lt;objects.obj_trap@79ca92b9&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;objects.obj_trap@8909f18&gt; but was:&lt;objects.obj_trap@79ca92b9&gt;
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.failNotEquals(Assert.java:282)
-	at junit.framework.Assert.assertEquals(Assert.java:64)
-	at junit.framework.Assert.assertEquals(Assert.java:71)
-	at org.example.AssetCreatorTest.creatingObjects(AssetCreatorTest.java:78)
-</failure>
-  </testcase>
-  <testcase classname="org.example.AssetCreatorTest" name="creatingEnemies" time="0.096">
-    <failure message="expected:&lt;entities.Enemy@45b9a632&gt; but was:&lt;entities.Enemy@25d250c6&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;entities.Enemy@45b9a632&gt; but was:&lt;entities.Enemy@25d250c6&gt;
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.failNotEquals(Assert.java:282)
-	at junit.framework.Assert.assertEquals(Assert.java:64)
-	at junit.framework.Assert.assertEquals(Assert.java:71)
-	at org.example.AssetCreatorTest.creatingEnemies(AssetCreatorTest.java:89)
-</failure>
-  </testcase>
-  <testcase classname="org.example.AssetCreatorTest" name="addingApple" time="0.004">
-    <failure message="expected:&lt;objects.obj_apple@6dbb137d&gt; but was:&lt;objects.obj_apple@3c9d0b9d&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;objects.obj_apple@6dbb137d&gt; but was:&lt;objects.obj_apple@3c9d0b9d&gt;
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.failNotEquals(Assert.java:282)
-	at junit.framework.Assert.assertEquals(Assert.java:64)
-	at junit.framework.Assert.assertEquals(Assert.java:71)
-	at org.example.AssetCreatorTest.addingApple(AssetCreatorTest.java:98)
-</failure>
-  </testcase>
+  <testcase classname="org.example.AssetCreatorTest" name="creatingObjects" time="0.042"/>
+  <testcase classname="org.example.AssetCreatorTest" name="creatingEnemies" time="0.089"/>
+  <testcase classname="org.example.AssetCreatorTest" name="addingApple" time="0.002"/>
 </testsuite>
