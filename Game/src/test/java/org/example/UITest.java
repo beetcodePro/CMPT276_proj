@@ -1,4 +1,6 @@
 package org.example;
 
-public class UITest {
+import junit.framework.TestCase;
+
+public class UITest extends TestCase {
 }

@@ -1,6 +1,7 @@
 package org.example;
 
 import entities.Enemy;
+import entities.InanimateEntity;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -28,6 +29,7 @@ public class AssetCreatorTest extends TestCase {
     public static Test suite()
     {
         TestSuite suite = new TestSuite(EntityListTest.class);
+        suite.addTest(new AssetCreatorTest("checkIfCoordinatePasses"));
         suite.addTest(new AssetCreatorTest("checkIfTileExists"));
         suite.addTest(new AssetCreatorTest("creatingObjects"));
         suite.addTest(new AssetCreatorTest("creatingEnemies"));
@@ -70,8 +72,7 @@ public class AssetCreatorTest extends TestCase {
     public void creatingObjects(){
         assets.entityList.clear_objList();
         assets.setObject();
-        obj_trap trap = new obj_trap(5, 10);
-        assertEquals(assets.entityList.get_obj_at_index(17), trap);
+        assertEquals(assets.entityList.get_obj_at_index(17).get_name(),"Trap");
 
     }
 
@@ -82,7 +83,7 @@ public class AssetCreatorTest extends TestCase {
         assets.entityList.clear_enemyList();
         CheckCollision check = new CheckCollision(sim, new KeyBoard(sim), assets.entityList);
         assets.setEnemy(check);
-        assertEquals(assets.entityList.get_enemy_at_index(3), new Enemy(sim, check, 5, 10));
+        assertEquals(assets.entityList.get_enemy_at_index(3).get_coordinate_X(), 48*6);
     }
     /**
      * @test creates a set of apples for them to reappear on the map
@@ -90,8 +91,7 @@ public class AssetCreatorTest extends TestCase {
     public void addingApple(){
         assets.entityList.clear_objList();
         assets.addApple();
-        obj_apple apple = new obj_apple(5, 10);
-        assertEquals(assets.entityList.get_obj_at_index(1), apple);
+        assertEquals(assets.entityList.get_obj_at_index(0).get_name(), "Apple");
     }
 
 }

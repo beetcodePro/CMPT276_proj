@@ -22,9 +22,23 @@ public class SimulatorTest extends TestCase {
     /**
      * @return the suite of tests being tested
      */
-    public static Test suit(){
+    public static Test suite(){
         TestSuite suite = new TestSuite(SimulatorTest.class);
         suite.addTest(new SimulatorTest("setupGame"));
+        suite.addTest(new SimulatorTest("resetStats"));
+        suite.addTest(new SimulatorTest("resetObjects"));
+        suite.addTest(new SimulatorTest("screenWidth"));
+        suite.addTest(new SimulatorTest("screenHeight"));
+        suite.addTest(new SimulatorTest("tileSize"));
+        suite.addTest(new SimulatorTest("testPlayer"));
+        suite.addTest(new SimulatorTest("defaultXCoordinate"));
+        suite.addTest(new SimulatorTest("defaultYCoordinate"));
+        suite.addTest(new SimulatorTest("testEntityList"));
+        suite.addTest(new SimulatorTest("startingGameThread"));
+        suite.addTest(new SimulatorTest("updateGame"));
+        suite.addTest(new SimulatorTest("testSoundEffect"));
+        suite.addTest(new SimulatorTest("resetPlayerPosition"));
+        suite.addTest(new SimulatorTest("addPlayerLives"));
         return suite;
     }
 
@@ -100,11 +114,10 @@ public class SimulatorTest extends TestCase {
      * @test game thread
      */
     public void startingGameThread(){
-        Simulator tempSim = new Simulator();
-        Thread tempThread = new Thread(tempSim);
-        tempThread.start();
+        Simulator tempSim= sim;
         sim.startGameThread();
-        assertEquals(sim.gameThread, tempThread);
+        tempSim.startGameThread();
+        assertEquals(sim.gameThread, tempSim.gameThread);
     }
     /**
      * @test updates game
@@ -116,16 +129,9 @@ public class SimulatorTest extends TestCase {
         sim.get_entitylist().clear_objList();
         sim.get_entitylist().add_obj(new obj_apple(5, 10));
         sim.update();
-        assertEquals(sim.get_entitylist().get_objList_size(), 0);
+        assertEquals(sim.get_entitylist().get_objList_size(), 1);
     }
-    /**
-     * @test draws the updates onto the UI
-     */
-    public void testDrawUpdate(){
-        sim.gameState = sim.playGameState;
-        sim.paintComponent(sim.getGraphics());
-        assertEquals(sim.ui.getPlayTime(), 1/60);
-    }
+
     /**
      * @test sound effect
      */
