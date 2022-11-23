@@ -106,19 +106,8 @@ public class AssetCreator
         }
 
         // placing apples randomly (2 apples per map)
-        for (int i=0; i<2; i++)
-        {
-            Random random = new Random();
-            int x,y;
-
-            // Generate a coordinate without a collidable tile
-            do {
-                x = random.nextInt(mapBoundaryX)+1;
-                y = random.nextInt(mapBoundaryY)+1;
-            } while(checkTileAtCoordinate(x, y, false) == true || checkObjectAtCoordinate(x, y, false) == true);
-            this.entityList.add_obj(new obj_apple(tileSize*x, tileSize*y));
-        }
-
+        addApple();
+        
         //placing traps randomly (7 traps per map)
         for (int i=0; i<7; i++)
         {
@@ -150,14 +139,12 @@ public class AssetCreator
 
     public void addApple()
     {
-        for (int i=0; i<1; i++)
+        for (int i=0; i<2; i++)
         {
             Random random = new Random();
             int x,y;
 
-
             // Generate a coordinate without a collidable tile
-
             do {
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;

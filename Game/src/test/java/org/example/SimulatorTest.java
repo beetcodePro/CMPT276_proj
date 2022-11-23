@@ -86,8 +86,6 @@ public class SimulatorTest extends TestCase {
      * @test player is created
      */
     public void testPlayer(){
-        Simulator tempSim = new Simulator();
-        KeyBoard tempKey = new KeyBoard(tempSim);
         assertTrue(sim.get_player() != null);
     }
     /**
