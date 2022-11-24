@@ -219,15 +219,24 @@ public class Player extends AnimateEntity
             if(objectName == "Banana")
                 this.collideCheck.deleteObject(index);
 
-            if(objectName == "Apple")
+            else if(objectName == "Apple")
                 this.collideCheck.deleteObject(index);
 
-            if (objectName == "Trap")
+            else if (objectName == "Trap")
                 sim.reset_player_position();
 
-            if (objectName == "Door")
-                if ((lives > 0) || (score > 0))
-                    sim.gameState=sim.gameWinSate;
+            else if (objectName == "Door") {
+                if (((lives > 0) || (score > 0)) && sim.currentMap == 1) //1 is last map
+                {
+                    sim.gameState = sim.gameWinSate;
+                }
+                if (((lives > 0) || (score > 0)) && sim.currentMap == 0) {
+                    sim.gameState = sim.transitionState;
+                    sim.currentMap = 1;
+                    sim.reset();
+                    sim.restart();
+                }
+            }
         }
     }
 
