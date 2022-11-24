@@ -36,8 +36,8 @@ public class CheckCollision
         if(keyboard.PressedRT == true)
         {
             entityRightCol = (entityRightX + plr.get_moveSpeed())/sim.get_tileSize();
-            tile1 = sim.Tile_c.mapTileNum[entityRightCol][entityTopRow];
-            tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityBottomRow];
+            tile1 = sim.Tile_c.mapTileNum[sim.currentMap][entityRightCol][entityTopRow];
+            tile2 = sim.Tile_c.mapTileNum[sim.currentMap][entityRightCol][entityBottomRow];
             if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                 plr.set_canCollide(true);
             }
@@ -45,8 +45,8 @@ public class CheckCollision
         if(keyboard.PressedLF == true)
         {
             entityLeftCol = (entityLeftX - plr.get_moveSpeed())/sim.get_tileSize();
-            tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityTopRow];
-            tile2 = sim.Tile_c.mapTileNum[entityLeftCol][entityBottomRow];
+            tile1 = sim.Tile_c.mapTileNum[sim.currentMap][entityLeftCol][entityTopRow];
+            tile2 = sim.Tile_c.mapTileNum[sim.currentMap][entityLeftCol][entityBottomRow];
             if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                 plr.set_canCollide(true);
             }
@@ -54,8 +54,8 @@ public class CheckCollision
         if(keyboard.PressedUp == true)
         {
             entityTopRow = (entityTopY - plr.get_moveSpeed())/sim.get_tileSize();
-            tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityTopRow];
-            tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityTopRow];
+            tile1 = sim.Tile_c.mapTileNum[sim.currentMap][entityLeftCol][entityTopRow];
+            tile2 = sim.Tile_c.mapTileNum[sim.currentMap][entityRightCol][entityTopRow];
             if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                 plr.set_canCollide(true);
             }
@@ -63,8 +63,8 @@ public class CheckCollision
         if(keyboard.PressedDown == true)
         {
             entityBottomRow = (entityBottomY + plr.get_moveSpeed())/sim.get_tileSize();
-            tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityBottomRow];
-            tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityBottomRow];
+            tile1 = sim.Tile_c.mapTileNum[sim.currentMap][entityLeftCol][entityBottomRow];
+            tile2 = sim.Tile_c.mapTileNum[sim.currentMap][entityRightCol][entityBottomRow];
             if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                 plr.set_canCollide(true);
             }
@@ -88,32 +88,32 @@ public class CheckCollision
         switch(entity.get_direction()){
             case "down":
                 entityBottomRow = (entityBottomY + entity.get_moveSpeed())/sim.get_tileSize();
-                tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityBottomRow];
-                tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityBottomRow];
+                tile1 = sim.Tile_c.mapTileNum[sim.currentMap][entityLeftCol][entityBottomRow];
+                tile2 = sim.Tile_c.mapTileNum[sim.currentMap][entityRightCol][entityBottomRow];
                 if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                     entity.set_canCollide(true);
                 }
                 break;
             case "up":
                 entityTopRow = (entityTopY - entity.get_moveSpeed())/sim.get_tileSize();
-                tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityTopRow];
-                tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityTopRow];
+                tile1 = sim.Tile_c.mapTileNum[sim.currentMap][entityLeftCol][entityTopRow];
+                tile2 = sim.Tile_c.mapTileNum[sim.currentMap][entityRightCol][entityTopRow];
                 if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                     entity.set_canCollide(true);
                 }
                 break;
             case "right":
                 entityRightCol = (entityRightX + entity.get_moveSpeed())/sim.get_tileSize();
-                tile1 = sim.Tile_c.mapTileNum[entityRightCol][entityTopRow];
-                tile2 = sim.Tile_c.mapTileNum[entityRightCol][entityBottomRow];
+                tile1 = sim.Tile_c.mapTileNum[sim.currentMap][entityRightCol][entityTopRow];
+                tile2 = sim.Tile_c.mapTileNum[sim.currentMap][entityRightCol][entityBottomRow];
                 if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                     entity.set_canCollide(true);
                 }
                 break;
             case "left":
                 entityLeftCol = (entityLeftX - entity.get_moveSpeed())/sim.get_tileSize();
-                tile1 = sim.Tile_c.mapTileNum[entityLeftCol][entityTopRow];
-                tile2 = sim.Tile_c.mapTileNum[entityLeftCol][entityBottomRow];
+                tile1 = sim.Tile_c.mapTileNum[sim.currentMap][entityLeftCol][entityTopRow];
+                tile2 = sim.Tile_c.mapTileNum[sim.currentMap][entityLeftCol][entityBottomRow];
                 if (sim.Tile_c.tile[tile1].collision == true || sim.Tile_c.tile[tile2].collision == true){
                     entity.set_canCollide(true);
                 }
