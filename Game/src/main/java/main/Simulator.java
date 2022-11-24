@@ -14,6 +14,8 @@ public class Simulator extends JPanel implements Runnable
     final int tileSize = originalTileSize * scale; //48x48 tile
     public final int maxScreenCol = 27;
     public final int maxScreenRow = 15;
+    public final int maxMap = 3; //max number of maps
+    public int currentMap = 0; //indicate the current map #
     final int ScreenWidth = tileSize*(maxScreenCol); //1200 pixels
     final int ScreenHeight = tileSize*(maxScreenRow); //624 pixels
 
@@ -24,6 +26,7 @@ public class Simulator extends JPanel implements Runnable
     public final int gameOverSate=3;
     public final int gameWinSate =4;
     public final int titleState =5;
+    public final int transitionState =6;
     public int count=1;
     // Simulator attributes
     public Thread gameThread;
@@ -53,13 +56,12 @@ public class Simulator extends JPanel implements Runnable
         this.setDoubleBuffered(true);
         this.addKeyListener(Key);
         this.setFocusable(true);
-
     }
     public void game_setup()
     {
         this.createAssets.setObject();
         this.createAssets.setEnemy(Tile_c.get_currentMap());
-        gameState = titleState;
+        gameState = transitionState;
     }
     //reset game stats
     public void reset(){
@@ -69,7 +71,6 @@ public class Simulator extends JPanel implements Runnable
     }
     //restart objects
     public void restart() {
-        Tile_c.newMap();
         entityList.clear_objList();
         entityList.clear_enemyList();
         createAssets.setObject();
@@ -151,7 +152,6 @@ public class Simulator extends JPanel implements Runnable
         if(gameState == pauseState) {
             //nothing when paused
         }
-
     }
 
     // Draw updates onto UI
