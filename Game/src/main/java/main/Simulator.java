@@ -61,7 +61,7 @@ public class Simulator extends JPanel implements Runnable
     {
         this.createAssets.setObject();
         this.createAssets.setEnemy(Tile_c.get_currentMap());
-        gameState = transitionState;
+        gameState = titleState;
     }
     //reset game stats
     public void reset(){
