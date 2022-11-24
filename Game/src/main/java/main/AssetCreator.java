@@ -182,6 +182,7 @@ public class AssetCreator
             this.entityList.add_enemy(new Enemy(this.sim, tileSize*9, tileSize*1));
             this.entityList.add_enemy(new Enemy(this.sim, tileSize*19, tileSize*1));
             this.entityList.add_enemy(new Enemy(this.sim, tileSize*23, tileSize*2));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*7, tileSize*6));
             this.entityList.add_enemy(new Enemy(this.sim, tileSize*23, tileSize*7));
             this.entityList.add_enemy(new Enemy(this.sim, tileSize*19, tileSize*10));
             return true;
