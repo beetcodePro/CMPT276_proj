@@ -21,7 +21,6 @@ public class UI {
     public int commandNum = 0;
     public int tester;
 
-
     public UI(Simulator sim) {
         this.sim = sim;
 
@@ -64,9 +63,14 @@ public class UI {
         {
             drawGameOverScreen();
         }
+        //Win State
         if(sim.gameState==sim.gameWinSate)
         {
             drawGameWinScreen();
+        }
+        //Transition State
+        if(sim.gameState == sim.transitionState) {
+            drawTransitionScreen();
         }
 
 
@@ -225,8 +229,33 @@ public class UI {
             g2.drawString(">",x-sim.tileSize,y);
         }
         this.tester = 5;
+    }
+    public void drawTransitionScreen(){
+        String text = "Next Level!";
+        int x= getXforCenteredText2(text);
+        int y=sim.ScreenHeight/2;
+        g2.setColor(new Color(50,50,50,150));
+        g2.fillRect(x-100,y-80,450, 275);
 
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,80F));
+        g2.drawString(text, x-80, y);
+        g2.setFont(arial_40);
+        text= "Continue";
+        x=getXforCenteredText2(text);
+        y+=sim.get_tileSize()*2+30;
+        g2.drawString(text, x, y);
+        if(commandNum == 0){
+            g2.drawString(">",x-sim.tileSize,y);
+        }
 
+        text= "Quit";
+        x=getXforCenteredText2(text);
+        y+= 55;
+        g2.drawString(text, x, y);
+        if(commandNum == 1){
+            g2.drawString(">",x-sim.tileSize,y);
+        }
     }
     public int getXforCenteredText(String text)
     {
