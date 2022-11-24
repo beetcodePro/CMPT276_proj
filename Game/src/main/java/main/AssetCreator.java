@@ -60,7 +60,7 @@ public class AssetCreator
     // Helper function: Checks if a collidable tile exists at specified coordinate
     private boolean checkTileAtCoordinate(int x, int y, boolean isTrap)
     {
-        if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y]].collision == true)
+        if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[sim.currentMap][x][y]].collision == true)
             return true;
 
         // Checks if a bridge is nearby and (for traps only) if near the exit door
@@ -70,13 +70,13 @@ public class AssetCreator
             // These values represent the floor in the room that has the door
             if (((x >= 3 && x <= 7) && (y >=9 && y <= 11)))
                 return true;
-            if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x+1][y]].isBridge == true)
+            if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[sim.currentMap][x+1][y]].isBridge == true)
                 return true;
-            if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x-1][y]].isBridge == true)
+            if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[sim.currentMap][x-1][y]].isBridge == true)
                 return true;
-            if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y+1]].isBridge == true)
+            if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[sim.currentMap][x][y+1]].isBridge == true)
                 return true;
-            if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[x][y-1]].isBridge == true)
+            if(sim.Tile_c.tile[sim.Tile_c.mapTileNum[sim.currentMap][x][y-1]].isBridge == true)
                 return true;
         }
 
