@@ -14,21 +14,21 @@ public class tiles_controller
 {
     Simulator sim;
     public Tiles[] tile;
-    public int mapTileNum[][];
-    private int currentMap;
+    public int mapTileNum[][][];
 
     public tiles_controller(Simulator sim)
     {
         this.sim=sim;
         tile= new Tiles[35]; //number of different tiles
-        mapTileNum = new int[sim.maxScreenCol][sim.maxScreenRow];
-        get_tile_png();
+        mapTileNum = new int[sim.maxMap][sim.maxScreenCol][sim.maxScreenRow];
 
-        // Gets and draws new map
-        newMap();
+        get_tile_png();
+        mapLoad("/maps/map01.txt",0);
+        mapLoad("/maps/map02.txt",1);
+
     }
 
-    public int get_currentMap() { return currentMap; }
+    public int get_currentMap() { return sim.currentMap; }
 
     public void get_tile_png()
     {
@@ -163,7 +163,7 @@ public class tiles_controller
 
     }
 
-    public void mapLoad(String file){
+    public void mapLoad(String file, int map){
         try{
             InputStream is = getClass().getResourceAsStream(file);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -179,7 +179,7 @@ public class tiles_controller
 
                     int number = Integer.parseInt(num[col]);
 
-                    mapTileNum[col][row] = number;
+                    mapTileNum[map][col][row] = number;
                     col++;
                 }
                 if (col == sim.maxScreenCol){
@@ -201,7 +201,7 @@ public class tiles_controller
         int y=0;
         while (column<sim.maxScreenCol && row< sim.maxScreenRow)
         {
-            int tileNum = mapTileNum[column][row];
+            int tileNum = mapTileNum[sim.currentMap][column][row];
             g.drawImage(tile[tileNum].image,x,y, sim.get_tileSize(),sim.get_tileSize(), null);
 
             column++;
@@ -215,15 +215,5 @@ public class tiles_controller
 
             }
         }
-    }
-
-    // Gets and draws new map
-    public void newMap()
-    {
-        String maps[]= {"/maps/map01.txt", "/maps/map02.txt"};
-        Random random = new Random();
-        int x = random.nextInt(2);
-        mapLoad(maps[x]);
-        this.currentMap = x;
     }
 }
