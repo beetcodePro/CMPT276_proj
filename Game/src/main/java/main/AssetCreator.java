@@ -115,7 +115,6 @@ public class AssetCreator
             int x, y;
 
             // Generate a coordinate without a collidable tile
-
             do {
                 x = random.nextInt(mapBoundaryX)+1;
                 y = random.nextInt(mapBoundaryY)+1;
@@ -133,6 +132,9 @@ public class AssetCreator
                 break;
             case 1:
                 this.entityList.add_obj(new obj_door(tileSize*25, tileSize*4));
+                break;
+            case 2:
+                this.entityList.add_obj(new obj_door(tileSize*18, tileSize*10));
                 break;
         }
     }
@@ -171,6 +173,17 @@ public class AssetCreator
             this.entityList.add_enemy(new Enemy(this.sim, tileSize*15, tileSize*4));
             this.entityList.add_enemy(new Enemy(this.sim, tileSize*16, tileSize*13));
             this.entityList.add_enemy(new Enemy(this.sim, tileSize*23, tileSize*5));
+            return true;
+        }
+        if(mapNum == 2)
+        {
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*2, tileSize*10));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*13, tileSize*10));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*9, tileSize*1));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*19, tileSize*1));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*23, tileSize*2));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*23, tileSize*7));
+            this.entityList.add_enemy(new Enemy(this.sim, tileSize*19, tileSize*10));
             return true;
         }
         return false;

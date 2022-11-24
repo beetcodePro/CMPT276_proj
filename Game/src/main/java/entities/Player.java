@@ -226,13 +226,13 @@ public class Player extends AnimateEntity
                 sim.reset_player_position();
 
             else if (objectName == "Door") {
-                if (((lives > 0) || (score > 0)) && sim.currentMap == 1) //1 is last map
+                if (((lives > 0) || (score > 0)) && sim.currentMap == 2) //1 is last map
                 {
                     sim.gameState = sim.gameWinSate;
                 }
-                if (((lives > 0) || (score > 0)) && sim.currentMap == 0) {
+                if (((lives > 0) || (score > 0)) && sim.currentMap <= 1) {
                     sim.gameState = sim.transitionState;
-                    sim.currentMap = 1;
+                    sim.currentMap = sim.currentMap + 1;
                     sim.reset();
                     sim.restart();
                 }

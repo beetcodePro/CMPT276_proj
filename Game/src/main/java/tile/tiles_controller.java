@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Random;
 
 public class tiles_controller 
 {
@@ -25,6 +24,7 @@ public class tiles_controller
         get_tile_png();
         mapLoad("/maps/map01.txt",0);
         mapLoad("/maps/map02.txt",1);
+        mapLoad("/maps/map03.txt",2);
 
     }
 
