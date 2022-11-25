@@ -57,6 +57,7 @@ public class KeyBoard implements KeyListener {
                 //Game Win Screen Options
                 if (sim.ui.commandNum == 0 && sim.gameState == sim.gameWinSate) {
                     sim.gameState = sim.playGameState;
+                    sim.currentMap = 0;
                     sim.reset();
                     sim.restart();
                 }
