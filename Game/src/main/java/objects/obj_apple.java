@@ -19,4 +19,14 @@ public class obj_apple extends InanimateEntity
             e.printStackTrace();
         }
     }
+
+    public obj_apple() {
+        set_name("Apple");
+        try {
+            this.image = ImageIO.read(getClass().getResourceAsStream("/reward/apple.png"));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
