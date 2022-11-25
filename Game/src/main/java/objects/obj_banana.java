@@ -19,4 +19,14 @@ public class obj_banana extends InanimateEntity
             e.printStackTrace();
         }
     }
+
+    public obj_banana() {
+            set_name("Banana");
+            try {
+                this.image = ImageIO.read(getClass().getResourceAsStream("/reward/banana.png"));
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
 }
