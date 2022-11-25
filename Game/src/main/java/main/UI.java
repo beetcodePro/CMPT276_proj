@@ -1,6 +1,8 @@
 package main;
-
+//import object images
 import objects.obj_heart;
+import objects.obj_banana;
+import objects.obj_apple;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,7 +14,7 @@ public class UI {
     Graphics2D g2;
     public Simulator sim;
     Font arial_40;
-    BufferedImage heartImage;
+    BufferedImage heartImage,bananaImage,appleImage;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -27,6 +29,10 @@ public class UI {
         arial_40 = new Font("Arial", Font.PLAIN, 40);
         obj_heart heart = new obj_heart();
         heartImage = heart.image;
+        obj_banana banana = new obj_banana();
+        bananaImage = banana.image;
+        obj_apple apple = new obj_apple();
+        appleImage = apple.image;
     }
     public void showMessage(String text) {
         message = text;
@@ -56,7 +62,6 @@ public class UI {
         //Pause state
         if(sim.gameState == sim.pauseState){
             drawPauseScreen();
-            g2.setFont(arial_40);
         }
         //Game Over state
         if(sim.gameState==sim.gameOverSate)
@@ -90,7 +95,7 @@ public class UI {
     }
     public void drawTitle() {
         g2.setColor(new Color(178,102,255));
-        g2.fillRect(0,0,sim.ScreenWidth,sim.ScreenHeight);
+        g2.fillRect(0,0,sim.ScreenWidth+sim.tileSize,sim.ScreenHeight+sim.tileSize);
         //Title name
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
         String text = "Minion Laboratory";
@@ -99,20 +104,25 @@ public class UI {
         //Shadow
         g2.setColor(Color.gray);
         g2.drawString(text,x+5,y+5);
-        g2.setColor(Color.white);
+        //Title
+        g2.setColor(Color.yellow);
         g2.drawString(text,x,y);
 
         //title image
         x = sim.ScreenWidth/2 - 60;
         y += sim.tileSize*2;
         g2.drawImage(sim.player.down1,x,y,sim.tileSize*2,sim.tileSize*2,null);
+        g2.drawImage(bananaImage,40, 60, sim.tileSize*2, sim.tileSize*2, null);
+        g2.drawImage(bananaImage,sim.tileSize*23, 60, sim.tileSize*2, sim.tileSize*2, null);
 
         //Menu
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
-
         text = "START GAME";
         x = getXforCenteredText(text)+194;
         y += sim.tileSize*3.5;
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+        g2.setColor(Color.yellow);
         g2.drawString(text,x,y);
         if(commandNum == 0){
             g2.drawString(">",x-sim.tileSize,y);
@@ -121,6 +131,9 @@ public class UI {
         text = "QUIT";
         x = getXforCenteredText(text)+194;
         y += sim.tileSize;
+        g2.setColor(Color.gray);
+        g2.drawString(text,x+5,y+5);
+        g2.setColor(Color.yellow);
         g2.drawString(text,x,y);
         if(commandNum == 1){
             g2.drawString(">",x-sim.tileSize,y);
@@ -243,7 +256,7 @@ public class UI {
         g2.setFont(arial_40);
         text= "Continue";
         x=getXforCenteredText2(text);
-        y+=sim.get_tileSize()*2+30;
+        y+=sim.get_tileSize()*2;
         g2.drawString(text, x, y);
         if(commandNum == 0){
             g2.drawString(">",x-sim.tileSize,y);
