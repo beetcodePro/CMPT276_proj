@@ -34,6 +34,7 @@ public class AssetCreatorTest extends TestCase {
         suite.addTest(new AssetCreatorTest("creatingObjects"));
         suite.addTest(new AssetCreatorTest("creatingEnemies"));
         suite.addTest(new AssetCreatorTest("addingApple"));
+        suite.addTest(new AssetCreatorTest("createDoor"));
         return suite;
     }
 
@@ -92,5 +93,12 @@ public class AssetCreatorTest extends TestCase {
         assets.addApple();
         assertEquals(assets.entityList.get_obj_at_index(0).get_name(), "Apple");
     }
-
+    /**
+     * @test creates a new door
+     */
+    public void createDoor(){
+        assets.entityList.clear_objList();
+        assets.addDoor(2);
+        assertEquals(assets.entityList.get_obj_at_index(0).get_name(), "Door");
+    }
 }
