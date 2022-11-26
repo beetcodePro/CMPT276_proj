@@ -17,6 +17,8 @@ import java.awt.image.BufferedImage;
 import main.Simulator;
 import main.KeyBoard;
 import main.CheckCollision;
+import main.Tools;
+
 
 public class Player extends AnimateEntity
 {
@@ -184,27 +186,36 @@ public class Player extends AnimateEntity
                     img = left2;
                 break;
         }
-        g2.drawImage(img, X, Y, tileSize, tileSize, null);
+        g2.drawImage(img, X, Y, null);
     }
 
     // Load player sprites
     public void get_sprite() 
     {
-        try {
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/minion_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/minion_down_2.png"));
-            down3 = ImageIO.read(getClass().getResourceAsStream("/player/minion_down_3.png"));
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/minion_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/minion_up_2.png"));
-            up3 = ImageIO.read(getClass().getResourceAsStream("/player/minion_up_3.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/minion_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/minion_right_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/minion_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/minion_left_2.png"));
+        down1 = setup("minion_down_1");
+        down2 = setup("minion_down_2");
+        down3 = setup("minion_down_3");
+        up1 = setup("minion_up_1");
+        up2 = setup("minion_up_2");
+        up3 = setup("minion_up_3");
+        right1 = setup("minion_right_1");
+        right2 = setup("minion_right_2");
+        left1 = setup("minion_left_1");
+        left2 = setup("minion_left_2");
+    }
+    public BufferedImage setup(String imageName) {
+
+        Tools uTool = new Tools();
+        BufferedImage image = null;
+
+        try{
+            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
+            image = uTool.scaleImage(image, sim.get_tileSize(),sim.get_tileSize());
+
+        }catch(IOException e) {
+            e.printStackTrace();
         }
-        catch (IOException err) {
-            err.printStackTrace();
-        }
+        return image;
     }
 
     // This function runs when player collides with object

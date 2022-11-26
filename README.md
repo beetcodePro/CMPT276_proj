@@ -4,6 +4,13 @@ Noah Kamzelski
 Samin Moradkhan 
 Lionel Song
 
+To run the Tests: 
+1. run mvn clean package
+1. run mvn test and it will build and run all the tests. 
+2. to run build and run the game run the command:  java -jar target/Game-1.0-SNAPSHOT.jar
+
+
+
 How the game works:
 1. once you run the main class you will see a title screen opens up. 
 2. you will have 2 options which is to start the game or quitting.You can choose the options by the up and down arrow keys pr WS keys on the keyboard and pressing "enter" after.
