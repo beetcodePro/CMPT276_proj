@@ -1,76 +1,73 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="12" failures="0" name="org.example.EntityListTest" time="0.356" errors="0" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.example.EntityListTest" time="0.342" tests="12" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="java.vm.version" value="19+36-2238"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-19\bin"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:/Users/Samin/IdeaProjects/project276/project_copy/project/Game"/>
-    <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="path.separator" value=";"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="sun.os.patch.level" value=""/>
-    <property name="user.script" value=""/>
-    <property name="user.country" value="CA"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="19+36-2238"/>
-    <property name="os.arch" value="amd64"/>
-    <property name="java.io.tmpdir" value="C:\Users\Samin\AppData\Local\Temp\"/>
-    <property name="line.separator" value="
-"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="user.variant" value=""/>
-    <property name="stderr.encoding" value="cp437"/>
-    <property name="os.name" value="Windows 11"/>
-    <property name="classworlds.conf" value="C:/Program Files/apache-maven-3.8.6/bin/m2.conf"/>
-    <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="stdout.encoding" value="cp437"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-19\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Samin\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\VMware\VMware Player\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\MATLAB\R2021b\bin;C:\Program Files\Git\;C:\MinGW\bin;C:\Program Files\nodejs\npm;C:\Program Files\nodejs;C:\Program Files\PuTTY;C:\Program Files\apache-maven-3.8.6\bin;C:\Program Files\Java\jdk-19;C:\Users\Samin\AppData\Local\Microsoft\WindowsApps;C:\Users\Samin\Desktop\Microsoft VS Code\bin;C:\Users\Samin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\nodejs;C:\Users\Samin\AppData\Roaming\npm;C:\intelFPGA_lite\18.0\modelsim_ase\win32aloem;C:\Program Files\apache-maven-3.8.6\bin;C:\Program Files\Java\jdk-19;C:\Users\Samin\Downloads\arduino-cli_0.28.0_Windows_64bit;."/>
-    <property name="maven.conf" value="C:/Program Files/apache-maven-3.8.6/conf"/>
-    <property name="jdk.debug" value="release"/>
-    <property name="java.class.version" value="63.0"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.0"/>
-    <property name="library.jansi.path" value="C:/Program Files/apache-maven-3.8.6/lib/jansi-native"/>
-    <property name="user.home" value="C:\Users\Samin"/>
-    <property name="user.timezone" value="America/Vancouver"/>
-    <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="19"/>
-    <property name="user.name" value="Samin"/>
-    <property name="java.class.path" value="C:/Program Files/apache-maven-3.8.6/boot/plexus-classworlds-2.6.0.jar"/>
-    <property name="java.vm.specification.version" value="19"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game\target\test-classes;C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game\target\classes;C:\Users\Samin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk-19"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Vancouver"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="19"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="CA"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-19\bin"/>
+    <property name="sun.java.command" value="C:\Users\Samin\AppData\Local\Temp\surefire1766998688404659248\surefirebooter13615208550954892347.jar C:\Users\Samin\AppData\Local\Temp\surefire1766998688404659248 2022-11-25T21-19-37_625-jvmRun1 surefire2824734740652268235tmp surefire_05885905044887277212tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game\target\test-classes;C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game\target\classes;C:\Users\Samin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Samin"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.version" value="19"/>
-    <property name="native.encoding" value="Cp1252"/>
-    <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="C:\Program Files\apache-maven-3.8.6"/>
-    <property name="file.separator" value="\"/>
     <property name="java.version.date" value="2022-09-20"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-19"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Samin\AppData\Local\Temp\surefire1766998688404659248\surefirebooter13615208550954892347.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="19+36-2238"/>
+    <property name="user.name" value="Samin"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Samin\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Samin\AppData\Local\Temp\"/>
+    <property name="java.version" value="19"/>
+    <property name="user.dir" value="C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-19\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Samin\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\VMware\VMware Player\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\MATLAB\R2021b\bin;C:\Program Files\Git\;C:\MinGW\bin;C:\Program Files\nodejs\npm;C:\Program Files\nodejs;C:\Program Files\PuTTY;C:\Program Files\apache-maven-3.8.6\bin;C:\Program Files\Java\jdk-19;C:\Users\Samin\AppData\Local\Microsoft\WindowsApps;C:\Users\Samin\Desktop\Microsoft VS Code\bin;C:\Users\Samin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\nodejs;C:\Users\Samin\AppData\Roaming\npm;C:\intelFPGA_lite\18.0\modelsim_ase\win32aloem;C:\Program Files\apache-maven-3.8.6\bin;C:\Program Files\Java\jdk-19;C:\Users\Samin\Downloads\arduino-cli_0.28.0_Windows_64bit;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="19+36-2238"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="sun.cpu.endian" value="little"/>
-    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase classname="org.example.EntityListTest" name="testClearEnemy" time="0.029"/>
-  <testcase classname="org.example.EntityListTest" name="testClearObject" time="0.004"/>
-  <testcase classname="org.example.EntityListTest" name="addObject" time="0.004"/>
-  <testcase classname="org.example.EntityListTest" name="testClearObject" time="0.003"/>
-  <testcase classname="org.example.EntityListTest" name="getSizeObject" time="0.008"/>
-  <testcase classname="org.example.EntityListTest" name="getObjectAtIndex" time="0.008"/>
-  <testcase classname="org.example.EntityListTest" name="deleteObjectAtIndex" time="0.01"/>
-  <testcase classname="org.example.EntityListTest" name="addEnemy" time="0.023"/>
-  <testcase classname="org.example.EntityListTest" name="testClearEnemy" time="0.023"/>
-  <testcase classname="org.example.EntityListTest" name="getSizeEnemy" time="0.088"/>
-  <testcase classname="org.example.EntityListTest" name="getEnemyAtIndex" time="0.077"/>
-  <testcase classname="org.example.EntityListTest" name="deleteEnemyAtIndex" time="0.079"/>
+  <testcase name="testClearEnemy" classname="org.example.EntityListTest" time="0.033"/>
+  <testcase name="testClearEnemy" classname="org.example.EntityListTest" time="0.02"/>
+  <testcase name="testClearObject" classname="org.example.EntityListTest" time="0.002"/>
+  <testcase name="testClearObject" classname="org.example.EntityListTest" time="0.002"/>
+  <testcase name="addObject" classname="org.example.EntityListTest" time="0.003"/>
+  <testcase name="getSizeObject" classname="org.example.EntityListTest" time="0.008"/>
+  <testcase name="getObjectAtIndex" classname="org.example.EntityListTest" time="0.007"/>
+  <testcase name="deleteObjectAtIndex" classname="org.example.EntityListTest" time="0.009"/>
+  <testcase name="addEnemy" classname="org.example.EntityListTest" time="0.022"/>
+  <testcase name="getSizeEnemy" classname="org.example.EntityListTest" time="0.076"/>
+  <testcase name="getEnemyAtIndex" classname="org.example.EntityListTest" time="0.084"/>
+  <testcase name="deleteEnemyAtIndex" classname="org.example.EntityListTest" time="0.075"/>
 </testsuite>

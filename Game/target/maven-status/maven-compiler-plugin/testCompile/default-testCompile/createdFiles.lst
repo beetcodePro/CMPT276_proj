@@ -1,2 +1,7 @@
+org\example\AssetCreatorTest.class
+org\example\KeyboardTest.class
+org\example\SoundTest.class
+org\example\EntityListTest.class
+org\example\PlayerTest.class
 org\example\SimulatorTest.class
 org\example\EnemyTest.class

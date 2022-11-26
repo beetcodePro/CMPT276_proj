@@ -71,6 +71,15 @@ public class KeyboardTest extends TestCase {
         KeyEvent e2 = new KeyEvent(a, 1, 20, 1, 39, 'R');
         assertEquals(KeyEvent.VK_RIGHT, e2.getKeyCode());
     }
+
+    /**
+     * @test for D key on the keyboard
+     */
+    public void wrongKeyPressed() {
+        Button a = new Button("click");
+        KeyEvent e = new KeyEvent(a, 1, 20, 1, 89, 'Q');
+       assertNotSame(KeyEvent.VK_RIGHT, e.getKeyCode());
+    }
     /**
      * @return the suite of tests being tested
      */
@@ -81,6 +90,7 @@ public class KeyboardTest extends TestCase {
             suite.addTest(new KeyboardTest("keyPressedDNTest"));
             suite.addTest(new KeyboardTest("keyPressedLFTest"));
             suite.addTest(new KeyboardTest("keyPressedRTTest"));
+            suite.addTest(new KeyboardTest("wrongKeyPressed"));
             return suite;
 
     }
