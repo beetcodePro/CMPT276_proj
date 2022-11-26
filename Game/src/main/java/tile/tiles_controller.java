@@ -80,7 +80,7 @@ public class tiles_controller
         try{
             tile[index] = new Tiles();
             tile[index].image= ImageIO.read(getClass().getResourceAsStream("/tiles/" + imageName + ".png"));
-            tile[index].image = uTool.scaleImage(tile[index].image, sim.tileSize,sim.tileSize);
+            tile[index].image = uTool.scaleImage(tile[index].image, sim.get_tileSize(),sim.get_tileSize());
             tile[index].collision = collision;
         }catch (IOException e) {
             e.printStackTrace();
