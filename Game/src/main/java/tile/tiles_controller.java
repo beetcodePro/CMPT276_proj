@@ -126,7 +126,7 @@ public class tiles_controller
         while (column<sim.maxScreenCol && row< sim.maxScreenRow)
         {
             int tileNum = mapTileNum[sim.currentMap][column][row];
-            g.drawImage(tile[tileNum].image,x,y, sim.get_tileSize(),sim.get_tileSize(), null);
+            g.drawImage(tile[tileNum].image,x,y, null);
 
             column++;
             x+= sim.get_tileSize();
