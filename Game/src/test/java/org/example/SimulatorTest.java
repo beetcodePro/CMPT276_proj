@@ -7,6 +7,7 @@ import junit.framework.TestSuite;
 import main.*;
 import objects.*;
 
+
 public class SimulatorTest extends TestCase {
     //Attributes
     private Simulator sim;
