@@ -41,7 +41,6 @@ public class SimulatorTest extends TestCase {
         suite.addTest(new SimulatorTest("addPlayerLives"));
         return suite;
     }
-
     /**
      * @test sets up the game
      */
@@ -129,15 +128,12 @@ public class SimulatorTest extends TestCase {
         sim.update();
         assertEquals(sim.get_entitylist().get_objList_size(), 1);
     }
-
     /**
      * @test sound effect
      */
     public void testSoundEffect(){
         assertEquals(sim.PlaySoundEffect(0), 0);
-
     }
-
     /**
      * @test resets the player position
      */

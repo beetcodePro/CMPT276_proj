@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
 public class UI {
-    Graphics2D g2;
+    public Graphics2D g2;
     public Simulator sim;
     Font arial_40;
     BufferedImage heartImage,bananaImage,appleImage;
@@ -91,7 +91,6 @@ public class UI {
                 messageOn = false;
             }
         }
-        this.tester = 1;
     }
     public void drawTitle() {
         g2.setColor(new Color(178,102,255));
@@ -282,6 +281,5 @@ public class UI {
         int x=sim.get_screen_width()/2- length/2;
         return x;
     }
-    public double getPlayTime(){return this.playTime;}
-    public void setPlayTime(double temp){this.playTime = temp;}
+
 }
