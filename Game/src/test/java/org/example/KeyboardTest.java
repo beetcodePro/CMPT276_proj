@@ -1,24 +1,12 @@
 package org.example;
 
-import entities.Player;
 import junit.framework.Test;
 import junit.framework.TestCase;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import junit.framework.TestSuite;
-import main.CheckCollision;
-import main.EntityList;
-import main.KeyBoard;
-import main.Simulator;
 
 public class KeyboardTest extends TestCase {
-    private Simulator sim;
-
-
-
     /**
      * Create the test case.
      * @param testName name of the test case

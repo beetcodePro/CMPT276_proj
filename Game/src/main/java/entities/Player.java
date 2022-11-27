@@ -141,7 +141,6 @@ public class Player extends AnimateEntity
         BufferedImage img = null;
         int X = this.get_coordinate_X();
         int Y = this.get_coordinate_Y();
-        int tileSize = this.sim.get_tileSize();
 
         switch(this.get_direction())
         {

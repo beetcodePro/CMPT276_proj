@@ -1,7 +1,5 @@
 package org.example;
 
-import entities.Enemy;
-import entities.InanimateEntity;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
