@@ -27,7 +27,7 @@ public class Simulator extends JPanel implements Runnable
     public final int gameWinSate =4;
     public final int titleState =5;
     public final int transitionState =6;
-    public int count=1;
+    public int timer_count=1;
     // Simulator attributes
     public Thread gameThread;
     KeyBoard Key = new KeyBoard(this);
@@ -118,8 +118,6 @@ public class Simulator extends JPanel implements Runnable
             {
                 e.printStackTrace();
             }
-
-
         }
 
     }
@@ -130,30 +128,34 @@ public class Simulator extends JPanel implements Runnable
         if(gameState == playGameState) {
             player.update();
             this.entityList.update_enemyList();
-            count++;
-
-            if (count== 450)
-            {
-                //delete the apples
-                for (int i=0 ; i< entityList.get_objList_size(); i++)
-
-               if (entityList.get_obj_at_index(i).get_name() == "Apple")
-               {
-                   entityList.delete_obj_at_index(i);
-               }
-
-            }
-            if (count ==900)
-            {
-                createAssets.addApple();
-                count =0;
-            }
+            timer_count++;
+            AppleReappear();
         }
         if(gameState == pauseState) {
             //nothing when paused
         }
     }
 
+    public void AppleReappear()
+    {
+        //busy wait until about 12 seconds
+        if (timer_count== 450)
+        {
+            //delete the existing apples
+            for (int i=0 ; i< entityList.get_objList_size(); i++)
+
+                if (entityList.get_obj_at_index(i).get_name() == "Apple")
+                {
+                    entityList.delete_obj_at_index(i);
+                }
+        }
+        //busy wait for another 12 seconds and add the apples to the map again
+        if (timer_count ==900)
+        {
+            createAssets.addApple();
+            timer_count =0;
+        }
+    }
     // Draw updates onto UI
     public void paintComponent(Graphics g)
     {
