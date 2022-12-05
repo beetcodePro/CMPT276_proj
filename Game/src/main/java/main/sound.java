@@ -7,6 +7,7 @@ import javax.sound.sampled.Clip;
 public class sound {
     Clip clip;
     URL soundURL[]= new URL[30];
+    private int sound_index;
 
     public sound()
     {
@@ -45,16 +46,24 @@ public class sound {
     {
         if (s=="Trap" || s=="Enemy")
         {
-            return 3;
+            sound_index= 3;
         }
         if (s=="Apple")
         {
-            return 1;
+            sound_index= 1;
         }
         if (s=="Banana")
         {
-            return 2;
+            sound_index= 2;
         }
-        return 0 ;
+        if (s=="Door")
+        {
+            sound_index= 0;
+        }
+        return sound_index ;
+    }
+    public void setSoundIndex(int index)
+    {
+        sound_index= index;
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.example.PlayerTest" time="2.296" tests="16" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.example.PlayerTest" time="2.079" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="19"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-19\bin"/>
-    <property name="sun.java.command" value="C:\Users\Samin\AppData\Local\Temp\surefire1766998688404659248\surefirebooter13615208550954892347.jar C:\Users\Samin\AppData\Local\Temp\surefire1766998688404659248 2022-11-25T21-19-37_625-jvmRun1 surefire2824734740652268235tmp surefire_05885905044887277212tmp"/>
+    <property name="sun.java.command" value="C:\Users\Samin\AppData\Local\Temp\surefire10040394833033663300\surefirebooter14002467487865008414.jar C:\Users\Samin\AppData\Local\Temp\surefire10040394833033663300 2022-11-26T16-29-34_144-jvmRun1 surefire18107774158045498451tmp surefire_017834203811927248907tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game\target\test-classes;C:\Users\Samin\IdeaProjects\project276\project_copy\project\Game\target\classes;C:\Users\Samin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Samin\AppData\Local\Temp\surefire1766998688404659248\surefirebooter13615208550954892347.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Samin\AppData\Local\Temp\surefire10040394833033663300\surefirebooter14002467487865008414.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="19+36-2238"/>
@@ -58,20 +58,20 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="63.0"/>
   </properties>
-  <testcase name="testResetPosition" classname="org.example.PlayerTest" time="0.101"/>
-  <testcase name="testResetPosition" classname="org.example.PlayerTest" time="0.101"/>
+  <testcase name="testResetPosition" classname="org.example.PlayerTest" time="0.091"/>
+  <testcase name="testResetPosition" classname="org.example.PlayerTest" time="0.086"/>
   <testcase name="moveUp" classname="org.example.PlayerTest" time="0"/>
   <testcase name="moveDown" classname="org.example.PlayerTest" time="0"/>
-  <testcase name="moveRight" classname="org.example.PlayerTest" time="0.001"/>
+  <testcase name="moveRight" classname="org.example.PlayerTest" time="0"/>
   <testcase name="moveLeft" classname="org.example.PlayerTest" time="0"/>
   <testcase name="moveWhenCollision" classname="org.example.PlayerTest" time="0"/>
-  <testcase name="bananaCollision" classname="org.example.PlayerTest" time="0.005"/>
+  <testcase name="bananaCollision" classname="org.example.PlayerTest" time="0.003"/>
   <testcase name="appleCollision" classname="org.example.PlayerTest" time="0.003"/>
   <testcase name="trapCollision" classname="org.example.PlayerTest" time="0.003"/>
   <testcase name="invalidCollision" classname="org.example.PlayerTest" time="0"/>
-  <testcase name="enemyCollision" classname="org.example.PlayerTest" time="0.109"/>
-  <testcase name="nullEnemyCollision" classname="org.example.PlayerTest" time="0"/>
-  <testcase name="checkNoLives" classname="org.example.PlayerTest" time="0.001"/>
+  <testcase name="enemyCollision" classname="org.example.PlayerTest" time="0.087"/>
+  <testcase name="nullEnemyCollision" classname="org.example.PlayerTest" time="0.001"/>
+  <testcase name="checkNoLives" classname="org.example.PlayerTest" time="0"/>
   <testcase name="checkHasLives" classname="org.example.PlayerTest" time="0"/>
   <testcase name="setHitbox" classname="org.example.PlayerTest" time="0"/>
 </testsuite>
