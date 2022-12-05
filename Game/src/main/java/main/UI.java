@@ -72,11 +72,13 @@ public class UI {
         if(sim.gameState == sim.playGameState){
             // Timer
             playTime +=(double)1/60;
-            //Draw time
             g2.setFont(arial_40);
-            g2.drawString("Time:"+ dFormat.format(playTime), sim.tileSize*11,40);
             //Score
             g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
+            //Time
+            g2.drawString("Time:"+ dFormat.format(playTime), sim.tileSize*11,40);
+            //Current Level
+            g2.drawString("Current Level:"+ (sim.currentMap+1), sim.tileSize*18, 40);
         }
         //Pause state
         if(sim.gameState == sim.pauseState){
@@ -181,13 +183,14 @@ public class UI {
         g2.drawString("Time:"+ dFormat.format(playTime),sim.tileSize*9,408);
         g2.setFont(arial_40);
         g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
+        g2.drawString("Current Level:"+ (sim.currentMap+1), sim.tileSize*18, 40);
         this.tester = 3;
     }
     public void drawGameOverScreen()
     {
-        String text= "GAME OVER";
-        g2.setColor(new Color(0,0,0,150));
+        g2.setColor(new Color(200,0,0,150));
         g2.fillRect(0,0 , sim.ScreenWidth, sim.ScreenHeight);
+        String text= "GAME OVER";
         int x= getXforCenteredText(text);
         int y=sim.get_tileSize()*4;
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
@@ -198,23 +201,28 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(50f));
         text= "Retry";
         x=getXforCenteredText2(text);
-        y+=sim.get_tileSize()*4;
+        y+=sim.get_tileSize()*7;
         g2.drawString(text, x, y);
         if(commandNum == 0){
+            g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
 
         text= "Menu";
         x=getXforCenteredText2(text);
-        y+= 55;
+        y+= sim.tileSize*1;
+        g2.setColor(Color.white);
         g2.drawString(text, x, y);
         if(commandNum == 1){
+            g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
-
+        g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(80f));
-        x-=sim.tileSize*4;
-        y-= 160;
+        y-= sim.tileSize*3;
+        g2.drawString("Time:"+ dFormat.format(playTime),x - sim.tileSize*6,y);
+        x -=sim.tileSize*4;
+        y-= sim.tileSize*2;
         g2.drawString("Score:"+ sim.player.get_score(),x,y);
         this.tester = 4;
 
@@ -224,7 +232,7 @@ public class UI {
         String text= "YOU WON!";
         g2.setColor(new Color(0,100,0,150));
         g2.fillRect(0,0 , sim.ScreenWidth, sim.ScreenHeight);
-        int x= getXforCenteredText(text);
+        int x= getXforCenteredText(text)- sim.tileSize*2;
         int y=sim.get_tileSize()*3;
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
         //shadow
@@ -252,19 +260,23 @@ public class UI {
         g2.drawString("Time:"+ dFormat.format(playTime),x-2*sim.tileSize,y);
         //Options
 
-        text= "Retry";
+        text= "Play Again?";
         x=getXforCenteredText2(text);
         y+=sim.get_tileSize()*2+30;
-        g2.drawString(text, x, y);
+        g2.setColor(Color.white);
+        g2.drawString(text, x+30, y);
         if(commandNum == 0){
+            g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
 
         text= "Quit";
         x=getXforCenteredText2(text);
         y+= 55;
+        g2.setColor(Color.white);
         g2.drawString(text, x, y);
         if(commandNum == 1){
+            g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
         this.tester = 5;
@@ -274,27 +286,46 @@ public class UI {
         int x= getXforCenteredText2(text);
         int y=sim.ScreenHeight/2;
         g2.setColor(new Color(50,50,50,150));
-        g2.fillRect(x-10*sim.tileSize,y-100,sim.tileSize*20, 275);
-
+        g2.fillRect(x-10*sim.tileSize,y- sim.tileSize*4,sim.tileSize*20, sim.tileSize*8);
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,80F));
-        g2.drawString(text, x-9*sim.tileSize, y);
+        g2.drawString(text, x-9*sim.tileSize, y-2*sim.tileSize);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
+        text= "Move onto level ";
+        x=getXforCenteredText2(text);
+        if(sim.currentMap < 2) {
+            g2.drawString(text + (sim.currentMap+1) +"?", x, y);
+        }
+        if(sim.currentMap == 2){
+            text= "Move onto the final level?";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,30F));
+            g2.drawString(text, x- sim.tileSize-15, y);
+        }
         text= "Continue";
         x=getXforCenteredText2(text);
         y+=sim.get_tileSize()*2;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         g2.drawString(text, x, y);
         if(commandNum == 0){
+            g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
 
         text= "Quit";
         x=getXforCenteredText2(text);
         y+= 55;
+        g2.setColor(Color.white);
         g2.drawString(text, x, y);
         if(commandNum == 1){
+            g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
+
+        g2.setFont(arial_40);
+        g2.setColor(Color.white);
+        g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
+        g2.drawString("Time:"+ dFormat.format(playTime), sim.tileSize*11,40);
+
     }
     public int getXforCenteredText(String text)
     {
