@@ -4,16 +4,17 @@ import objects.obj_heart;
 import objects.obj_banana;
 import objects.obj_apple;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 
 public class UI {
     public Graphics2D g2;
     public Simulator sim;
-    Font arial_40;
+
+    Font PublicPixel, arial_40;
     BufferedImage heartImage,bananaImage,appleImage;
     public boolean messageOn = false;
     public String message = "";
@@ -26,7 +27,21 @@ public class UI {
     public UI(Simulator sim) {
         this.sim = sim;
 
-        arial_40 = new Font("Arial", Font.PLAIN, 40);
+
+        try {
+            InputStream is = getClass().getResourceAsStream("/font/PublicPixel-z84yD.ttf");
+            PublicPixel = Font.createFont(Font.TRUETYPE_FONT, is);
+        }
+        catch(FontFormatException e) {
+            //TODO
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            //TODO
+            e.printStackTrace();
+        }
+        arial_40 = new Font("Arial",Font.PLAIN,40);
+
         obj_heart heart = new obj_heart();
         heartImage = heart.image;
         obj_banana banana = new obj_banana();
@@ -40,10 +55,13 @@ public class UI {
     }
     public void draw(Graphics2D g2){
         this.g2=g2;
+        g2.setColor(Color.white);
         g2.setFont(arial_40);
+        g2.drawString("x" + sim.player.get_lives(), 90 , 40);
+        g2.setFont(PublicPixel);
         g2.setColor(Color.white);
         g2.drawImage(heartImage,40, 6, sim.tileSize-5, sim.tileSize-5, null);
-        g2.drawString("x" + sim.player.get_lives(), 90 ,40);
+
 
         //title state
         if(sim.gameState == sim.titleState) {
@@ -55,6 +73,7 @@ public class UI {
             // Timer
             playTime +=(double)1/60;
             //Draw time
+            g2.setFont(arial_40);
             g2.drawString("Time:"+ dFormat.format(playTime), sim.tileSize*11,40);
             //Score
             g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
@@ -96,7 +115,7 @@ public class UI {
         g2.setColor(new Color(178,102,255));
         g2.fillRect(0,0,sim.ScreenWidth+sim.tileSize,sim.ScreenHeight+sim.tileSize);
         //Title name
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,55F));
         String text = "Minion Laboratory";
         int x = getXforCenteredText(text)+192;
         int y = sim.tileSize*3;
@@ -113,17 +132,22 @@ public class UI {
         g2.drawImage(sim.player.down1,x,y,sim.tileSize*2,sim.tileSize*2,null);
         g2.drawImage(bananaImage,40, 60, sim.tileSize*2, sim.tileSize*2, null);
         g2.drawImage(bananaImage,sim.tileSize*23, 60, sim.tileSize*2, sim.tileSize*2, null);
+        g2.drawImage(bananaImage,x + sim.tileSize* -5, y, sim.tileSize*2, sim.tileSize*2, null);
+        g2.drawImage(appleImage,x + sim.tileSize*5, y, sim.tileSize*2, sim.tileSize*2, null);
+        g2.drawImage(appleImage,x + sim.tileSize*-9, y,  sim.tileSize*2, sim.tileSize*2, null);
+        g2.drawImage(bananaImage,x + sim.tileSize*9, y,  sim.tileSize*2, sim.tileSize*2, null);
 
         //Menu
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
         text = "START GAME";
         x = getXforCenteredText(text)+194;
-        y += sim.tileSize*3.5;
+        y += sim.tileSize*5;
         g2.setColor(Color.gray);
         g2.drawString(text,x+5,y+5);
-        g2.setColor(Color.yellow);
+        g2.setColor(new Color(108, 242, 5));
         g2.drawString(text,x,y);
         if(commandNum == 0){
+            g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
 
@@ -132,9 +156,10 @@ public class UI {
         y += sim.tileSize;
         g2.setColor(Color.gray);
         g2.drawString(text,x+5,y+5);
-        g2.setColor(Color.yellow);
+        g2.setColor(new Color(108, 242, 5));
         g2.drawString(text,x,y);
         if(commandNum == 1){
+            g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
         this.tester = 2;
@@ -147,13 +172,14 @@ public class UI {
         int x= getXforCenteredText2(text);
         int y=sim.ScreenHeight/2;
         g2.setColor(new Color(50,50,50,150));
-        g2.fillRect(x-100,y-80,368, 140);
+        g2.fillRect(x-6*sim.tileSize,y-80,sim.tileSize*12, sim.tileSize*3);
 
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,80F));
-        g2.drawString(text, x-80, y);
+        g2.drawString(text, x-5*sim.tileSize, y);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
+        g2.drawString("Time:"+ dFormat.format(playTime),sim.tileSize*9,408);
         g2.setFont(arial_40);
-        g2.drawString("Time:"+ dFormat.format(playTime),555,408);
         g2.drawString("Score:"+ sim.player.get_score(), 250, 40);
         this.tester = 3;
     }
@@ -166,7 +192,7 @@ public class UI {
         int y=sim.get_tileSize()*4;
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
         g2.setColor(Color.white);
-        g2.drawString(text, x+48, y-4);
+        g2.drawString(text, x-5*sim.tileSize, y-4);
 
         //retry
         g2.setFont(g2.getFont().deriveFont(50f));
@@ -187,7 +213,7 @@ public class UI {
         }
 
         g2.setFont(g2.getFont().deriveFont(80f));
-        x-=69;
+        x-=sim.tileSize*4;
         y-= 160;
         g2.drawString("Score:"+ sim.player.get_score(),x,y);
         this.tester = 4;
@@ -201,11 +227,12 @@ public class UI {
         int x= getXforCenteredText(text);
         int y=sim.get_tileSize()*3;
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 100f));
-        g2.setColor(Color.pink);
-        g2.drawString(text, x+48, y-4);
         //shadow
+        g2.setColor(Color.pink);
+        g2.drawString(text, x-(2*sim.tileSize)-5, y-4);
+        //text
         g2.setColor(Color.white);
-        g2.drawString(text, x+53, y+1);
+        g2.drawString(text, x-2*sim.tileSize, y+1);
 
         g2.setFont(g2.getFont().deriveFont(60f));
         text="Score: ";
@@ -222,7 +249,7 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(50f));
         x = sim.ScreenWidth/2 - 130 ;
         y += sim.tileSize*3;
-        g2.drawString("Time:"+ dFormat.format(playTime),x,y);
+        g2.drawString("Time:"+ dFormat.format(playTime),x-2*sim.tileSize,y);
         //Options
 
         text= "Retry";
@@ -247,12 +274,12 @@ public class UI {
         int x= getXforCenteredText2(text);
         int y=sim.ScreenHeight/2;
         g2.setColor(new Color(50,50,50,150));
-        g2.fillRect(x-100,y-80,450, 275);
+        g2.fillRect(x-10*sim.tileSize,y-100,sim.tileSize*20, 275);
 
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,80F));
-        g2.drawString(text, x-80, y);
-        g2.setFont(arial_40);
+        g2.drawString(text, x-9*sim.tileSize, y);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
         text= "Continue";
         x=getXforCenteredText2(text);
         y+=sim.get_tileSize()*2;
