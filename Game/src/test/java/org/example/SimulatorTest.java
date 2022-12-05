@@ -122,7 +122,7 @@ public class SimulatorTest extends TestCase {
      */
     public void updateGame(){
         sim.gameState = sim.playGameState;
-        sim.count = 450;
+        sim.timer_count = 450;
         sim.get_entitylist().clear_enemyList();
         sim.get_entitylist().clear_objList();
         sim.get_entitylist().add_obj(new obj_apple(5, 10));
