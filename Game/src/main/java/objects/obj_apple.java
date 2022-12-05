@@ -20,6 +20,8 @@ public class obj_apple extends InanimateEntity
         }
     }
 
+    //Dead code that doesn't get used but might be used in the future
+    /*
     public obj_apple() {
         set_name("Apple");
         try {
@@ -29,4 +31,6 @@ public class obj_apple extends InanimateEntity
             e.printStackTrace();
         }
     }
+
+     */
 }

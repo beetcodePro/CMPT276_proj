@@ -44,9 +44,9 @@ public class UI {
 
         obj_heart heart = new obj_heart();
         heartImage = heart.image;
-        obj_banana banana = new obj_banana();
+        obj_banana banana = new obj_banana(0, 0);
         bananaImage = banana.image;
-        obj_apple apple = new obj_apple();
+        obj_apple apple = new obj_apple(0, 0);
         appleImage = apple.image;
     }
     public void showMessage(String text) {

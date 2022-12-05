@@ -20,6 +20,9 @@ public class obj_banana extends InanimateEntity
         }
     }
 
+
+    //Dead code that doesn't get used but might be used in the future
+    /*
     public obj_banana() {
             set_name("Banana");
             try {
@@ -29,4 +32,6 @@ public class obj_banana extends InanimateEntity
                 e.printStackTrace();
             }
     }
+
+     */
 }
