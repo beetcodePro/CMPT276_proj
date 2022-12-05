@@ -243,7 +243,6 @@ public class Player extends AnimateEntity
                 if (((lives > 0) || (score > 0)) && sim.currentMap <= 1) {
                     sim.gameState = sim.transitionState;
                     sim.currentMap = sim.currentMap + 1;
-                    sim.reset();
                     sim.restart();
                 }
             }
