@@ -99,7 +99,6 @@ public class UI {
             drawTransitionScreen();
         }
 
-
         //message function
         if(messageOn == true) {
             g2.setFont(g2.getFont().deriveFont(30F));
@@ -118,15 +117,14 @@ public class UI {
         g2.fillRect(0,0,sim.ScreenWidth+sim.tileSize,sim.ScreenHeight+sim.tileSize);
         //Title name
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,55F));
-        String text = "Minion Laboratory";
-        int x = getXforCenteredText(text)+192;
+        int x = getXforCenteredText("Minion Laboratory")+192;
         int y = sim.tileSize*3;
         //Shadow
         g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
+        g2.drawString("Minion Laboratory",x+5,y+5);
         //Title
         g2.setColor(Color.yellow);
-        g2.drawString(text,x,y);
+        g2.drawString("Minion Laboratory",x,y);
 
         //title image
         x = sim.ScreenWidth/2 - 60;
@@ -141,25 +139,25 @@ public class UI {
 
         //Menu
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,48F));
-        text = "START GAME";
-        x = getXforCenteredText(text)+194;
+
+        x = getXforCenteredText("START GAME")+194;
         y += sim.tileSize*5;
         g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
+        g2.drawString("START GAME",x+5,y+5);
         g2.setColor(new Color(108, 242, 5));
-        g2.drawString(text,x,y);
+        g2.drawString("START GAME",x,y);
         if(commandNum == 0){
             g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
         }
 
-        text = "QUIT";
-        x = getXforCenteredText(text)+194;
+
+        x = getXforCenteredText("QUIT")+194;
         y += sim.tileSize;
         g2.setColor(Color.gray);
-        g2.drawString(text,x+5,y+5);
+        g2.drawString("QUIT",x+5,y+5);
         g2.setColor(new Color(108, 242, 5));
-        g2.drawString(text,x,y);
+        g2.drawString("QUIT",x,y);
         if(commandNum == 1){
             g2.setColor(Color.yellow);
             g2.drawString(">",x-sim.tileSize,y);
