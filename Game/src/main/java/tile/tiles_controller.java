@@ -119,23 +119,23 @@ public class tiles_controller
 
     public void draw (Graphics2D g)
     {
-        int column=0;
-        int row=0;
-        int x=0;
-        int y=0;
-        while (column<sim.maxScreenCol && row< sim.maxScreenRow)
+        int currentCol=0;
+        int currentRow=0;
+        int drawingRow=0;
+        int drawingCol=0;
+        while (currentCol<sim.maxScreenCol && currentRow < sim.maxScreenRow)
         {
-            int tileNum = mapTileNum[sim.currentMap][column][row];
-            g.drawImage(tile[tileNum].image,x,y, null);
+            int tileNum = mapTileNum[sim.currentMap][currentCol][currentRow];
+            g.drawImage(tile[tileNum].image,drawingRow,drawingCol, null);
 
-            column++;
-            x+= sim.get_tileSize();
-            if (column== sim.maxScreenCol)
+            currentCol++;
+            drawingRow+= sim.get_tileSize();
+            if (currentCol == sim.maxScreenCol)
             {
-                column=0;
-                x=0;
-                row++;
-                y+= sim.get_tileSize();
+                currentCol=0;
+                currentRow++;
+                drawingRow=0;
+                drawingCol+= sim.get_tileSize();
 
             }
         }

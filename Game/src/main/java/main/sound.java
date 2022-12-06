@@ -62,8 +62,4 @@ public class sound {
         }
         return sound_index ;
     }
-    public void setSoundIndex(int index)
-    {
-        sound_index= index;
-    }
 }
