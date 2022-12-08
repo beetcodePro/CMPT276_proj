@@ -9,17 +9,15 @@
  *
 */
 
-package moving_objects;
+package entities;
 import java.awt.*;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-
-import entities.AnimateEntity;
-
 import java.awt.image.BufferedImage;
 import main.Simulator;
 import main.KeyBoard;
 import main.CheckCollision;
+import tile.tiles_controller;
 import main.Tools;
 
 
@@ -38,7 +36,12 @@ public class Player extends AnimateEntity
         super(setX, setY, setSim, setCol);
         this.keyboard = setKey;
         this.get_sprite();
+        this.get_sprite_attack();
         this.config_hitbox();
+
+        //player attack hitbox
+        attackArea.width = 36;
+        attackArea.height = 36;
     }
 
     // Getters
@@ -67,13 +70,24 @@ public class Player extends AnimateEntity
     public void setDefaultPosition() { set_coordinate(sim.get_player_default_x(), sim.get_player_default_y()); }
 
     // Update player movement
-    @Override
     public void update()
     {
+        if(keyboard.PressedEnter == true){
+            attacking = true;
+            attacking();
+        }
+
         if(keyboard.PressedRT == true || keyboard.PressedLF == true || keyboard.PressedUp == true || keyboard.PressedDown == true)
         {
             // Check and set direction based on keyboard inpute
-            change_direction();
+            if (keyboard.PressedRT == true)
+                this.set_direction("right");
+            if (keyboard.PressedLF == true)
+                this.set_direction("left");
+            if (keyboard.PressedUp == true)
+                this.set_direction("up");
+            if (keyboard.PressedDown == true)
+                this.set_direction("down");
 
             // Check tile collision
             this.set_canCollide(false);
@@ -90,7 +104,7 @@ public class Player extends AnimateEntity
             // Move player if canCollide is false
             if(get_canCollide() == false)
             { 
-                this.moveEntity(true, keyboard);
+                this.move_player();
             }
             // Animation change
             this.increase_spriteCnt();
@@ -103,17 +117,33 @@ public class Player extends AnimateEntity
         }
     }
 
-    // Sets player direction on keyboard input
-    public void change_direction()
+    // Checks keyboard and moves player
+    public void move_player()
     {
-        if (keyboard.PressedRT == true)
-            this.set_direction("right");
-        if (keyboard.PressedLF == true)
-            this.set_direction("left");
-        if (keyboard.PressedUp == true)
-            this.set_direction("up");
-        if (keyboard.PressedDown == true)
-            this.set_direction("down");
+        if(keyboard.PressedRT == true)
+        {
+            int x = this.get_coordinate_X();
+            x = x + this.get_moveSpeed();
+            this.set_coordinate_X(x);
+        }
+        if(keyboard.PressedLF == true)
+        {
+            int x = this.get_coordinate_X();
+            x = x - this.get_moveSpeed();
+            this.set_coordinate_X(x);
+        }
+        if(keyboard.PressedUp == true)
+        {
+            int y = this.get_coordinate_Y();
+            y = y - this.get_moveSpeed();
+            this.set_coordinate_Y(y);
+        }
+        if(keyboard.PressedDown == true)
+        {
+            int y = this.get_coordinate_Y();
+            y = y + this.get_moveSpeed();
+            this.set_coordinate_Y(y);
+        }
     }
 
     // Draw player on user interface
@@ -122,81 +152,138 @@ public class Player extends AnimateEntity
         BufferedImage img = null;
         int X = this.get_coordinate_X();
         int Y = this.get_coordinate_Y();
+        int tileSize = this.sim.get_tileSize();
+        int tempX = X;
+        int tempY = Y;
 
         switch(this.get_direction())
         {
             case "down":
-                if(this.get_spriteNum() == 1)
-                    img = down1;
-                if(this.get_spriteNum() == 2)
-                    img = down2;
-                if(this.get_spriteNum() == 3)
-                    img = down1;
-                if(this.get_spriteNum() == 4)
-                    img = down3;
+                if(attacking == false) {
+                    if(this.get_spriteNum() == 1)
+                        img = down1;
+                    if(this.get_spriteNum() == 2)
+                        img = down2;
+                    if(this.get_spriteNum() == 3)
+                        img = down1;
+                    if(this.get_spriteNum() == 4)
+                        img = down3;
+                }
+                if(attacking == true) {
+                    if(this.get_spriteNum() == 1)
+                        img = attackDown1;
+                    if(this.get_spriteNum() == 2)
+                        img = attackDown2;
+                    if(this.get_spriteNum() == 3)
+                        img = attackDown1;
+                    if(this.get_spriteNum() == 4)
+                        img = attackDown3;
+                }
                 break;
             case "up":
-                if(this.get_spriteNum() == 1)
-                    img = up1;
-                if(this.get_spriteNum() == 2)
-                    img = up2;
-                if(this.get_spriteNum() == 3)
-                    img = up1;
-                if(this.get_spriteNum() == 4)
-                    img = up3;
+                if(attacking == false) {
+                    if(this.get_spriteNum() == 1)
+                        img = up1;
+                    if(this.get_spriteNum() == 2)
+                        img = up2;
+                    if(this.get_spriteNum() == 3)
+                        img = up1;
+                    if(this.get_spriteNum() == 4)
+                        img = up3;
+                }
+                if(attacking == true) {
+                    tempY = Y - tileSize;
+                    if(this.get_spriteNum() == 1)
+                        img = attackUp1;
+                    if(this.get_spriteNum() == 2)
+                        img = attackUp2;
+                    if(this.get_spriteNum() == 3)
+                        img = attackUp1;
+                    if(this.get_spriteNum() == 4)
+                        img = attackUp3;
+                }
+
                 break;
             case "right":
-                if(this.get_spriteNum() == 1)
-                    img = right1;
-                if(this.get_spriteNum() == 2)
-                    img = right1;
-                if(this.get_spriteNum() == 3)
-                    img = right2;
-                if(this.get_spriteNum() == 4)
-                    img = right2;
+                if(attacking == false) {
+                    if(this.get_spriteNum() == 1)
+                        img = right1;
+                    if(this.get_spriteNum() == 2)
+                        img = right1;
+                    if(this.get_spriteNum() == 3)
+                        img = right2;
+                    if(this.get_spriteNum() == 4)
+                        img = right2;
+                }
+                if(attacking == true) {
+                    if(this.get_spriteNum() == 1)
+                        img = attackRight1;
+                    if(this.get_spriteNum() == 2)
+                        img = attackRight1;
+                    if(this.get_spriteNum() == 3)
+                        img = attackRight2;
+                    if(this.get_spriteNum() == 4)
+                        img = attackRight2;
+                }
                 break;
             case "left":
-                if(this.get_spriteNum() == 1)
-                    img = left1;
-                if(this.get_spriteNum() == 2)
-                    img = left1;
-                if(this.get_spriteNum() == 3)
-                    img = left2;
-                if(this.get_spriteNum() == 4)
-                    img = left2;
+                if(attacking == false) {
+                    if(this.get_spriteNum() == 1)
+                        img = left1;
+                    if(this.get_spriteNum() == 2)
+                        img = left1;
+                    if(this.get_spriteNum() == 3)
+                        img = left2;
+                    if(this.get_spriteNum() == 4)
+                        img = left2;
+                }
+                if(attacking == true) {
+                    tempX = X - tileSize;
+                    if(this.get_spriteNum() == 1)
+                        img = attackLeft1;
+                    if(this.get_spriteNum() == 2)
+                        img = attackLeft1;
+                    if(this.get_spriteNum() == 3)
+                        img = attackLeft2;
+                    if(this.get_spriteNum() == 4)
+                        img = attackLeft2;
+                }
+
                 break;
         }
-        g2.drawImage(img, X, Y, null);
+        g2.drawImage(img, tempX, tempY, null);
     }
 
     // Load player sprites
     public void get_sprite() 
     {
-        down1 = setup("minion_down_1");
-        down2 = setup("minion_down_2");
-        down3 = setup("minion_down_3");
-        up1 = setup("minion_up_1");
-        up2 = setup("minion_up_2");
-        up3 = setup("minion_up_3");
-        right1 = setup("minion_right_1");
-        right2 = setup("minion_right_2");
-        left1 = setup("minion_left_1");
-        left2 = setup("minion_left_2");
+        down1 = setup("/player/minion_down_1",sim.get_tileSize(),sim.get_tileSize());
+        down2 = setup("/player/minion_down_2",sim.get_tileSize(),sim.get_tileSize());
+        down3 = setup("/player/minion_down_3",sim.get_tileSize(),sim.get_tileSize());
+        up1 = setup("/player/minion_up_1",sim.get_tileSize(),sim.get_tileSize());
+        up2 = setup("/player/minion_up_2",sim.get_tileSize(),sim.get_tileSize());
+        up3 = setup("/player/minion_up_3",sim.get_tileSize(),sim.get_tileSize());
+        right1 = setup("/player/minion_right_1",sim.get_tileSize(),sim.get_tileSize());
+        right2 = setup("/player/minion_right_2",sim.get_tileSize(),sim.get_tileSize());
+        left1 = setup("/player/minion_left_1",sim.get_tileSize(),sim.get_tileSize());
+        left2 = setup("/player/minion_left_2",sim.get_tileSize(),sim.get_tileSize());
     }
-    public BufferedImage setup(String imageName) {
 
-        Tools uTool = new Tools();
-        BufferedImage image = null;
+    public void get_sprite_attack() {
+        attackDown1 = setup("/player/minion_attack_down_1",sim.get_tileSize(),sim.get_tileSize()*2);
+        attackDown2 = setup("/player/minion_attack_down_2",sim.get_tileSize(),sim.get_tileSize()*2);
+        attackDown3 = setup("/player/minion_attack_down_3",sim.get_tileSize(),sim.get_tileSize()*2);
+        attackUp1 = setup("/player/minion_attack_up_1",sim.get_tileSize(),sim.get_tileSize()*2);
+        attackUp2 = setup("/player/minion_attack_up_2",sim.get_tileSize(),sim.get_tileSize()*2);
+        attackUp3 = setup("/player/minion_attack_up_3",sim.get_tileSize(),sim.get_tileSize()*2);
+        attackLeft1 = setup("/player/minion_attack_left_1",sim.get_tileSize()*2,sim.get_tileSize());
+        attackLeft2 = setup("/player/minion_attack_left_2",sim.get_tileSize()*2,sim.get_tileSize());
+        attackRight1 = setup("/player/minion_attack_right_1",sim.get_tileSize()*2,sim.get_tileSize());
+        attackRight2 = setup("/player/minion_attack_right_2",sim.get_tileSize()*2,sim.get_tileSize());
 
-        try{
-            image = ImageIO.read(getClass().getResourceAsStream("/player/" + imageName + ".png"));
-            image = uTool.scaleImage(image, sim.get_tileSize(),sim.get_tileSize());
 
-        }catch(IOException e) {
-            e.printStackTrace();
-        }
-        return image;
     }
+
 
     // This function runs when player collides with object
     private void obj_onCollision(int index)
@@ -224,6 +311,7 @@ public class Player extends AnimateEntity
                 if (((lives > 0) || (score > 0)) && sim.currentMap <= 1) {
                     sim.gameState = sim.transitionState;
                     sim.currentMap = sim.currentMap + 1;
+                    sim.reset();
                     sim.restart();
                 }
             }
@@ -276,6 +364,33 @@ public class Player extends AnimateEntity
             return true;
         else
             return false;
+    }
+    //Call to get attacking animation
+    public void attacking() {
+        increase_spriteCnt();
+        if(get_spriteCnt() <= 4) {
+            set_spriteNum(1);
+        }
+        if(get_spriteCnt() > 4 && get_spriteCnt() < 17) {
+            set_spriteNum(2);
+            //current worldx,worldy and player hitbox
+            int currentWorldX = this.get_coordinate_X();
+            int currentWorldY = this.get_coordinate_Y();
+            int configheight = 34;
+            int configwidth = 30;
+
+            switch(this.get_direction()) {
+                case "up":
+            }
+
+
+        }
+        if(get_spriteCnt() > 17) {
+            set_spriteNum(1);
+            set_spriteCnt(0);
+            attacking = false;
+            keyboard.PressedEnter = false;
+        }
     }
 }
 
