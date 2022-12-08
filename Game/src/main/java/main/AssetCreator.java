@@ -6,10 +6,10 @@ import java.util.Random;
 
 public class AssetCreator 
 {
-    Simulator sim;
-    public EntityList entityList;
-    int mapBoundaryX;
-    int mapBoundaryY;
+    private Simulator sim;
+    private EntityList entityList;
+    private int mapBoundaryX;
+    private int mapBoundaryY;
     private int tileSize;
 
     // Default constructor
@@ -20,6 +20,9 @@ public class AssetCreator
         this.mapBoundaryY = sim.maxScreenRow-2;
         this.tileSize = sim.get_tileSize();
     }
+
+    // Getter
+    public EntityList getEntityList() { return this.entityList; }
 
     // Helper function: Checks if an object exists at specified coordinate
     public boolean checkObjectAtCoordinate(int x, int y, boolean isTrap)

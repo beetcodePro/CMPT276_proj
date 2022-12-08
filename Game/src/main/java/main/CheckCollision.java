@@ -6,9 +6,9 @@ import moving_objects.Player;
 
 public class CheckCollision 
 {
-    Simulator sim;
-    KeyBoard keyboard;
-    EntityList entityList;
+    private Simulator sim;
+    private KeyBoard keyboard;
+    private EntityList entityList;
 
     // Default constructor
     public CheckCollision(Simulator sim, KeyBoard key, EntityList eList){

@@ -41,12 +41,12 @@ public class AssetCreatorTest extends TestCase {
      * @test checking if coordinate isn't occupied by other objects
      */
     public void checkIfCoordinatePasses(){
-        assets.entityList.clear_objList();
+        assets.getEntityList().clear_objList();
         int tempX = 5, tempY = 10;
         obj_trap Trap = new obj_trap(tempX, tempY);
-        assets.entityList.add_obj(Trap);
-        boolean spaceIsOkay = assets.checkObjectAtCoordinate(assets.entityList.get_obj_at_index(0).get_coordinate_X(),
-                assets.entityList.get_obj_at_index(0).get_coordinate_Y(),true );
+        assets.getEntityList().add_obj(Trap);
+        boolean spaceIsOkay = assets.checkObjectAtCoordinate(assets.getEntityList().get_obj_at_index(0).get_coordinate_X(),
+                assets.getEntityList().get_obj_at_index(0).get_coordinate_Y(),true );
         assertEquals(spaceIsOkay, false);
     }
 
@@ -55,12 +55,12 @@ public class AssetCreatorTest extends TestCase {
      * @test checking if tile exists so object can be placed
      */
     public void checkIfTileExists(){
-        assets.entityList.clear_objList();
+        assets.getEntityList().clear_objList();
         int tempX = 5, tempY = 10;
         obj_trap Trap = new obj_trap(tempX, tempY);
-        assets.entityList.add_obj(Trap);
-        boolean tileIsReal = assets.checkObjectAtCoordinate(assets.entityList.get_obj_at_index(0).get_coordinate_X(),
-                assets.entityList.get_obj_at_index(0).get_coordinate_Y(), true);
+        assets.getEntityList().add_obj(Trap);
+        boolean tileIsReal = assets.checkObjectAtCoordinate(assets.getEntityList().get_obj_at_index(0).get_coordinate_X(),
+                assets.getEntityList().get_obj_at_index(0).get_coordinate_Y(), true);
         assertEquals(tileIsReal, false);
 
     }
@@ -69,9 +69,9 @@ public class AssetCreatorTest extends TestCase {
      * @test creates set of objects for game
      */
     public void creatingObjects(){
-        assets.entityList.clear_objList();
+        assets.getEntityList().clear_objList();
         assets.setObject();
-        assertEquals(assets.entityList.get_obj_at_index(17).get_name(),"Trap");
+        assertEquals(assets.getEntityList().get_obj_at_index(17).get_name(),"Trap");
 
     }
 
@@ -79,24 +79,24 @@ public class AssetCreatorTest extends TestCase {
      * @test creates set of enemies
      */
     public void creatingEnemies(){
-        assets.entityList.clear_enemyList();
+        assets.getEntityList().clear_enemyList();
         assets.setEnemy(0);
-        assertEquals(assets.entityList.get_enemy_at_index(3).get_coordinate_X(), 48*6);
+        assertEquals(assets.getEntityList().get_enemy_at_index(3).get_coordinate_X(), 48*6);
     }
     /**
      * @test creates a set of apples for them to reappear on the map
      */
     public void addingApple(){
-        assets.entityList.clear_objList();
+        assets.getEntityList().clear_objList();
         assets.addApple();
-        assertEquals(assets.entityList.get_obj_at_index(0).get_name(), "Apple");
+        assertEquals(assets.getEntityList().get_obj_at_index(0).get_name(), "Apple");
     }
     /**
      * @test creates a new door
      */
     public void createDoor(){
-        assets.entityList.clear_objList();
+        assets.getEntityList().clear_objList();
         assets.addDoor(2);
-        assertEquals(assets.entityList.get_obj_at_index(0).get_name(), "Door");
+        assertEquals(assets.getEntityList().get_obj_at_index(0).get_name(), "Door");
     }
 }
