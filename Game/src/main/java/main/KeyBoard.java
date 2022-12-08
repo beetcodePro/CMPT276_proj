@@ -20,8 +20,8 @@ public class KeyBoard implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
 
-        //Title state
-        if(sim.gameState == sim.titleState || sim.gameState == sim.gameOverSate || sim.gameState == sim.gameWinSate || sim.gameState == sim.transitionState) {
+        //Commands for using the > in the states
+        if(sim.gameState > sim.pauseState) {
             if (code == KeyEvent.VK_UP || code == KeyEvent.VK_W) {
                 sim.ui.setCommandNum(sim.ui.getCommandNum()-1);
                 if (sim.ui.getCommandNum() < 0) {
@@ -34,12 +34,15 @@ public class KeyBoard implements KeyListener {
                     sim.ui.setCommandNum(0);
                 }
             }
-            //Game Title Options
+            //ALL the Different Options for the states
+
+            //All state options to start the playgameState
             if (code == KeyEvent.VK_ENTER) {
-                if (sim.ui.getCommandNum() == 0 && sim.gameState == sim.titleState) {
+                if (sim.ui.getCommandNum() == 0 && sim.gameState == sim.titleState || sim.gameState == sim.transitionState) {
                     sim.gameState = sim.playGameState;
                 }
-                if (sim.ui.getCommandNum() == 1 && sim.gameState == sim.titleState) {
+                //All state quit options for the states
+                if (sim.ui.getCommandNum() == 1 && sim.gameState == sim.titleState ||sim.gameState == sim.gameWinSate || sim.gameState == sim.transitionState ) {
                     System.exit(0);
                 }
                 //Game Over options
@@ -60,17 +63,6 @@ public class KeyBoard implements KeyListener {
                     sim.currentMap = 0;
                     sim.reset();
                     sim.restart();
-                }
-                if (sim.ui.getCommandNum() == 1 && sim.gameState == sim.gameWinSate) {
-                    System.exit(0);
-                }
-                //Game Transition Options
-                if (sim.ui.getCommandNum() == 0 && sim.gameState == sim.transitionState) {
-                    sim.gameState = sim.playGameState;
-                }
-                if (sim.ui.getCommandNum() == 1 && sim.gameState == sim.transitionState) {
-                    System.exit(0);
-
                 }
             }
         }
