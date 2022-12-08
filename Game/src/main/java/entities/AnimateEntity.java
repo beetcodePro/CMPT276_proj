@@ -62,33 +62,17 @@ public abstract class AnimateEntity extends Entity
             switch(this.get_direction())
             {
                 case "right":
-                {
-                    int x = this.get_coordinate_X();
-                    x = x + this.get_moveSpeed();
-                    this.set_coordinate_X(x);
+                    this.set_coordinate_X(this.get_coordinate_X() + this.get_moveSpeed());
                     break;
-                }
                 case "left":
-                {
-                    int x = this.get_coordinate_X();
-                    x = x - this.get_moveSpeed();
-                    this.set_coordinate_X(x);
+                    this.set_coordinate_X(this.get_coordinate_X() - this.get_moveSpeed());
                     break;
-                }
                 case "up":
-                {
-                    int y = this.get_coordinate_Y();
-                    y = y - this.get_moveSpeed();
-                    this.set_coordinate_Y(y);
+                    this.set_coordinate_Y(this.get_coordinate_Y() - this.get_moveSpeed());
                     break;
-                }
                 case "down":
-                {
-                    int y = this.get_coordinate_Y();
-                    y = y + this.get_moveSpeed();
-                    this.set_coordinate_Y(y);
+                    this.set_coordinate_Y(this.get_coordinate_Y() + this.get_moveSpeed());
                     break;
-                }
             }
         }
         // Animation change
