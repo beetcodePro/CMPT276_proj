@@ -72,14 +72,7 @@ public class Player extends AnimateEntity
         if(keyboard.PressedRT == true || keyboard.PressedLF == true || keyboard.PressedUp == true || keyboard.PressedDown == true)
         {
             // Check and set direction based on keyboard inpute
-            if (keyboard.PressedRT == true)
-                this.set_direction("right");
-            if (keyboard.PressedLF == true)
-                this.set_direction("left");
-            if (keyboard.PressedUp == true)
-                this.set_direction("up");
-            if (keyboard.PressedDown == true)
-                this.set_direction("down");
+            change_direction();
 
             // Check tile collision
             this.set_canCollide(false);
@@ -109,33 +102,26 @@ public class Player extends AnimateEntity
         }
     }
 
+    // Sets player direction on keyboard input
+    public void change_direction()
+    {
+        if (keyboard.PressedRT == true)
+            this.set_direction("right");
+        if (keyboard.PressedLF == true)
+            this.set_direction("left");
+        if (keyboard.PressedUp == true)
+            this.set_direction("up");
+        if (keyboard.PressedDown == true)
+            this.set_direction("down");
+    }
+
     // Checks keyboard and moves player
     public void move_player()
     {
-        if(keyboard.PressedRT == true)
-        {
-            int x = this.get_coordinate_X();
-            x = x + this.get_moveSpeed();
-            this.set_coordinate_X(x);
-        }
-        if(keyboard.PressedLF == true)
-        {
-            int x = this.get_coordinate_X();
-            x = x - this.get_moveSpeed();
-            this.set_coordinate_X(x);
-        }
-        if(keyboard.PressedUp == true)
-        {
-            int y = this.get_coordinate_Y();
-            y = y - this.get_moveSpeed();
-            this.set_coordinate_Y(y);
-        }
-        if(keyboard.PressedDown == true)
-        {
-            int y = this.get_coordinate_Y();
-            y = y + this.get_moveSpeed();
-            this.set_coordinate_Y(y);
-        }
+        if(keyboard.PressedRT == true) this.set_coordinate_X(this.get_coordinate_X() + this.get_moveSpeed());
+        if(keyboard.PressedLF == true) this.set_coordinate_X(this.get_coordinate_X() - this.get_moveSpeed());
+        if(keyboard.PressedUp == true) this.set_coordinate_Y(this.get_coordinate_Y() - this.get_moveSpeed());
+        if(keyboard.PressedDown == true) this.set_coordinate_Y(this.get_coordinate_Y() + this.get_moveSpeed());
     }
 
     // Draw player on user interface
