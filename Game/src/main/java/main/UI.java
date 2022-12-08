@@ -10,24 +10,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 
-public class UI {
-    public Graphics2D g2;
-    public Simulator sim;
-
-    Font PublicPixel, arial_40;
-    BufferedImage heartImage,bananaImage,appleImage;
-    public boolean messageOn = false;
-    public String message = "";
-    int messageCounter = 0;
-    double playTime = 0;
-    DecimalFormat dFormat = new DecimalFormat("#0.00");
-    public int commandNum = 0;
-    public int tester;
+public class UI 
+{
+    public final BufferedImage heartImage,bananaImage,appleImage;
+    public final DecimalFormat dFormat = new DecimalFormat("#0.00");
+    private Graphics2D g2;
+    private Simulator sim;
+    private Font PublicPixel, arial_40;
+    private boolean messageOn = false;
+    private String message = "";
+    private int messageCounter = 0;
+    private double playTime = 0;
+    private int commandNum = 0;
+    private int tester;
 
     public UI(Simulator sim) {
         this.sim = sim;
-
-
         try {
             InputStream is = getClass().getResourceAsStream("/font/PublicPixel-z84yD.ttf");
             PublicPixel = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -49,10 +47,20 @@ public class UI {
         obj_apple apple = new obj_apple(0, 0);
         appleImage = apple.image;
     }
+
+    // Setters
+    public void setPlayTime(int val) { this.playTime = val; }
+    public void setCommandNum(int val) { this.commandNum = val; }
+
+    // Getters
+    public double getPlayTime() { return this.playTime; }
+    public int getCommandNum() { return this.commandNum; }
+
     public void showMessage(String text) {
         message = text;
         messageOn = true;
     }
+
     public void draw(Graphics2D g2){
         this.g2=g2;
         g2.setColor(Color.white);

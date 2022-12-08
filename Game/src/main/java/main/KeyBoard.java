@@ -23,52 +23,52 @@ public class KeyBoard implements KeyListener {
         //Title state
         if(sim.gameState == sim.titleState || sim.gameState == sim.gameOverSate || sim.gameState == sim.gameWinSate || sim.gameState == sim.transitionState) {
             if (code == KeyEvent.VK_UP || code == KeyEvent.VK_W) {
-                sim.ui.commandNum--;
-                if (sim.ui.commandNum < 0) {
-                    sim.ui.commandNum = 1;
+                sim.ui.setCommandNum(sim.ui.getCommandNum()-1);
+                if (sim.ui.getCommandNum() < 0) {
+                    sim.ui.setCommandNum(1);
                 }
             }
             if (code == KeyEvent.VK_DOWN || code == KeyEvent.VK_S) {
-                sim.ui.commandNum++;
-                if (sim.ui.commandNum > 1) {
-                    sim.ui.commandNum = 0;
+                sim.ui.setCommandNum(sim.ui.getCommandNum()+1);
+                if (sim.ui.getCommandNum() > 1) {
+                    sim.ui.setCommandNum(0);
                 }
             }
             //Game Title Options
             if (code == KeyEvent.VK_ENTER) {
-                if (sim.ui.commandNum == 0 && sim.gameState == sim.titleState) {
+                if (sim.ui.getCommandNum() == 0 && sim.gameState == sim.titleState) {
                     sim.gameState = sim.playGameState;
                 }
-                if (sim.ui.commandNum == 1 && sim.gameState == sim.titleState) {
+                if (sim.ui.getCommandNum() == 1 && sim.gameState == sim.titleState) {
                     System.exit(0);
                 }
                 //Game Over options
-                if (sim.ui.commandNum == 0 && sim.gameState == sim.gameOverSate) {
+                if (sim.ui.getCommandNum() == 0 && sim.gameState == sim.gameOverSate) {
                     sim.gameState = sim.playGameState;
                     sim.reset();
                     sim.restart();
 
                 }
-                if (sim.ui.commandNum == 1 && sim.gameState == sim.gameOverSate) {
+                if (sim.ui.getCommandNum() == 1 && sim.gameState == sim.gameOverSate) {
                     sim.gameState = sim.titleState;
                     sim.reset();
                     sim.restart();
                 }
                 //Game Win Screen Options
-                if (sim.ui.commandNum == 0 && sim.gameState == sim.gameWinSate) {
+                if (sim.ui.getCommandNum() == 0 && sim.gameState == sim.gameWinSate) {
                     sim.gameState = sim.playGameState;
                     sim.currentMap = 0;
                     sim.reset();
                     sim.restart();
                 }
-                if (sim.ui.commandNum == 1 && sim.gameState == sim.gameWinSate) {
+                if (sim.ui.getCommandNum() == 1 && sim.gameState == sim.gameWinSate) {
                     System.exit(0);
                 }
                 //Game Transition Options
-                if (sim.ui.commandNum == 0 && sim.gameState == sim.transitionState) {
+                if (sim.ui.getCommandNum() == 0 && sim.gameState == sim.transitionState) {
                     sim.gameState = sim.playGameState;
                 }
-                if (sim.ui.commandNum == 1 && sim.gameState == sim.transitionState) {
+                if (sim.ui.getCommandNum() == 1 && sim.gameState == sim.transitionState) {
                     System.exit(0);
 
                 }
