@@ -13,6 +13,7 @@ package entities;
 import java.awt.image.BufferedImage;
 import main.Simulator;
 import main.CheckCollision;
+import main.KeyBoard;
 
 public abstract class AnimateEntity extends Entity
 {
@@ -57,24 +58,27 @@ public abstract class AnimateEntity extends Entity
 
         if(this.get_canCollide() == false)
         {
-            switch(this.get_direction())
-            {
-                case "right":
-                    this.set_coordinate_X(this.get_coordinate_X() + this.get_moveSpeed());
-                    break;
-                case "left":
-                    this.set_coordinate_X(this.get_coordinate_X() - this.get_moveSpeed());
-                    break;
-                case "up":
-                    this.set_coordinate_Y(this.get_coordinate_Y() - this.get_moveSpeed());
-                    break;
-                case "down":
-                    this.set_coordinate_Y(this.get_coordinate_Y() + this.get_moveSpeed());
-                    break;
-            }
+            moveEntity(false, null);
         }
         // Animation change
         this.increase_spriteCnt();
+    }
+
+    // Default move entity
+    public void moveEntity(boolean isPlayer, KeyBoard keyboard)
+    {
+        if(isPlayer == false)
+        {
+            if (this.get_direction() == "right") this.set_coordinate_X(this.get_coordinate_X() + this.get_moveSpeed());
+            if (this.get_direction() == "left") this.set_coordinate_X(this.get_coordinate_X() - this.get_moveSpeed());
+            if (this.get_direction() == "up") this.set_coordinate_Y(this.get_coordinate_Y() - this.get_moveSpeed());
+            if (this.get_direction() == "down") this.set_coordinate_Y(this.get_coordinate_Y() + this.get_moveSpeed());
+            return;
+        }
+        if(keyboard.PressedRT == true) this.set_coordinate_X(this.get_coordinate_X() + this.get_moveSpeed());
+        if(keyboard.PressedLF == true) this.set_coordinate_X(this.get_coordinate_X() - this.get_moveSpeed());
+        if(keyboard.PressedUp == true) this.set_coordinate_Y(this.get_coordinate_Y() - this.get_moveSpeed());
+        if(keyboard.PressedDown == true) this.set_coordinate_Y(this.get_coordinate_Y() + this.get_moveSpeed());
     }
 
     // TO BE OVERRIDDEN: Set the direction to move in next time update is called

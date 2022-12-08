@@ -96,7 +96,7 @@ public class EnemyTest extends TestCase
     {
         enemy.set_coordinate(0, 0);
         enemy.set_direction("up");
-        enemy.move_enemy();
+        enemy.moveEntity(false, null);
         assertEquals(enemy.get_moveSpeed()*-1, enemy.get_coordinate_Y());
     }
 
@@ -107,7 +107,7 @@ public class EnemyTest extends TestCase
     {
         enemy.set_coordinate(0, 0);
         enemy.set_direction("down");
-        enemy.move_enemy();
+        enemy.moveEntity(false, null);
         assertEquals(enemy.get_moveSpeed(), enemy.get_coordinate_Y());
     }
 
@@ -118,7 +118,7 @@ public class EnemyTest extends TestCase
     {
         enemy.set_coordinate(0, 0);
         enemy.set_direction("right");
-        enemy.move_enemy();
+        enemy.moveEntity(false, null);
         assertEquals(enemy.get_moveSpeed(), enemy.get_coordinate_X());
     }
 
@@ -129,7 +129,7 @@ public class EnemyTest extends TestCase
     {
         enemy.set_coordinate(0, 0);
         enemy.set_direction("left");
-        enemy.move_enemy();
+        enemy.moveEntity(false, null);
         assertEquals(enemy.get_moveSpeed()*-1, enemy.get_coordinate_X());
     }
 

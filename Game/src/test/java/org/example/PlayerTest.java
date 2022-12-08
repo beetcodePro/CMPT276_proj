@@ -64,7 +64,7 @@ public class PlayerTest extends TestCase
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedUp = true;
-        player.move_player();
+        player.moveEntity(true, key);
         player.get_keyboard().PressedUp = false;
         assertEquals(player.get_moveSpeed()*-1, player.get_coordinate_Y());
     }
@@ -76,7 +76,7 @@ public class PlayerTest extends TestCase
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedDown = true;
-        player.move_player();
+        player.moveEntity(true, key);
         player.get_keyboard().PressedDown = false;
         assertEquals(player.get_moveSpeed(), player.get_coordinate_Y());
     }
@@ -88,7 +88,7 @@ public class PlayerTest extends TestCase
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedRT = true;
-        player.move_player();
+        player.moveEntity(true, key);
         player.get_keyboard().PressedRT = false;
         assertEquals(player.get_moveSpeed(), player.get_coordinate_X());
     }
@@ -100,7 +100,7 @@ public class PlayerTest extends TestCase
     {
         player.set_coordinate(0, 0);
         player.get_keyboard().PressedLF = true;
-        player.move_player();
+        player.moveEntity(true, key);
         player.get_keyboard().PressedLF = false;
         assertEquals(player.get_moveSpeed()*-1, player.get_coordinate_X());
     }

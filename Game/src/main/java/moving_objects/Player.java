@@ -67,6 +67,7 @@ public class Player extends AnimateEntity
     public void setDefaultPosition() { set_coordinate(sim.get_player_default_x(), sim.get_player_default_y()); }
 
     // Update player movement
+    @Override
     public void update()
     {
         if(keyboard.PressedRT == true || keyboard.PressedLF == true || keyboard.PressedUp == true || keyboard.PressedDown == true)
@@ -89,7 +90,7 @@ public class Player extends AnimateEntity
             // Move player if canCollide is false
             if(get_canCollide() == false)
             { 
-                this.move_player();
+                this.moveEntity(true, keyboard);
             }
             // Animation change
             this.increase_spriteCnt();
@@ -113,15 +114,6 @@ public class Player extends AnimateEntity
             this.set_direction("up");
         if (keyboard.PressedDown == true)
             this.set_direction("down");
-    }
-
-    // Checks keyboard and moves player
-    public void move_player()
-    {
-        if(keyboard.PressedRT == true) this.set_coordinate_X(this.get_coordinate_X() + this.get_moveSpeed());
-        if(keyboard.PressedLF == true) this.set_coordinate_X(this.get_coordinate_X() - this.get_moveSpeed());
-        if(keyboard.PressedUp == true) this.set_coordinate_Y(this.get_coordinate_Y() - this.get_moveSpeed());
-        if(keyboard.PressedDown == true) this.set_coordinate_Y(this.get_coordinate_Y() + this.get_moveSpeed());
     }
 
     // Draw player on user interface
