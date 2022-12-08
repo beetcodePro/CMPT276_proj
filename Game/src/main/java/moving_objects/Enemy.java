@@ -9,13 +9,10 @@
  *
 */
 
-package moving_objects;
+package entities;
 import main.Simulator;
 import java.awt.Rectangle;
 import javax.imageio.ImageIO;
-
-import entities.AnimateEntity;
-
 import java.io.IOException;
 import java.util.Random;
 import main.CheckCollision;
@@ -58,23 +55,17 @@ public class Enemy extends AnimateEntity
     }
 
     // Load enemy sprites
-    public void get_sprite() 
-    {
-        try {
-            down1 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_down_2.png"));
-            down3 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_down_3.png"));
-            up1 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_up_2.png"));
-            up3 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_up_3.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_right_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/enemy/evilon_left_2.png"));
-        }
-        catch (IOException err) {
-            err.printStackTrace();
-        }
+    public void get_sprite() {
+        down1 = setup("/enemy/evilon_down_1", sim.get_tileSize(), sim.get_tileSize());
+        down2 = setup("/enemy/evilon_down_2", sim.get_tileSize(), sim.get_tileSize());
+        down3 = setup("/enemy/evilon_down_3", sim.get_tileSize(), sim.get_tileSize());
+        up1 = setup("/enemy/evilon_up_1", sim.get_tileSize(), sim.get_tileSize());
+        up2 = setup("/enemy/evilon_up_2", sim.get_tileSize(), sim.get_tileSize());
+        up3 = setup("/enemy/evilon_up_3", sim.get_tileSize(), sim.get_tileSize());
+        right1 = setup("/enemy/evilon_right_1", sim.get_tileSize(), sim.get_tileSize());
+        right2 = setup("/enemy/evilon_right_2", sim.get_tileSize(), sim.get_tileSize());
+        left1 = setup("/enemy/evilon_left_1", sim.get_tileSize(), sim.get_tileSize());
+        left2 = setup("/enemy/evilon_left_2", sim.get_tileSize(), sim.get_tileSize());
     }
 
     // Getters
@@ -134,11 +125,10 @@ public class Enemy extends AnimateEntity
                     img = left2;
                 break;
         }
-        g2.drawImage(img, X, Y, tileSize, tileSize, null);
+        g2.drawImage(img, X, Y, null);
     }
 
     // Set the direction to move in next time update is called
-    @Override
     public void nextMove()
     {
         this.actionInterval++;
@@ -177,10 +167,46 @@ public class Enemy extends AnimateEntity
 
         if(this.get_canCollide() == false)
         {
-            this.moveEntity(false, null);
+            move_enemy();
         }
         // Animation change
         this.increase_spriteCnt();
+    }
+
+    // Checks direction and moves enemy
+    public void move_enemy()
+    {
+        switch(this.get_direction())
+        {
+            case "right":
+            {
+                int x = this.get_coordinate_X();
+                x = x + this.get_moveSpeed();
+                this.set_coordinate_X(x);
+                break;
+            }
+            case "left":
+            {
+                int x = this.get_coordinate_X();
+                x = x - this.get_moveSpeed();
+                this.set_coordinate_X(x);
+                break;
+            }
+            case "up":
+            {
+                int y = this.get_coordinate_Y();
+                y = y - this.get_moveSpeed();
+                this.set_coordinate_Y(y);
+                break;
+            }
+            case "down":
+            {
+                int y = this.get_coordinate_Y();
+                y = y + this.get_moveSpeed();
+                this.set_coordinate_Y(y);
+                break;
+            }
+        }
     }
 
     // This function runs when enemy collides into player
