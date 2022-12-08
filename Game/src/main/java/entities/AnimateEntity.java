@@ -10,10 +10,15 @@
 */
 
 package entities;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 import main.Simulator;
 import main.CheckCollision;
-import main.KeyBoard;
+import main.Tools;
+
+import javax.imageio.ImageIO;
 
 public abstract class AnimateEntity extends Entity
 {
@@ -26,7 +31,14 @@ public abstract class AnimateEntity extends Entity
     protected Simulator sim;
     protected CheckCollision collideCheck;
     public BufferedImage down1, down2, down3, up1, up2, up3, right1, right2, left1, left2;
+
+    public BufferedImage attackDown1, attackDown2, attackDown3, attackUp1, attackUp2, attackUp3,
+            attackRight1, attackRight2, attackLeft1, attackLeft2;
     private String direction;
+
+    //attacking attributes
+    boolean attacking = false;
+    public Rectangle attackArea = new Rectangle(0,0,0,0);
 
     // Default constructor (must pass X/Y coordinates and sets moveSpeed to default)
     public AnimateEntity(int setX, int setY, Simulator setSim, CheckCollision setCol)
@@ -40,12 +52,14 @@ public abstract class AnimateEntity extends Entity
     // Getters
     public int get_moveSpeed() { return this.moveSpeed; }
     public String get_direction() { return this.direction; }
+    public int get_spriteCnt() { return this.spriteCnt; }
     public int get_spriteNum() { return this.spriteNum; }
 
     // Setters
     public void set_moveSpeed(int val) { this.moveSpeed = val; }
     public void set_direction(String val) { this.direction = val; }
-
+    public void set_spriteCnt(int val) { this.spriteCnt = val; }
+    public void set_spriteNum(int val) { this.spriteNum = val; }
 
     // Default update, updates AnimateEntity movement
     public void update()
@@ -58,27 +72,40 @@ public abstract class AnimateEntity extends Entity
 
         if(this.get_canCollide() == false)
         {
-            moveEntity(false, null);
+            switch(this.get_direction())
+            {
+                case "right":
+                {
+                    int x = this.get_coordinate_X();
+                    x = x + this.get_moveSpeed();
+                    this.set_coordinate_X(x);
+                    break;
+                }
+                case "left":
+                {
+                    int x = this.get_coordinate_X();
+                    x = x - this.get_moveSpeed();
+                    this.set_coordinate_X(x);
+                    break;
+                }
+                case "up":
+                {
+                    int y = this.get_coordinate_Y();
+                    y = y - this.get_moveSpeed();
+                    this.set_coordinate_Y(y);
+                    break;
+                }
+                case "down":
+                {
+                    int y = this.get_coordinate_Y();
+                    y = y + this.get_moveSpeed();
+                    this.set_coordinate_Y(y);
+                    break;
+                }
+            }
         }
         // Animation change
         this.increase_spriteCnt();
-    }
-
-    // Default move entity
-    public void moveEntity(boolean isPlayer, KeyBoard keyboard)
-    {
-        if(isPlayer == false)
-        {
-            if (this.get_direction() == "right") this.set_coordinate_X(this.get_coordinate_X() + this.get_moveSpeed());
-            if (this.get_direction() == "left") this.set_coordinate_X(this.get_coordinate_X() - this.get_moveSpeed());
-            if (this.get_direction() == "up") this.set_coordinate_Y(this.get_coordinate_Y() - this.get_moveSpeed());
-            if (this.get_direction() == "down") this.set_coordinate_Y(this.get_coordinate_Y() + this.get_moveSpeed());
-            return;
-        }
-        if(keyboard.PressedRT == true) this.set_coordinate_X(this.get_coordinate_X() + this.get_moveSpeed());
-        if(keyboard.PressedLF == true) this.set_coordinate_X(this.get_coordinate_X() - this.get_moveSpeed());
-        if(keyboard.PressedUp == true) this.set_coordinate_Y(this.get_coordinate_Y() - this.get_moveSpeed());
-        if(keyboard.PressedDown == true) this.set_coordinate_Y(this.get_coordinate_Y() + this.get_moveSpeed());
     }
 
     // TO BE OVERRIDDEN: Set the direction to move in next time update is called
@@ -97,5 +124,20 @@ public abstract class AnimateEntity extends Entity
                 this.spriteNum = 1;
             this.spriteCnt = 0;
         }
+    }
+
+    public BufferedImage setup(String imageName, int width, int height) {
+
+        Tools uTool = new Tools();
+        BufferedImage image = null;
+
+        try{
+            image = ImageIO.read(getClass().getResourceAsStream( imageName + ".png"));
+            image = uTool.scaleImage(image, width,height);
+
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+        return image;
     }
 }
