@@ -1,6 +1,8 @@
 package main;
 
 import entities.*;
+import moving_objects.Enemy;
+import moving_objects.Player;
 
 public class CheckCollision 
 {

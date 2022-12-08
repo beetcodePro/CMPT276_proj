@@ -1,5 +1,5 @@
 package main;
-import entities.*;
+import moving_objects.Enemy;
 import objects.*;
 
 import java.util.Random;

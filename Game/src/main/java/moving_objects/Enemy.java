@@ -9,10 +9,13 @@
  *
 */
 
-package entities;
+package moving_objects;
 import main.Simulator;
 import java.awt.Rectangle;
 import javax.imageio.ImageIO;
+
+import entities.AnimateEntity;
+
 import java.io.IOException;
 import java.util.Random;
 import main.CheckCollision;

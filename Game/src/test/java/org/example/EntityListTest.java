@@ -12,7 +12,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import main.*;
-import entities.*;
+import moving_objects.Enemy;
 import objects.*;
 
 public class EntityListTest extends TestCase

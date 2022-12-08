@@ -12,7 +12,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import main.*;
-import entities.Player;
+import moving_objects.Player;
 import entities.Coordinate;
 import java.awt.Rectangle;
 public class PlayerTest extends TestCase

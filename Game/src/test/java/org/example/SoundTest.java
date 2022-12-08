@@ -1,10 +1,10 @@
 package org.example;
 
-import entities.Player;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import main.*;
+import moving_objects.Player;
 
 public class SoundTest extends TestCase {
     sound Sound= new sound();

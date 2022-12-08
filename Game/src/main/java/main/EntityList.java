@@ -11,6 +11,8 @@
 
 package main;
 import entities.*;
+import moving_objects.Enemy;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.awt.Graphics2D;

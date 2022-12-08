@@ -12,7 +12,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import main.*;
-import entities.Enemy;
+import moving_objects.Enemy;
 import entities.Coordinate;
  
 public class EnemyTest extends TestCase

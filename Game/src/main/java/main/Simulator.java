@@ -3,6 +3,7 @@ package main;
 import javax.swing.JPanel;
 import java.awt.*;
 import entities.*;
+import moving_objects.Player;
 import tile.tiles_controller;
 
 

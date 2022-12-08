@@ -9,10 +9,13 @@
  *
 */
 
-package entities;
+package moving_objects;
 import java.awt.*;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
+import entities.AnimateEntity;
+
 import java.awt.image.BufferedImage;
 import main.Simulator;
 import main.KeyBoard;
