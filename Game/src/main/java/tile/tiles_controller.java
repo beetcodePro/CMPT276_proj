@@ -13,7 +13,6 @@ import java.io.InputStreamReader;
 public class tiles_controller 
 {
     public Simulator sim;
-    public Tools tools;
     public Tiles[] tile;
     public int mapTileNum[][][];
 
@@ -119,23 +118,23 @@ public class tiles_controller
 
     public void draw (Graphics2D g)
     {
-        int currentCol=0;
-        int currentRow=0;
-        int drawingRow=0;
-        int drawingCol=0;
-        while (currentCol<sim.maxScreenCol && currentRow < sim.maxScreenRow)
+        int worldcolumn=0;
+        int worldrow=0;
+        int worldx=0;
+        int worldy=0;
+        while (worldcolumn<sim.maxScreenCol && worldrow< sim.maxScreenRow)
         {
-            int tileNum = mapTileNum[sim.currentMap][currentCol][currentRow];
-            g.drawImage(tile[tileNum].image,drawingRow,drawingCol, null);
+            int tileNum = mapTileNum[sim.currentMap][worldcolumn][worldrow];
+            g.drawImage(tile[tileNum].image,worldx,worldy, null);
 
-            currentCol++;
-            drawingRow+= sim.get_tileSize();
-            if (currentCol == sim.maxScreenCol)
+            worldcolumn++;
+            worldx+= sim.get_tileSize();
+            if (worldcolumn== sim.maxScreenCol)
             {
-                currentCol=0;
-                currentRow++;
-                drawingRow=0;
-                drawingCol+= sim.get_tileSize();
+                worldcolumn=0;
+                worldx=0;
+                worldrow++;
+                worldy+= sim.get_tileSize();
 
             }
         }
