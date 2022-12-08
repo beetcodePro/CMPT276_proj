@@ -39,14 +39,12 @@ public abstract class AnimateEntity extends Entity
     // Getters
     public int get_moveSpeed() { return this.moveSpeed; }
     public String get_direction() { return this.direction; }
-    public int get_spriteCnt() { return this.spriteCnt; }
     public int get_spriteNum() { return this.spriteNum; }
 
     // Setters
     public void set_moveSpeed(int val) { this.moveSpeed = val; }
     public void set_direction(String val) { this.direction = val; }
-    public void set_spriteCnt(int val) { this.spriteCnt = val; }
-    public void set_spriteNum(int val) { this.spriteNum = val; }
+
 
     // Default update, updates AnimateEntity movement
     public void update()
