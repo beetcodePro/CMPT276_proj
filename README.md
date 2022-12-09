@@ -4,6 +4,9 @@ Noah Kamzelski
 Samin Moradkhan 
 Lionel Song
 
+YouTube Video for our Game:
+https://www.youtube.com/watch?v=n3hWHrvQV0I
+
 To run the Tests: 
 1. run mvn clean package
 1. run mvn test and it will build and run all the tests. 
